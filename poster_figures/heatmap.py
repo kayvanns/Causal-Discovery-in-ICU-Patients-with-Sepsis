@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("indirect_ensemble_table.csv")
+df = pd.read_csv("total_ensemble_table.csv")
 df = df[["edge","cause","effect","agreement_score"]]
 df = df.replace("aki_24h_onset_stage_y", "aki_24h_onset_stage")
 print(df.head())
@@ -11,13 +11,13 @@ all_vars = sorted(set(df["cause"].tolist() + df["effect"].tolist()))
 
 
 core_order = [
-    "anchor_age", "gender", "race",
-    "heart_rate_max", "blood_pressure_min", "spO2_min", "FiO2_max",
-    "lactate_max", "bilirubin_max", "platelet_max", "inr_max", "temp_max_F",
-    "antibiotics_given", "vaso_given",
-    "aki_24h_onset_stage_y", "mechvent_24h_onset",
-    "aki_post24h_stage", "mechvent_post24h",
-    "hospital_expire_flag"
+    "Age", "Gender", "Race",
+    "Heart Rate (max)", "Blood Pressure (min)", "SpO2 (min)", "FiO2 (max)",
+    "Lactate (max)", "Bilirubin (max)", "Platelet (max)", "INR (max)", "Temperature (max)",
+    "Antibiotics", "Vasopressors",
+    "AKI Onset (24h)", "Mech. Vent Onset (24h)",
+    "AKI Post-24h", "Mech. Vent Post-24h",
+    "Hospital Mortality"
 ]
 
 indicator_vars = [v for v in all_vars if v not in core_order]
