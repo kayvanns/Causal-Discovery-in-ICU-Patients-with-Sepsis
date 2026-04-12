@@ -1,9 +1,7 @@
 venv/
 __pycache__/
 .ipynb_checkpoints/
-data/raw/
-data/processed/
+data/
 graphs/*.pkl
-*.csv
 .DS_Store
 .claude
