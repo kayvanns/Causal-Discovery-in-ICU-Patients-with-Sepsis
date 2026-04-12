@@ -32,8 +32,8 @@ USECOLS = {
     "icustays":       ["subject_id", "hadm_id", "stay_id", "intime", "outtime"],
     "chartevents":    ["subject_id", "hadm_id", "stay_id", "itemid", "charttime", "valuenum"],
     "d_items":        ["itemid", "label", "category"],
-    # "inputevents":  ["subject_id", "hadm_id", "stay_id", "itemid", "starttime", "amount", "amountuom"],
-    # "outputevents": ["subject_id", "hadm_id", "stay_id", "itemid", "charttime", "value", "valueuom"],
+    "inputevents":  ["subject_id", "hadm_id", "stay_id", "itemid", "starttime", "amount", "amountuom"],
+    "outputevents": ["subject_id", "hadm_id", "stay_id", "itemid", "charttime", "value", "valueuom"],
 }
 
 
@@ -59,8 +59,8 @@ def load_all() -> dict:
         "icustays":        read(MIMIC_ICU, "icustays"),
         "chartevents":     read(MIMIC_ICU, "chartevents"),
         "d_items":         read(MIMIC_ICU, "d_items"),
-        # "inputevents":   read(MIMIC_ICU, "inputevents"),
-        # "outputevents":  read(MIMIC_ICU, "outputevents"),
+        "inputevents":   read(MIMIC_ICU, "inputevents"),
+        "outputevents":  read(MIMIC_ICU, "outputevents"),
     }
     print(f"Done. {len(tables)} tables loaded.\n")
     return tables
@@ -85,9 +85,8 @@ def filter_to_cohort(tables: dict, cohort: pd.DataFrame) -> dict:
         "icustays":     tables["icustays"][tables["icustays"]["stay_id"].isin(stay_ids)],
         "chartevents":  tables["chartevents"][tables["chartevents"]["stay_id"].isin(stay_ids)],
         "d_items":      tables["d_items"],
-        # [FUTURE] fluid balance — filter by stay_id
-        # "inputevents":  tables["inputevents"][tables["inputevents"]["stay_id"].isin(stay_ids)],
-        # "outputevents": tables["outputevents"][tables["outputevents"]["stay_id"].isin(stay_ids)],
+        "inputevents":  tables["inputevents"][tables["inputevents"]["stay_id"].isin(stay_ids)],
+        "outputevents": tables["outputevents"][tables["outputevents"]["stay_id"].isin(stay_ids)]
     }
 
 
@@ -127,27 +126,13 @@ def build_features(base: pd.DataFrame, tables: dict) -> pd.DataFrame:
 
     df = fe.get_bmi(df, omr=tables["omr"])
 
-    # ------------------------------------------------------------------
-    # [FUTURE] Fluid balance  (inputevents + outputevents, windowed)
-    # ------------------------------------------------------------------
-    # df = fe.get_fluid_balance(df,
-    #     inputevents=tables["inputevents"],
-    #     outputevents=tables["outputevents"])
+
+    df = fe.get_fluid_balance(df,inputevents=tables["inputevents"], outputevents=tables["outputevents"])
 
     # ------------------------------------------------------------------
     # [FUTURE] Diuretics  (pharmacy, windowed — already loaded)
     # ------------------------------------------------------------------
     # df = fe.get_diuretics(df, pharmacy=tables["pharmacy"])
-
-    # ------------------------------------------------------------------
-    # [FUTURE] Additional medication classes  (pharmacy)
-    # ------------------------------------------------------------------
-    # df = fe.get_<new_drug_class>(df, pharmacy=tables["pharmacy"])
-
-    # ------------------------------------------------------------------
-    # [FUTURE] Additional lab panels  (labevents)
-    # ------------------------------------------------------------------
-    # df = fe.get_<new_lab_panel>(df, labs=tables["labs"])
 
     return df
 

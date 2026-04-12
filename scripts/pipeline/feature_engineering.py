@@ -150,5 +150,19 @@ def get_max_temperature(row):
         return max(temp_f, temp_c_as_f)
 
 def get_fluid_balance(df, inputevents, outputevents):
-    # Placeholder for future implementation
+    i = inputevents.copy()
+    o = outputevents.copy()
+    i = i.merge(df[["stay_id", "start_window", "end_window"]], on="stay_id", how="inner")
+    o = o.merge(df[["stay_id", "start_window", "end_window"]], on="stay_id", how="inner")
+
+    i = i[(i["starttime"] >= i["start_window"]) & (i["starttime"] <= i["end_window"])]
+    o = o[(o["charttime"] >= o["start_window"]) & (o["charttime"] <= o["end_window"])]
+    i.loc[i["amountuom"] == "L", "amount"] *= 1000
+    o.loc[o["valueuom"] == "L", "value"]  *= 1000
+    total_in = i.groupby("stay_id")["amount"].sum().reset_index(name="total_fluid_input")
+    total_out = o.groupby("stay_id")["value"].sum().reset_index(name="total_fluid_output")
+    balance = total_in.merge(total_out, on="stay_id", how="outer").fillna(0)
+    balance["fluid_balance"] = balance["total_fluid_input"] - balance["total_fluid_output"]
+    balance = balance.drop(columns=["total_fluid_input", "total_fluid_output"])
+    df = df.merge(balance, on="stay_id", how="left")
     return df
