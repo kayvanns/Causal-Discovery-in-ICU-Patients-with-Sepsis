@@ -3,5 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 data/raw/
 data/processed/
+graphs/*.pkl
 *.csv
 .DS_Store
+.claude

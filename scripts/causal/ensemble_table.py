@@ -1,6 +1,10 @@
 import pickle
 import pandas as pd
 import os
+
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
+RESULTS_DIR = os.path.join(_ROOT, "results")
 def build_ensemble_table(graph_dir: str):
     run_edges = []
     for file in os.listdir(graph_dir):
@@ -24,5 +28,7 @@ def build_ensemble_table(graph_dir: str):
     table = df_edges.sort_values("agreement_score", ascending=False)
     return table
     
-table = build_ensemble_table("graphs")
-table.to_csv("ensemble_table_v2.csv", index=False)
+if __name__ == "__main__":
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    table = build_ensemble_table(GRAPHS_DIR)
+    table.to_csv(os.path.join(RESULTS_DIR, "ensemble_table_v2.csv"), index=False)

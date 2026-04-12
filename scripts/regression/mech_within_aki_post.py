@@ -1,11 +1,19 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 import statsmodels.api as sm
 
+_ROOT     = os.path.join(os.path.dirname(__file__), "../..")
+DATA_PATH = os.path.join(_ROOT, "data/processed/analysis.csv")
+
 def load_and_preprocess_data(file_path, outcome:str, treatment:str, covariates:list, continuous:list):
+    
     df = pd.read_csv(file_path)
+    df["blood_pressure_min"] = df["blood_pressure_min"].where(df["blood_pressure_min"] > 0, np.nan)
+    df["lactate_max"] = df["lactate_max"].where(df["lactate_max"] <= 30, np.nan)
+    print(df[["blood_pressure_min", "lactate_max", "sofa_score_x", "anchor_age"]].describe())
     df = df[[outcome, treatment] + covariates]  # Select relevant columns
     print(f"Initial data shape: {df.shape}")
     df = df.dropna(subset=[outcome, treatment])  # Drop rows with missing values in key columns
@@ -27,26 +35,20 @@ def run_regression(X, y):
     return model
 
 def main():
-    file_path = "/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis.csv"
-    outcome    = "hospital_expire_flag"
-    treatment  = "vaso_given"
-    covariates = [
-        "antibiotics_given",
-        "mechvent_24h_onset",
+    file_path = DATA_PATH
+    outcome    = "aki_post24h"
+    treatment  = "mechvent_24h_onset"
+    covariates = ["anchor_age",
         "blood_pressure_min",
-        "platelet_max",
-        "aki_24h_onset_stage_y",
-        "spO2_min",
-        "sofa_score_x"
+        "lactate_max",
+        "sofa_score_x","aki_24h_onset_y"
     ]
-    continuous = [
-        "blood_pressure_min",
-        "platelet_max",
-        "spO2_min","sofa_score_x"
-    ]
+    continuous = ["blood_pressure_min",
+        "lactate_max","sofa_score_x"  ]
     X, y = load_and_preprocess_data(file_path, outcome, treatment, covariates, continuous)
     model = run_regression(X, y)
     print(model.summary())
+
 
 if __name__ == "__main__":
     main()

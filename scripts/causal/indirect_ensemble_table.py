@@ -3,6 +3,10 @@ import pandas as pd
 import os
 from collections import defaultdict
 
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
+RESULTS_DIR = os.path.join(_ROOT, "results")
+
 def get_direct_edges(matrix, cols):
     n = len(cols)
     edges = defaultdict(list)
@@ -40,17 +44,49 @@ def build_ensemble_table(graph_dir):
                 if i == j:
                     continue
                 paths = find_all_paths(edges, i, j)
-                indirect_paths = [p for p in paths if len(p) > 2]
-                if indirect_paths:
+                if paths:
+                    indirect_paths = [p for p in paths if len(p) > 2]
                     run_edges.append({
-                        "run":        run_name,
-                        "cause":      cols[i],
-                        "effect":     cols[j],
-                        "num_paths":  len(indirect_paths),
-                    })
+                            "run":        run_name,
+                            "cause":      cols[i],
+                            "effect":     cols[j],
+                            "direct":  1 if any(len(p) == 2 for p in paths) else 0,
+                            "num_paths":  len(indirect_paths),
+                        })
 
     df = pd.DataFrame(run_edges)
 
+    
+    label_map = {
+    "anchor_age": "Age",
+    "gender": "Gender",
+    "race": "Race",
+    "heart_rate_max": "Heart Rate (max)",
+    "blood_pressure_min": "Blood Pressure (min)",
+    "spO2_min": "SpO2 (min)",
+    "FiO2_max": "FiO2 (max)",
+    "lactate_max": "Lactate (max)",
+    "bilirubin_max": "Bilirubin (max)",
+    "platelet_max": "Platelet (max)",
+    "inr_max": "INR (max)",
+    "temp_max_F": "Temperature (max)",
+    "antibiotics_given": "Antibiotics",
+    "vaso_given": "Vasopressors",
+    "aki_24h_onset_stage_y": "AKI Onset (24h)",
+    "mechvent_24h_onset": "Mech. Vent Onset (24h)",
+    "aki_post24h_stage": "AKI Post-24h",
+    "mechvent_post24h": "Mech. Vent Post-24h",
+    "hospital_expire_flag": "Hospital Mortality",
+    "FiO2_max_missing": "FiO2 Missing",
+    "bilirubin_max_missing": "Bilirubin Missing",
+    "blood_pressure_min_missing": "BP Missing",
+    "inr_max_missing": "INR Missing",
+    "lactate_max_missing": "Lactate Missing",
+    "platelet_max_missing": "Platelet Missing",
+    "temp_max_F_missing": "Temp Missing",
+}
+    df["cause"] = df["cause"].map(label_map).fillna(df["cause"])
+    df["effect"] = df["effect"].map(label_map).fillna(df["effect"])
     df["edge"] = df["cause"] + " --> " + df["effect"]
     df["present"] = 1
 
@@ -72,5 +108,7 @@ def build_ensemble_table(graph_dir):
     return table
 
 
-table = build_ensemble_table("graphs")
-table.to_csv("indirect_ensemble_table.csv", index=False)
+if __name__ == "__main__":
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    table = build_ensemble_table(GRAPHS_DIR)
+    table.to_csv(os.path.join(RESULTS_DIR, "total_ensemble_table.csv"), index=False)

@@ -77,7 +77,7 @@ POS = {
 
 FIG_W, FIG_H = 22, 13.5
 BOX_W, BOX_H = 1.75, 0.65
-CIRCLE_R     = 0.09
+CIRCLE_R     = 0.12
 
 fig, ax = plt.subplots(figsize=(FIG_W, FIG_H))
 ax.set_xlim(0, FIG_W)
@@ -97,11 +97,11 @@ SECTIONS = [
 for label, x0, x1 in SECTIONS:
     if label == 'Clinical Outcomes':
         ax.text((x0 + x1) / 2, FIG_H - 0.28, label,
-                ha='center', va='top', fontsize=9.5, fontweight='bold',
+                ha='center', va='top', fontsize=16, fontweight='bold',
                 color=RED, zorder=1)
     else:
         ax.text((x0 + x1) / 2, FIG_H - 0.28, label,
-                ha='center', va='top', fontsize=9.5, fontweight='bold',
+                ha='center', va='top', fontsize=16, fontweight='bold',
                 color=DARK, zorder=1)
 for x_div in [3.55, 6.85, 10.15, 13.45]:
     ax.plot([x_div, x_div], [0, FIG_H],
@@ -193,13 +193,13 @@ for e in causal_graph.get_graph_edges():
     if bidir:
         ax.add_patch(FancyArrowPatch(
             (px1, py1), (px2, py2),
-            arrowstyle='<|-|>', mutation_scale=13,
+            arrowstyle='<|-|>', mutation_scale=30,
             connectionstyle=conn, **base,
         ))
     else:
         ax.add_patch(FancyArrowPatch(
             (px1, py1), (px2, py2),
-            arrowstyle='-|>', mutation_scale=13,
+            arrowstyle='-|>', mutation_scale=30,
             connectionstyle=conn, **base,
         ))
         if circle:
@@ -217,7 +217,7 @@ for name, (cx, cy) in POS.items():
         facecolor=fc, edgecolor=DARK, linewidth=1.2,
     ))
     ax.text(cx, cy, LABELS[name],
-            ha='center', va='center', fontsize=10, fontweight='bold',
+            ha='center', va='center', fontsize=15.5, fontweight='bold',
             color=tc, zorder=4, linespacing=1.3)
 
 # ── Legend ────────────────────────────────────────────────────────────────────
@@ -234,9 +234,9 @@ legend_handles = [
 
 leg = ax.legend(
     handles=legend_handles,
-    loc='lower left', fontsize=10,
+    loc='lower left', fontsize=14,
     framealpha=0.90, edgecolor=DARK,
-    title='Edge Types & Node Categories', title_fontsize=12,
+    title='Edge Types & Node Categories', title_fontsize=16,
 )
 leg.get_title().set_color(DARK)
 

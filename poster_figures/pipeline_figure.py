@@ -8,20 +8,20 @@ LTGRAY   = "#E1E5E7"
 DARK     = "#121212"
 
 
-FIG_W, FIG_H = 22, 8.5
-BOX_W, BOX_H = 2.5, 1.15
+FIG_W, FIG_H = 32, 8.5
+BOX_W, BOX_H = 3.6, 1.15
 
 ARROW_KW = dict(arrowstyle="-|>", color=DARK, lw=1.6, mutation_scale=16, zorder=3)
 
 # (label lines, cx, cy, fill)
 STAGES = [
-    (["MIMIC-IV"],                      1.7,  4.6, LTGRAY),
-    (["Cohort", "Definition"],          4.8,  4.6, LTGRAY),
-    (["Feature Engineering", "& Merge"],7.9,  4.6, LTGRAY),
-    (["Missing Data", "Handling"],     11.0,  4.6, LTGRAY),
-    (["Causal", "Discovery"],          14.1,  4.6, RED),
-    (["Ensemble", "Aggregation"],      17.2,  4.6, RED),
-    (["Directionality", "Analysis"],     20.3,  4.6, LTGRAY),
+    (["MIMIC-IV"],                      2.4,  4.6, LTGRAY),
+    (["Cohort", "Definition"],          6.8,  4.6, LTGRAY),
+    (["Feature Engineering", "& Merge"],11.2,  4.6, LTGRAY),
+    (["Missing Data", "Handling"],     15.6,  4.6, LTGRAY),
+    (["Causal", "Discovery"],          20.0,  4.6, RED),
+    (["Ensemble", "Aggregation"],      24.4,  4.6, RED),
+    (["Directionality", "Analysis"],     28.8,  4.6, LTGRAY),
 ]
 
 SUB = [
@@ -61,7 +61,7 @@ for (lines, cx, cy, fill) in STAGES:
 
     label = "\n".join(lines)
     ax.text(cx, cy, label, ha="center", va="center",
-            fontsize=12.5, fontweight="bold", color=text_col, zorder=4,
+            fontsize=22, fontweight="bold", color=text_col, zorder=4,
             linespacing=1.35)
     box_centers.append(cx)
 
@@ -69,13 +69,13 @@ for (lines, cx, cy, fill) in STAGES:
 for idx, ((_, cx, cy, _), sub) in enumerate(zip(STAGES, SUB)):
     if idx % 2 == 0:
         # even stages — text below the box
-        ax.text(cx, cy - BOX_H / 2 - 0.25, sub,
-                ha="center", va="top", fontsize=12.5, color=DARK,
+        ax.text(cx, cy - BOX_H / 2 - 0.4, sub,
+                ha="center", va="top", fontsize=24, color=DARK,
                 linespacing=1.38, zorder=4)
     else:
         # odd stages — text above the box
-        ax.text(cx, cy + BOX_H / 2 + 0.25, sub,
-                ha="center", va="bottom", fontsize=12.5, color=DARK,
+        ax.text(cx, cy + BOX_H / 2 + 0.4, sub,
+                ha="center", va="bottom", fontsize=24, color=DARK,
                 linespacing=1.38, zorder=4)
 
 # Arrows 

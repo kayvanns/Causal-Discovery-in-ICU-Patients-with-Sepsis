@@ -3,6 +3,11 @@ import sys
 import traceback
 import numpy as np
 import pandas as pd
+
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
+RESULTS_DIR = os.path.join(_ROOT, "results")
+DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis.csv")
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.preprocessing import StandardScaler
 import traceback
@@ -169,8 +174,8 @@ def run_and_save(algo, data_sample, all_cols, run_name, alpha=ALPHA):
             bk = build_background_knowledge(g0.get_nodes(), all_cols)
             graph, _ = fci(data_sample, independence_test_method=kci, alpha=alpha, background_knowledge=bk)
 
-        out_path   = f"graphs/{run_name}.png"
-        graph_path = f"graphs/{run_name}.pkl"
+        out_path   = os.path.join(GRAPHS_DIR, f"{run_name}.png")
+        graph_path = os.path.join(GRAPHS_DIR, f"{run_name}.pkl")
 
         pyd = GraphUtils.to_pydot(graph, labels=all_cols)
         pyd.write_png(out_path)
@@ -188,10 +193,11 @@ def run_and_save(algo, data_sample, all_cols, run_name, alpha=ALPHA):
 
 
 def main():
-    os.makedirs("graphs", exist_ok=True)
+    os.makedirs(GRAPHS_DIR, exist_ok=True)
+    os.makedirs(RESULTS_DIR, exist_ok=True)
 
     print("Loading data ...")
-    df_raw, col_names = load_data("/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis.csv")
+    df_raw, col_names = load_data(DATA_PATH)
     print(f"Using {len(col_names)} columns, {len(df_raw)} rows.\n")
     raw_arr = df_raw.to_numpy().astype(float)
 

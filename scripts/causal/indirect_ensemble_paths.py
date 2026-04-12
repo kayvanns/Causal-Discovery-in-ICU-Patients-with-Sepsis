@@ -3,6 +3,10 @@ import pandas as pd
 import os
 from collections import defaultdict
 
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
+RESULTS_DIR = os.path.join(_ROOT, "results")
+
 def get_direct_edges(matrix, cols):
     n = len(cols)
     edges = defaultdict(list)
@@ -71,5 +75,7 @@ def build_ensemble_table(graph_dir):
     return table
 
 
-table = build_ensemble_table("graphs")
-table.to_csv("indirect_ensemble_paths.csv", index=False)
+if __name__ == "__main__":
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    table = build_ensemble_table(GRAPHS_DIR)
+    table.to_csv(os.path.join(RESULTS_DIR, "indirect_ensemble_paths.csv"), index=False)

@@ -3,19 +3,6 @@ from datetime import timedelta
 import datetime as dt
 import numpy as np
 
-columns = ['hadm_id','subject_id','stay_id',
-    'anchor_age',
-    'gender',
-    'race',
-    'admission_type',
-    'admission_location',
-    'admittime',
-    'dischtime',
-    'hospital_expire_flag',
-    'intime',
-    'outtime',
-    'ICU_length',
-    'Hospital_length']
 
 vitals = {"heart_rate_max":{'itemid':220045, 'agg':'max'}, "blood_pressure_min":{'itemid':220181,"agg":'min'},"spO2_min":{'itemid':220277,'agg':'min'},"FiO2_max":{'itemid':223835, 'agg':'max'},"temperature_max_C":{'itemid':223762, 'agg':'max'},"temperature_max_F":{'itemid':223761,'agg':'max'},"gsc_motor_min":{'itemid':223901,'agg':'min'},"gsc_verbal_min":{'itemid':223900,'agg':'min'},"gsc_eye_min":{'itemid':220739,'agg':'min'}}
 
@@ -55,18 +42,16 @@ def is_antibiotic(medication):
 
 vasoactive_agents = ['Norepinephrine', 'Epinephrine', 'Vasopressin', 'Phenylephrine','Dopamine','Dobutamine','Milrinone']
 
-icd_codes_septic_shock = ["R6521","78552"]
-icd_codes_sepsis = ["R6520","99592","99591","A41"]
-icd_codes_kidney = ["N17","584"]
-
-procedure_keywords = ["ventilation", "endotracheal", "intubation", "mechanical ventilation"]
-
 
     
-def get_vitals(df, before, after,chartevents):
+def set_time_window(df, before, after):
     df = df.copy()
-    df["end_window"] = (df["sepsis_onset_time"] + timedelta(hours=after))
-    df["start_window"] = (df["sepsis_onset_time"] - timedelta(hours=before))
+    df["start_window"] = df["sepsis_onset_time"] - timedelta(hours=before)
+    df["end_window"]   = df["sepsis_onset_time"] + timedelta(hours=after)
+    return df
+
+def get_vitals(df, chartevents):
+    df = df.copy()
     c = chartevents.copy()
     c["charttime"] =pd.to_datetime(c["charttime"])
     merged  = c.merge(df[["stay_id","intime","end_window","start_window"]],on="stay_id", how="right")
@@ -132,16 +117,8 @@ def get_time_to_first_antibiotic(df,pharmacy):
     df["time_to_first_antibiotic_hrs"] = (df["first_antibiotic_time"] - df["admittime"]).dt.total_seconds() / 3600
     return df
 
-def get_procedures(df):
-    procedures_diagnoses = procedures[procedures["hadm_id"].isin(df["hadm_id"])]
-    procedures_diagnoses = procedures_diagnoses.merge(d_procedures,on=["icd_code","icd_version"], how="left")
-    procedure_mask = procedures_diagnoses['long_title'].str.contains('|'.join(procedure_keywords), case=False, na=False)
-    procedure_procs = procedures_diagnoses[procedure_mask]
-    procedure_procs_hadm = procedure_procs["hadm_id"]
-    df['vent_or_intubation'] = df['hadm_id'].isin(procedure_procs_hadm).astype(int)
-    return df
     
-def get_bmi(df):
+def get_bmi(df, omr):
     o = omr.copy()
     o["chartdate"] = pd.to_datetime(o["chartdate"])
     o = o[o["result_name"].isin(["Height (Inches)", "Weight (Lbs)"])]
@@ -155,16 +132,6 @@ def get_bmi(df):
     pivoted = pivoted[["hadm_id", "BMI"]]
     df = df.merge(pivoted, on="hadm_id", how="left")
     return df
-
-def get_diagnosis_flags(df,diagnoses):
-    dx = diagnoses[["hadm_id","icd_code"]].copy()
-    dx = dx[dx["hadm_id"].isin(df["hadm_id"])]
-    dx["icd_code"] = dx["icd_code"].astype(str)
-    dx["septic_shock"] = dx["icd_code"].str.startswith(tuple(icd_codes_septic_shock)).astype(int)
-    dx["sepsis"] = dx["icd_code"].str.startswith(tuple(icd_codes_sepsis)).astype(int)
-    dx["arf"] = dx["icd_code"].str.startswith(tuple(icd_codes_kidney)).astype(int)
-    dx = dx.groupby("hadm_id")[["septic_shock","sepsis","arf"]].max().reset_index()
-    return df.merge(dx,on="hadm_id",how="left")
 
 def get_max_temperature(row):
     temp_f = row['temperature_max_F']
@@ -181,4 +148,7 @@ def get_max_temperature(row):
     else:
         temp_c_as_f = temp_c * 9/5 + 32
         return max(temp_f, temp_c_as_f)
-    
+
+def get_fluid_balance(df, inputevents, outputevents):
+    # Placeholder for future implementation
+    return df

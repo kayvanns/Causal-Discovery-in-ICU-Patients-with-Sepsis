@@ -1,6 +1,11 @@
 import os
 import numpy as np
 import pandas as pd
+
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
+RESULTS_DIR = os.path.join(_ROOT, "results")
+DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis.csv")
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.preprocessing import StandardScaler
 from causallearn.search.ConstraintBased.PC import pc
@@ -166,10 +171,11 @@ def build_ensemble_table(graph_dir: str):
 # Main execution loop
 
 def main():
-    os.makedirs("graphs", exist_ok=True)
+    os.makedirs(GRAPHS_DIR, exist_ok=True)
+    os.makedirs(RESULTS_DIR, exist_ok=True)
 
     print("Loading data ...")
-    df, col_names = load_data("/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis.csv")
+    df, col_names = load_data(DATA_PATH)
     print(f"Using {len(col_names)} columns, {len(df)} rows.\n")
 
     raw_arr = df.to_numpy().astype(float)
@@ -229,10 +235,10 @@ def main():
                 graph, _ = fci(data, independence_test_method=test_fn,
                                alpha=ALPHA, background_knowledge=bk)
 
-            out_path = f"graphs/{run_name}_v2.png"
+            out_path = os.path.join(GRAPHS_DIR, f"{run_name}_v2.png")
             pyd = GraphUtils.to_pydot(graph, labels=run_cols)
             pyd.write_png(out_path)
-            graph_path = f"graphs/{run_name}_v2.pkl"
+            graph_path = os.path.join(GRAPHS_DIR, f"{run_name}_v2.pkl")
             with open(graph_path, "wb") as f: 
                 pickle.dump((graph, run_cols), f) 
             print(f" Graph object saved -> {graph_path}")
@@ -241,9 +247,9 @@ def main():
         except Exception as e:
             print(f"  FAILED: {traceback.format_exc()}")
     print("\n Building ensemble table ...")
-    table = build_ensemble_table("graphs")
-    table.to_csv("ensemble_table_v2.csv", index=False)
-    print("\nDone. All graphs saved to ./graphs/")
+    table = build_ensemble_table(GRAPHS_DIR)
+    table.to_csv(os.path.join(RESULTS_DIR, "ensemble_table_v2.csv"), index=False)
+    print(f"\nDone. All graphs saved to {GRAPHS_DIR}")
 
 
 

@@ -44,7 +44,7 @@ cmap = LinearSegmentedColormap.from_list("uw", colors, N=7)
 bounds = [0, 2, 4, 6, 8, 10, 12, 14]
 norm = BoundaryNorm(bounds, ncolors=len(colors))
 
-fig, ax = plt.subplots(figsize=(20, 16))
+fig, ax = plt.subplots(figsize=(22, 16))
 sns.heatmap(
     matrix,
     ax=ax,
@@ -52,11 +52,13 @@ sns.heatmap(
     norm=norm,
     linewidths=0.5,
     linecolor="#E1E5E7",
-    cbar_kws={"label": "Agreement Score", "shrink": 0.5},
+    cbar_kws={"label": "Agreement Score", "shrink": 0.8},
 )
-ax.set_xlabel("From", color= '#121212', fontsize=12, fontweight="bold")
-ax.set_ylabel("To", color= '#121212', fontsize=12, fontweight="bold")
-plt.xticks(rotation=45, ha="right", fontsize=11)
-plt.yticks(fontsize=11)
+ax.collections[0].colorbar.ax.set_ylabel("Agreement Score", fontsize=20)
+ax.collections[0].colorbar.ax.tick_params(labelsize=18)
+ax.set_xlabel("From", color= '#121212', fontsize=25, fontweight="bold")
+ax.set_ylabel("To", color= '#121212', fontsize=25, fontweight="bold")
+plt.xticks(rotation=45, ha="right", fontsize=25)
+plt.yticks(fontsize=25)
 plt.tight_layout()
 plt.savefig("poster_figures/heatmap.png", dpi=300)

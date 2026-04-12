@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 import statsmodels.api as sm
+
+_ROOT     = os.path.join(os.path.dirname(__file__), "../..")
+DATA_PATH = os.path.join(_ROOT, "data/processed/analysis.csv")
 
 def load_and_preprocess_data(file_path, outcome:str, treatment:str, covariates:list, continuous:list):
     
@@ -31,7 +35,7 @@ def run_regression(X, y):
     return model
 
 def main():
-    file_path = "/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis.csv"
+    file_path = DATA_PATH
     outcome    = "mechvent_post24h"
     treatment  = "aki_24h_onset_x"
     covariates = ["anchor_age",

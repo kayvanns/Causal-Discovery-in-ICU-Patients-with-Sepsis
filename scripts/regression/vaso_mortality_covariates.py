@@ -1,6 +1,8 @@
+import os
 import pandas as pd
 
-table = pd.read_csv("ensemble_table_v2.csv")
+_ROOT = os.path.join(os.path.dirname(__file__), "../..")
+table = pd.read_csv(os.path.join(_ROOT, "results/ensemble_table_v2.csv"))
 
 # get all edges where vaso_given is the effect 
 causes_vaso = table[
