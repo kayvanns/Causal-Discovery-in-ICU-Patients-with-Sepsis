@@ -3,37 +3,31 @@ import sys
 import traceback
 import numpy as np
 import pandas as pd
-
-_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
-GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
-RESULTS_DIR = os.path.join(_ROOT, "results")
-DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis.csv")
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.preprocessing import StandardScaler
-import traceback
 import pickle
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.search.ConstraintBased.FCI import fci
-from causallearn.utils.cit import kci, fastkci
+from causallearn.utils.cit import kci
 from causallearn.utils.GraphUtils import GraphUtils
 from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
+from collections import defaultdict
 
-# column groups for background knowledge and analysis
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+VERSION     = "v3_kci"
+GRAPHS_DIR  = os.path.join(_ROOT, f"graphs/{VERSION}")
+RESULTS_DIR = os.path.join(_ROOT, f"results/{VERSION}")
+DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis_cleaned.csv")
 
-DEMO_COLS   = ["anchor_age", "gender", "race"]
+DEMO_COLS   = ["anchor_age", "gender", "race", "ckd_baseline"]
 PHYS_COLS   = [
-    "heart_rate_max",
-    "blood_pressure_min",
-    "spO2_min",
-    "FiO2_max",
-    "lactate_max",
-    "bilirubin_max",
-    "platelet_max",
-    "inr_max",
-    "temp_max_F",
+    "heart_rate_max", "blood_pressure_min", "spO2_min", "FiO2_max",
+    "lactate_max", "bilirubin_max", "platelet_max", "inr_max",
+    "temp_max_F", "cvp_max", "hemoglobin_min",
+    "lymphocyte_abs_min", "fluid_balance", "BMI", "wbc_max"
 ]
-TREAT_COLS  = ["antibiotics_given", "vaso_given"]
-OUT24_COLS  = ["aki_24h_onset_stage_y", "mechvent_24h_onset"]
+TREAT_COLS  = ["antibiotics_given", "vaso_given", "diuretics_given"]
+OUT24_COLS  = ["aki_24h_onset_stage", "mechvent_24h_onset"]
 POST24_COLS = ["aki_post24h_stage", "mechvent_post24h"]
 MORT_COLS   = ["hospital_expire_flag"]
 
@@ -49,28 +43,12 @@ TIER_MAP = {
 CATEGORICAL_COLS = ["gender", "race"]
 BINARY_COLS = [
     "hospital_expire_flag", "antibiotics_given", "vaso_given",
-    "aki_24h_onset_stage_y", "mechvent_24h_onset",
-    "aki_post24h_stage", "mechvent_post24h",
+    "mechvent_24h_onset", "mechvent_post24h", "ckd_baseline", "diuretics_given"
 ]
 
-# Columns to generate missingness indicators for, in the order they'll be added
-INDICATOR_COLS = [
-    "heart_rate_max",
-    "blood_pressure_min",
-    "spO2_min",
-    "FiO2_max",
-    "lactate_max",
-    "bilirubin_max",
-    "platelet_max",
-    "inr_max",
-    "temp_max_F",
-]
-
-SAMPLE_SIZE = 800
+SAMPLE_SIZE = 1500
 ALPHA       = 0.1
 SEED        = 42
-
-# Data loadng and preprocessing
 
 def load_data(path: str):
     df = pd.read_csv(path)
@@ -83,59 +61,32 @@ def load_data(path: str):
     available = [c for c in CORE_COLS if c in df.columns]
     missing   = [c for c in CORE_COLS if c not in df.columns]
     if missing:
-        print(f"Columns not found and skipped: {missing}")
-    return df[available].copy(), available
+        print(f"[WARN] Columns not found and skipped: {missing}")
+    df = df[available].copy()
+    df = df.replace([np.inf, -np.inf], np.nan)
+    return df, available
 
 def impute_knn(arr: np.ndarray, n_neighbors: int = 5) -> np.ndarray:
-    """
-    KNN imputation with standard scaling.
-    Scale → impute → inverse scale so that the returned array
-    is back in the original feature units.
-    """
     scaler = StandardScaler()
     complete_rows = arr[~np.isnan(arr).any(axis=1)]
     scaler.fit(complete_rows)
-
-    arr_scaled         = scaler.transform(arr)          
+    arr_scaled         = scaler.transform(arr)
     arr_imputed_scaled = KNNImputer(n_neighbors=n_neighbors).fit_transform(arr_scaled)
-    arr_imputed        = scaler.inverse_transform(arr_imputed_scaled)
-    return arr_imputed
-# missingness indicator construction
+    return scaler.inverse_transform(arr_imputed_scaled)
 
-def make_indicator(df_raw: pd.DataFrame, col: str) -> pd.Series:
-    """
-    Binary column: 1 if original value was missing, 0 if observed.
-    Returns None if the column has no missing values (pointless as indicator)
-    or if variance is too low (would cause KCI to crash).
-    """
+def make_indicator(df_raw: pd.DataFrame, col: str):
     if col not in df_raw.columns:
         return None, f"{col} not in dataframe"
-
     indicator = df_raw[col].isna().astype(float)
     missing_rate = indicator.mean()
-
     if missing_rate == 0.0:
-        return None, f"{col} has no missing values — indicator is constant"
+        return None, f"{col} has no missing values"
     if missing_rate < 0.01 or missing_rate > 0.99:
-        return None, (
-            f"{col} missing rate is {missing_rate:.2%} — indicator is near-constant "
-            f"and will cause KCI variance error"
-        )
-
-    print(f"  [indicator] {col}_missing: {missing_rate:.2%} missing — valid for KCI")
+        return None, f"{col} missing rate {missing_rate:.2%} — near-constant"
+    print(f"  [indicator] {col}_missing: {missing_rate:.2%} missing")
     return indicator.rename(f"{col}_missing"), None
 
-
-# Background knowledge construction
-
 def build_background_knowledge(nodes: list, col_names: list) -> BackgroundKnowledge:
-    """
-      Tier 0  demographics   — nothing can cause these
-      Tier 1  physiology + treatments + 24-h outcomes
-      Tier 3  post-24-h outcomes
-      Tier 4  mortality      — cannot cause anything
-    """
-
     col_to_node = {col: nodes[i] for i, col in enumerate(col_names)}
     bk = BackgroundKnowledge()
     for col, tier in TIER_MAP.items():
@@ -145,22 +96,19 @@ def build_background_knowledge(nodes: list, col_names: list) -> BackgroundKnowle
         indicator_name = f"{col}_missing"
         if indicator_name in col_to_node:
             bk.add_node_to_tier(col_to_node[indicator_name], 1)
-
     for i, c1 in enumerate(DEMO_COLS):
         for c2 in DEMO_COLS[i+1:]:
             if c1 in col_to_node and c2 in col_to_node:
                 bk.add_forbidden_by_node(col_to_node[c1], col_to_node[c2])
                 bk.add_forbidden_by_node(col_to_node[c2], col_to_node[c1])
-
     for col in col_names:
-            indicator_name = f"{col}_missing"
-            if col in col_to_node and indicator_name in col_to_node:
-                bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[col])
-                for demo in DEMO_COLS:
-                    if demo in col_to_node:
-                        bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[demo])
+        indicator_name = f"{col}_missing"
+        if col in col_to_node and indicator_name in col_to_node:
+            bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[col])
+            for demo in DEMO_COLS:
+                if demo in col_to_node:
+                    bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[demo])
     return bk
- 
 
 def run_and_save(algo, data_sample, all_cols, run_name, alpha=ALPHA):
     try:
@@ -176,21 +124,16 @@ def run_and_save(algo, data_sample, all_cols, run_name, alpha=ALPHA):
 
         out_path   = os.path.join(GRAPHS_DIR, f"{run_name}.png")
         graph_path = os.path.join(GRAPHS_DIR, f"{run_name}.pkl")
-
         pyd = GraphUtils.to_pydot(graph, labels=all_cols)
         pyd.write_png(out_path)
-
         with open(graph_path, "wb") as f:
             pickle.dump((graph, all_cols), f)
-
         print(f"  SUCCESS → {out_path}")
-        print(f"  Graph object saved → {graph_path}")
         return "SUCCESS"
 
     except Exception as e:
         print(f"  FAILED: {traceback.format_exc()}")
         return "FAILED"
-
 
 def main():
     os.makedirs(GRAPHS_DIR, exist_ok=True)
@@ -199,52 +142,54 @@ def main():
     print("Loading data ...")
     df_raw, col_names = load_data(DATA_PATH)
     print(f"Using {len(col_names)} columns, {len(df_raw)} rows.\n")
+
     raw_arr = df_raw.to_numpy().astype(float)
 
     print("Imputing ...")
     simple_arr = SimpleImputer(strategy="mean").fit_transform(raw_arr)
     knn_arr    = impute_knn(raw_arr)
     print("Done.\n")
-    
+
     print("Checking missingness indicators ...")
-    valid_indicators   = []   
-
-
-    for col in INDICATOR_COLS:
-        indicator, reason = make_indicator(df_raw, col)
-        if indicator is  None:
-            print(f"  skipping {col}_missing: {reason}")
-        else:
-            valid_indicators.append((col, indicator))
-
-
-    indicator_names = [f"{col}_missing" for col, _ in valid_indicators]
     df_simple = pd.DataFrame(simple_arr, columns=col_names)
     df_knn    = pd.DataFrame(knn_arr,    columns=col_names)
-    for col, series in valid_indicators:
-        df_simple[f"{col}_missing"] = series.values
-        df_knn[f"{col}_missing"]    = series.values
+
+    indicator_names = []
+    for col in PHYS_COLS:
+        indicator, reason = make_indicator(df_raw, col)
+        if indicator is None:
+            print(f"  skipping {col}: {reason}")
+        else:
+            df_simple[f"{col}_missing"] = indicator.values
+            df_knn[f"{col}_missing"]    = indicator.values
+            indicator_names.append(f"{col}_missing")
+
     all_cols = col_names + indicator_names
+
     np.random.seed(SEED)
     sample_idx = np.random.choice(len(df_simple), size=SAMPLE_SIZE, replace=False)
-    data_simple = df_simple[all_cols].to_numpy().astype(float)[sample_idx]
-    data_knn    = df_knn[all_cols].to_numpy().astype(float)[sample_idx]
-    data_simple_no_ind = df_simple[col_names].to_numpy().astype(float)[sample_idx]
-    RUNS = [
-    ("PC",  data_simple,        all_cols,  "PC_kci_simple_indicator"),
-    ("FCI", data_simple,        all_cols,  "FCI_kci_simple_indicator"),
-    ("PC",  data_knn,           all_cols,  "PC_kci_knn_indicator"),
-    ("FCI", data_knn,           all_cols,  "FCI_kci_knn_indicator"),
-    ("PC",  data_simple_no_ind, col_names, "PC_kci_simple"),
-    ("FCI", data_simple_no_ind, col_names, "FCI_kci_simple")
-]
 
-    for algo, data,run_cols, run_name in RUNS:
+    data_simple     = df_simple[col_names].to_numpy().astype(float)[sample_idx]
+    data_knn        = df_knn[col_names].to_numpy().astype(float)[sample_idx]
+    data_simple_ind = df_simple[all_cols].to_numpy().astype(float)[sample_idx]
+    data_knn_ind    = df_knn[all_cols].to_numpy().astype(float)[sample_idx]
+
+    RUNS = [
+        ("PC",  data_simple,     col_names, "PC_kci_simple"),
+        ("FCI", data_simple,     col_names, "FCI_kci_simple"),
+        ("PC",  data_knn,        col_names, "PC_kci_knn"),
+        ("FCI", data_knn,        col_names, "FCI_kci_knn"),
+        ("PC",  data_simple_ind, all_cols,  "PC_kci_simple_indicator"),
+        ("FCI", data_simple_ind, all_cols,  "FCI_kci_simple_indicator"),
+        ("PC",  data_knn_ind,    all_cols,  "PC_kci_knn_indicator"),
+        ("FCI", data_knn_ind,    all_cols,  "FCI_kci_knn_indicator"),
+    ]
+
+    for algo, data, run_cols, run_name in RUNS:
         print(f"\n--- {run_name} ---")
         run_and_save(algo, data, run_cols, run_name)
 
     print("\nDone.")
-
 
 if __name__ == "__main__":
     main()

@@ -129,10 +129,7 @@ def build_features(base: pd.DataFrame, tables: dict) -> pd.DataFrame:
 
     df = fe.get_fluid_balance(df,inputevents=tables["inputevents"], outputevents=tables["outputevents"])
 
-    # ------------------------------------------------------------------
-    # [FUTURE] Diuretics  (pharmacy, windowed — already loaded)
-    # ------------------------------------------------------------------
-    # df = fe.get_diuretics(df, pharmacy=tables["pharmacy"])
+    df = fe.get_diuretics(df, pharmacy=tables["pharmacy"])
 
     return df
 

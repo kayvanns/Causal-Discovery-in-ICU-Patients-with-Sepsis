@@ -1,11 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-
-_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
-GRAPHS_DIR  = os.path.join(_ROOT, "graphs")
-RESULTS_DIR = os.path.join(_ROOT, "results")
-DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis.csv")
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.preprocessing import StandardScaler
 from causallearn.search.ConstraintBased.PC import pc
@@ -15,10 +10,18 @@ from causallearn.utils.GraphUtils import GraphUtils
 from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
 import traceback
 import pickle
+from collections import defaultdict
+
+_ROOT       = os.path.join(os.path.dirname(__file__), "../..")
+VERSION     = "v3"  
+GRAPHS_DIR  = os.path.join(_ROOT, f"graphs/{VERSION}")
+RESULTS_DIR = os.path.join(_ROOT, f"results/{VERSION}")
+DATA_PATH   = os.path.join(_ROOT, "data/processed/analysis_cleaned.csv")
+
 
 # column groups for background knowledge and analysis
 
-DEMO_COLS   = ["anchor_age", "gender", "race"]
+DEMO_COLS   = ["anchor_age", "gender", "race","ckd_baseline"]
 PHYS_COLS   = [
     "heart_rate_max",
     "blood_pressure_min",
@@ -28,10 +31,11 @@ PHYS_COLS   = [
     "bilirubin_max",
     "platelet_max",
     "inr_max",
-    "temp_max_F",
+    "temp_max_F", "cvp_max","hemoglobin_min",
+    "lymphocyte_abs_min","fluid_balance","BMI","wbc_max"
 ]
-TREAT_COLS  = ["antibiotics_given", "vaso_given"]
-OUT24_COLS  = ["aki_24h_onset_stage_y", "mechvent_24h_onset"]
+TREAT_COLS  = ["antibiotics_given", "vaso_given","diuretics_given"]
+OUT24_COLS  = ["aki_24h_onset_stage", "mechvent_24h_onset"]
 POST24_COLS = ["aki_post24h_stage", "mechvent_post24h"]
 MORT_COLS   = ["hospital_expire_flag"]
 
@@ -46,9 +50,7 @@ TIER_MAP = {
 
 CATEGORICAL_COLS = ["gender", "race"]
 BINARY_COLS = [
-    "hospital_expire_flag", "antibiotics_given", "vaso_given",
-    "aki_24h_onset_stage_y", "mechvent_24h_onset",
-    "aki_post24h_stage", "mechvent_post24h",
+    "hospital_expire_flag", "antibiotics_given", "vaso_given", "mechvent_24h_onset","mechvent_post24h", "ckd_baseline", "diuretics_given"
 ]
 
 # Data loadng and preprocessing
@@ -65,7 +67,9 @@ def load_data(path: str):
     missing   = [c for c in CORE_COLS if c not in df.columns]
     if missing:
         print(f"[WARN] Columns not found and skipped: {missing}")
-    return df[available].copy(), available
+    df = df[available].copy()
+    df = df.replace([np.inf, -np.inf], np.nan)  
+    return df, available
 
 
 def impute_simple(arr: np.ndarray) -> np.ndarray:
@@ -143,29 +147,117 @@ RUNS = [
 
 # ensemble table
 
-def build_ensemble_table(graph_dir: str):
+def get_direct_edges(matrix, cols):
+    n = len(cols)
+    edges = defaultdict(list)
+    for i in range(n):
+        for j in range(n):
+            if matrix[i, j] == -1 and matrix[j, i] == 1:
+                edges[i].append(j)
+    return edges
+
+def find_all_paths(edges, start, end):
+    all_paths = []
+    stack = [(start, [start])]
+    while stack:
+        node, path = stack.pop()
+        for neighbor in edges[node]:
+            if neighbor == end:
+                all_paths.append(path + [neighbor])
+            elif neighbor not in path:
+                stack.append((neighbor, path + [neighbor]))
+    return all_paths
+
+def build_ensemble_table(graph_dir):
     run_edges = []
     for file in os.listdir(graph_dir):
         if not file.endswith(".pkl"):
             continue
+        run_name = file.replace(".pkl", "")
         with open(os.path.join(graph_dir, file), "rb") as f:
             graph, cols = pickle.load(f)
-        run_name = file.replace(".pkl", "")
         matrix = graph.graph
         n = len(cols)
+        edges = get_direct_edges(matrix, cols)
         for i in range(n):
             for j in range(n):
-                if matrix[i, j] == -1 and matrix[j, i] == 1:
-                    run_edges.append({"run":run_name, "cause": cols[i], "effect": cols[j]})
-        df_run_edges = pd.DataFrame(run_edges)
-        df_run_edges["edge"] = df_run_edges["cause"] + "-->" + df_run_edges["effect"]
-        df_run_edges["present"]= 1
-    df_edges = df_run_edges.pivot_table(index ="edge", columns="run", values="present", aggfunc="max", fill_value=0).reset_index()
-    run_cols = [c for c in df_edges.columns if c != "edge"]
-    df_edges["agreement_score"] = df_edges[run_cols].sum(axis=1)
-    table = df_edges.sort_values("agreement_score", ascending=False)
-    return table
+                if i == j:
+                    continue
+                paths = find_all_paths(edges, i, j)
+                if paths:
+                    indirect_paths = [p for p in paths if len(p) > 2]
+                    run_edges.append({
+                            "run":        run_name,
+                            "cause":      cols[i],
+                            "effect":     cols[j],
+                            "direct":  1 if any(len(p) == 2 for p in paths) else 0,
+                            "num_paths":  len(indirect_paths),
+                        })
 
+    df = pd.DataFrame(run_edges)
+
+    label_map = {
+    "anchor_age":               "Age",
+    "gender":                   "Gender",
+    "race":                     "Race",
+    "ckd_baseline":             "CKD (Baseline)",
+    "heart_rate_max":           "Heart Rate (max)",
+    "blood_pressure_min":       "Blood Pressure (min)",
+    "spO2_min":                 "SpO2 (min)",
+    "FiO2_max":                 "FiO2 (max)",
+    "lactate_max":              "Lactate (max)",
+    "bilirubin_max":            "Bilirubin (max)",
+    "platelet_max":             "Platelet (max)",
+    "inr_max":                  "INR (max)",
+    "temp_max_F":               "Temperature (max)",
+    "cvp_max":                  "CVP (max)",
+    "hemoglobin_min":           "Hemoglobin (min)",
+    "lymphocyte_abs_min":       "Lymphocytes Abs (min)",
+    "fluid_balance":            "Fluid Balance",
+    "BMI":                      "BMI",
+    "wbc_max":                  "WBC (max)",
+    "antibiotics_given":        "Antibiotics",
+    "vaso_given":               "Vasopressors",
+    "diuretics_given":          "Diuretics",
+    "aki_24h_onset_stage":      "AKI Onset (24h)",
+    "mechvent_24h_onset":       "Mech. Vent Onset (24h)",
+    "aki_post24h_stage":        "AKI Post-24h",
+    "mechvent_post24h":         "Mech. Vent Post-24h",
+    "hospital_expire_flag":     "Hospital Mortality",
+    "FiO2_max_missing":         "FiO2 Missing",
+    "bilirubin_max_missing":    "Bilirubin Missing",
+    "blood_pressure_min_missing": "BP Missing",
+    "inr_max_missing":          "INR Missing",
+    "lactate_max_missing":      "Lactate Missing",
+    "platelet_max_missing":     "Platelet Missing",
+    "temp_max_F_missing":       "Temp Missing",
+    "cvp_max_missing":          "CVP Missing",
+    "hemoglobin_min_missing":   "Hemoglobin Missing",
+    "wbc_max_missing":          "WBC Missing",
+    "fluid_balance_missing":    "Fluid Balance Missing",
+}
+    df["cause"] = df["cause"].map(label_map).fillna(df["cause"])
+    df["effect"] = df["effect"].map(label_map).fillna(df["effect"])
+    df["edge"] = df["cause"] + " --> " + df["effect"]
+    df["present"] = 1
+
+    table = df.pivot_table(
+        index=["edge","cause","effect"],
+        columns="run",
+        values="present",
+        aggfunc="max",
+        fill_value=0
+    ).reset_index()
+
+    avg_paths = df.groupby(["edge","cause","effect"])["num_paths"].mean().round(1).reset_index()
+    avg_paths.columns = ["edge", "cause", "effect", "avg_num_paths"]
+    table = table.merge(avg_paths, on=["edge","cause","effect"])
+    
+    run_cols = [c for c in table.columns if c not in ["edge","cause","effect","avg_num_paths"]]
+    table["agreement_score"] = table[run_cols].sum(axis=1)
+    table = table.sort_values("agreement_score", ascending=False).reset_index(drop=True)
+    return table
+   
 
 
 # Main execution loop
@@ -179,7 +271,7 @@ def main():
     print(f"Using {len(col_names)} columns, {len(df)} rows.\n")
 
     raw_arr = df.to_numpy().astype(float)
-    
+
     print("Pre-computing imputations ...")
     simple_arr = impute_simple(raw_arr)
     knn_arr    = impute_knn(raw_arr)
@@ -202,7 +294,7 @@ def main():
     knn_indicator_cols    = col_names + indicator_names
     np.random.seed(42)
 
-    sample_idx = np.random.choice(len(df_simple), size=5000, replace=False)
+    sample_idx = np.random.choice(len(df_simple), size=10000, replace=False)
 
     data_by_strat = {
         "raw":              (raw_arr, col_names),
@@ -235,10 +327,10 @@ def main():
                 graph, _ = fci(data, independence_test_method=test_fn,
                                alpha=ALPHA, background_knowledge=bk)
 
-            out_path = os.path.join(GRAPHS_DIR, f"{run_name}_v2.png")
+            out_path = os.path.join(GRAPHS_DIR, f"{run_name}.png")
             pyd = GraphUtils.to_pydot(graph, labels=run_cols)
             pyd.write_png(out_path)
-            graph_path = os.path.join(GRAPHS_DIR, f"{run_name}_v2.pkl")
+            graph_path = os.path.join(GRAPHS_DIR, f"{run_name}.pkl")
             with open(graph_path, "wb") as f: 
                 pickle.dump((graph, run_cols), f) 
             print(f" Graph object saved -> {graph_path}")
@@ -248,7 +340,7 @@ def main():
             print(f"  FAILED: {traceback.format_exc()}")
     print("\n Building ensemble table ...")
     table = build_ensemble_table(GRAPHS_DIR)
-    table.to_csv(os.path.join(RESULTS_DIR, "ensemble_table_v2.csv"), index=False)
+    table.to_csv(os.path.join(RESULTS_DIR, "ensemble_table.csv"), index=False)
     print(f"\nDone. All graphs saved to {GRAPHS_DIR}")
 
 

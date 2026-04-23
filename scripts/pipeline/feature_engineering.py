@@ -4,9 +4,9 @@ import datetime as dt
 import numpy as np
 
 
-vitals = {"heart_rate_max":{'itemid':220045, 'agg':'max'}, "blood_pressure_min":{'itemid':220181,"agg":'min'},"spO2_min":{'itemid':220277,'agg':'min'},"FiO2_max":{'itemid':223835, 'agg':'max'},"temperature_max_C":{'itemid':223762, 'agg':'max'},"temperature_max_F":{'itemid':223761,'agg':'max'},"gsc_motor_min":{'itemid':223901,'agg':'min'},"gsc_verbal_min":{'itemid':223900,'agg':'min'},"gsc_eye_min":{'itemid':220739,'agg':'min'}}
+vitals = {"heart_rate_max":{'itemid':220045, 'agg':'max'}, "blood_pressure_min":{'itemid':[220181, 220052],"agg":'min'},"spO2_min":{'itemid':220277,'agg':'min'},"FiO2_max":{'itemid':223835, 'agg':'max'},"temperature_max_C":{'itemid':223762, 'agg':'max'},"temperature_max_F":{'itemid':223761,'agg':'max'},"gsc_motor_min":{'itemid':223901,'agg':'min'},"gsc_verbal_min":{'itemid':223900,'agg':'min'},"gsc_eye_min":{'itemid':220739,'agg':'min'},"cvp":{'itemid':220074,'agg':'max'}}
 
-labevents = {"sodium_max":{'itemid':[50983,52623],'agg':'max'}, "sodium_min":{'itemid':[50983,52623],'agg':'min'},"potassium_max":{'itemid':[52610,50971],'agg':'max'},"bun_max":{'itemid':[51006,52647], 'agg':'max'},"creatinine_max":{'itemid':[50912,52546],'agg':'max'},"glucose_min":{'itemid':[50931,52569],'agg':'min'},"pH_min":{'itemid':[50820],'agg':'min'},"lactate_max":{'itemid':[50813, 52442, 53154],'agg':'max'}, "platelet_max":{'itemid':[51704,51265],'agg':'max'},"wbc_max":{'itemid':[51301, 51755, 51756],'agg':'max'},"hemoglobin_min":{'itemid':[50811, 51222, 51640],'agg':'min'},"ast_max":{'itemid':[53088,50878],'agg':'max'},"alt_max":{'itemid':[50861],'agg':'max'},"bilirubin_max":{'itemid':[50885,53089],'agg':'max'},"inr_max":{'itemid':[51675,51237],'agg':'max'}}
+labevents = {"sodium_max":{'itemid':[50983,52623],'agg':'max'}, "sodium_min":{'itemid':[50983,52623],'agg':'min'},"potassium_max":{'itemid':[52610,50971],'agg':'max'},"bun_max":{'itemid':[51006,52647], 'agg':'max'},"creatinine_max":{'itemid':[50912,52546],'agg':'max'},"glucose_min":{'itemid':[50931,52569],'agg':'min'},"pH_min":{'itemid':[50820],'agg':'min'},"lactate_max":{'itemid':[50813, 53154],'agg':'max'}, "platelet_max":{'itemid':[51704,51265],'agg':'max'},"wbc_max":{'itemid':[51301, 51516],'agg':'max'},"hemoglobin_min":{'itemid':[50811, 51222],'agg':'min'},"ast_max":{'itemid':[53088,50878],'agg':'max'},"alt_max":{'itemid':[50861],'agg':'max'},"bilirubin_max":{'itemid':[50885,53089],'agg':'max'},"inr_max":{'itemid':[51675,51237],'agg':'max'}, "lymphocyte_abs_min": {'itemid': [51133, 52769],'agg': 'min'}}
 
 antibiotics = ['Vancomycin', 'Piperacillin-Tazobactam', 'Ciprofloxacin', 'Ciprofloxacin HCl', 'Meropenem', 'CefePIME', 'CeftriaXONE', 'MetRONIDAZOLE (FLagyl)', 'CefTRIAXone', 'Acyclovir', 'CefazoLIN', 'Sulfameth/Trimethoprim DS', 'Tobramycin', 'Azithromycin', 'Levofloxacin', 'Ampicillin', 'Erythromycin', 'Clindamycin', 'Aztreonam', 'CeFAZolin', 'moxifloxacin', 'Linezolid', 'Micafungin', 'Sulfamethoxazole-Trimethoprim', 'Doxycycline Hyclate', 'CefTAZidime', 'MetroNIDAZOLE', 'Sulfameth/Trimethoprim SS']
 antibiotic_patterns = [
@@ -58,7 +58,8 @@ def get_vitals(df, chartevents):
     mask =  (merged['start_window'] <= merged['charttime']) & (merged['charttime']<=merged["end_window"])
     merged = merged[mask]
     for vital, info in vitals.items():
-        test = merged[merged["itemid"]==info["itemid"]].groupby("stay_id")["valuenum"].agg(info["agg"]).reset_index(name=vital)
+        itemids = info["itemid"] if isinstance(info["itemid"], list) else [info["itemid"]]
+        test = merged[merged["itemid"].isin(itemids)].groupby("stay_id")["valuenum"].agg(info["agg"]).reset_index(name=vital)
         df = df.merge(test, on="stay_id",how="left")
     return df
 
@@ -166,3 +167,18 @@ def get_fluid_balance(df, inputevents, outputevents):
     balance = balance.drop(columns=["total_fluid_input", "total_fluid_output"])
     df = df.merge(balance, on="stay_id", how="left")
     return df
+
+def get_diuretics(df, pharmacy):
+    p = pharmacy.copy()
+    p["starttime"] = pd.to_datetime(p["starttime"], errors="coerce")
+    p = p.merge(df[["hadm_id", "start_window", "end_window"]], on="hadm_id", how="inner")
+    mask = (p["starttime"] >= p["start_window"]) & (p["starttime"] <= p["end_window"])
+    p = p[mask]
+    diuretic_patterns = ['furosemide', 'lasix', 'bumetanide', 'bumex', 'torsemide']
+    p['is_diuretic'] = p['medication'].str.lower().str.contains('|'.join(diuretic_patterns), na=False)
+    diuretic_flag = p[p['is_diuretic']].groupby("hadm_id").size().reset_index(name="diuretics_given")
+    diuretic_flag["diuretics_given"] = 1
+    df = df.merge(diuretic_flag[["hadm_id", "diuretics_given"]], on="hadm_id", how="left")
+    df["diuretics_given"] = df["diuretics_given"].fillna(0).astype(int)
+    return df
+
