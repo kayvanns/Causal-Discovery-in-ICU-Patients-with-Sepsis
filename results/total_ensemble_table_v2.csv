@@ -1,0 +1,795 @@
+edge,cause,effect,FCI_fisherz_simple,FCI_fisherz_simple_indicator,FCI_kci_knn,FCI_kci_simple,FCI_mv_fisherz_raw,PC_fisherz_knn_indicator,PC_fisherz_simple,PC_fisherz_simple_indicator,PC_kci_knn_indicator,PC_kci_simple,PC_mv_fisherz_raw,avg_num_paths,agreement_score
+AKI Onset (24h) --> AKI Post-24h,AKI Onset (24h),AKI Post-24h,1,1,1,1,1,1,1,1,1,1,1,74.1,11
+Gender --> Platelet (max),Gender,Platelet (max),1,1,1,1,1,1,1,1,1,1,1,39.2,11
+Mech. Vent Post-24h --> Hospital Mortality,Mech. Vent Post-24h,Hospital Mortality,1,1,1,1,1,1,1,1,1,1,1,0.4,11
+Antibiotics --> Hospital Mortality,Antibiotics,Hospital Mortality,1,1,1,1,1,1,1,1,1,1,1,684.4,11
+Mech. Vent Onset (24h) --> Mech. Vent Post-24h,Mech. Vent Onset (24h),Mech. Vent Post-24h,1,1,1,1,1,1,1,1,1,1,1,64.7,11
+Mech. Vent Onset (24h) --> Hospital Mortality,Mech. Vent Onset (24h),Hospital Mortality,1,1,1,1,1,1,1,1,1,1,1,1428.7,11
+AKI Onset (24h) --> Hospital Mortality,AKI Onset (24h),Hospital Mortality,1,1,1,1,1,1,1,1,1,1,1,470.8,11
+Antibiotics --> Mech. Vent Post-24h,Antibiotics,Mech. Vent Post-24h,1,1,1,1,1,1,1,1,1,1,1,45.3,11
+Lactate (max) --> Hospital Mortality,Lactate (max),Hospital Mortality,1,1,1,1,1,1,1,1,1,1,1,43.0,11
+Age --> Diuretics,Age,Diuretics,1,1,1,1,1,1,1,1,1,1,1,6.7,11
+INR (max) --> Hospital Mortality,INR (max),Hospital Mortality,1,1,1,0,1,1,1,1,1,1,1,145.0,10
+Age --> Blood Pressure (min),Age,Blood Pressure (min),1,1,1,1,1,1,1,1,1,1,0,395.5,10
+Gender --> Mech. Vent Post-24h,Gender,Mech. Vent Post-24h,1,1,1,0,1,1,1,1,1,1,1,79.3,10
+Gender --> Hospital Mortality,Gender,Hospital Mortality,1,1,1,0,1,1,1,1,1,1,1,1802.4,10
+Gender --> Hemoglobin (min),Gender,Hemoglobin (min),1,1,1,0,1,1,1,1,1,1,1,57.7,10
+Gender --> Blood Pressure (min),Gender,Blood Pressure (min),1,1,1,0,1,1,1,1,1,1,1,512.3,10
+Fluid Balance --> Hospital Mortality,Fluid Balance,Hospital Mortality,1,1,1,1,1,1,1,1,1,1,0,213.2,10
+CKD (Baseline) --> Mech. Vent Post-24h,CKD (Baseline),Mech. Vent Post-24h,1,1,1,0,1,1,1,1,1,1,1,142.5,10
+Age --> Hospital Mortality,Age,Hospital Mortality,1,1,0,1,1,1,1,1,1,1,1,1609.7,10
+Age --> Heart Rate (max),Age,Heart Rate (max),1,1,0,1,1,1,1,1,1,1,1,347.3,10
+CKD (Baseline) --> Hospital Mortality,CKD (Baseline),Hospital Mortality,1,1,1,0,1,1,1,1,1,1,1,2892.9,10
+Bilirubin (max) --> Hospital Mortality,Bilirubin (max),Hospital Mortality,1,1,0,1,1,1,1,1,1,1,0,136.9,9
+Gender --> Fluid Balance,Gender,Fluid Balance,1,1,0,0,1,1,1,1,1,1,1,15.2,9
+CKD (Baseline) --> Hemoglobin (min),CKD (Baseline),Hemoglobin (min),1,1,1,0,1,1,1,1,1,1,0,94.1,9
+CKD (Baseline) --> Heart Rate (max),CKD (Baseline),Heart Rate (max),1,1,1,0,0,1,1,1,1,1,1,671.7,9
+SpO2 (min) --> Hospital Mortality,SpO2 (min),Hospital Mortality,1,1,1,0,1,1,1,1,1,0,1,27.7,9
+AKI Onset (24h) --> Mech. Vent Post-24h,AKI Onset (24h),Mech. Vent Post-24h,1,1,1,0,1,1,1,1,1,0,1,22.3,9
+Gender --> AKI Post-24h,Gender,AKI Post-24h,1,1,0,0,0,1,1,1,1,1,1,370.4,8
+Mech. Vent Onset (24h) --> AKI Post-24h,Mech. Vent Onset (24h),AKI Post-24h,1,0,1,0,0,1,1,1,1,1,1,376.6,8
+Race --> Hospital Mortality,Race,Hospital Mortality,1,1,0,0,1,1,1,1,1,0,1,1402.0,8
+Fluid Balance --> AKI Post-24h,Fluid Balance,AKI Post-24h,1,0,1,1,0,1,1,1,1,1,0,47.1,8
+Vasopressors --> Hospital Mortality,Vasopressors,Hospital Mortality,1,1,0,0,1,1,1,1,1,0,1,291.0,8
+CKD (Baseline) --> AKI Post-24h,CKD (Baseline),AKI Post-24h,1,1,0,0,1,1,1,1,0,1,1,638.6,8
+Fluid Balance --> Mech. Vent Post-24h,Fluid Balance,Mech. Vent Post-24h,1,1,1,0,1,1,1,1,1,0,0,9.8,8
+AKI Post-24h --> Hospital Mortality,AKI Post-24h,Hospital Mortality,0,0,1,1,1,0,1,1,1,1,1,0.2,8
+Bilirubin (max) --> AKI Post-24h,Bilirubin (max),AKI Post-24h,1,1,0,0,1,1,1,1,1,1,0,28.2,8
+Age --> AKI Post-24h,Age,AKI Post-24h,1,1,0,0,1,1,1,1,1,0,1,323.8,8
+Age --> Bilirubin (max),Age,Bilirubin (max),1,1,0,0,1,1,1,1,1,0,1,77.0,8
+Heart Rate (max) --> Hospital Mortality,Heart Rate (max),Hospital Mortality,1,1,1,0,1,1,1,1,0,0,0,65.1,7
+CKD (Baseline) --> AKI Onset (24h),CKD (Baseline),AKI Onset (24h),1,1,0,0,1,1,1,1,0,0,1,26.7,7
+INR (max) --> Lactate (max),INR (max),Lactate (max),0,0,1,0,0,1,1,1,1,1,1,18.0,7
+Gender --> FiO2 (max),Gender,FiO2 (max),0,0,0,0,1,1,1,1,1,1,1,290.7,7
+Gender --> Lactate (max),Gender,Lactate (max),0,0,0,0,1,1,1,1,1,1,1,218.3,7
+Blood Pressure (min) --> Hospital Mortality,Blood Pressure (min),Hospital Mortality,1,1,0,0,1,1,1,1,0,0,1,18.6,7
+Diuretics --> SpO2 (min),Diuretics,SpO2 (min),1,0,0,0,0,1,1,1,1,1,1,59.4,7
+WBC (max) --> Platelet (max),WBC (max),Platelet (max),1,1,0,0,0,1,1,1,1,1,0,16.9,7
+Antibiotics --> AKI Post-24h,Antibiotics,AKI Post-24h,1,0,0,0,0,1,1,1,1,1,1,180.6,7
+Age --> SpO2 (min),Age,SpO2 (min),1,0,0,0,0,1,1,1,1,1,1,354.4,7
+Vasopressors --> Heart Rate (max),Vasopressors,Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,66.7,6
+Mech. Vent Onset (24h) --> Heart Rate (max),Mech. Vent Onset (24h),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,596.2,6
+Antibiotics --> Hemoglobin (min),Antibiotics,Hemoglobin (min),0,0,1,0,0,1,1,1,1,1,0,29.0,6
+Lactate (max) --> AKI Post-24h,Lactate (max),AKI Post-24h,0,0,1,0,0,0,1,1,1,1,1,22.0,6
+Mech. Vent Onset (24h) --> Fluid Balance,Mech. Vent Onset (24h),Fluid Balance,0,0,1,0,0,1,1,1,1,0,1,15.2,6
+Gender --> Heart Rate (max),Gender,Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,558.8,6
+WBC (max) --> AKI Post-24h,WBC (max),AKI Post-24h,1,1,0,0,0,1,1,1,0,0,1,48.2,6
+Bilirubin (max) --> Lactate (max),Bilirubin (max),Lactate (max),0,0,0,0,1,1,1,1,1,1,0,14.3,6
+Lymphocytes Abs (min) --> AKI Post-24h,Lymphocytes Abs (min),AKI Post-24h,1,1,0,1,0,1,1,0,0,1,0,29.2,6
+Lactate (max) --> WBC (max),Lactate (max),WBC (max),0,0,1,0,0,0,1,1,1,1,1,1.8,6
+Vasopressors --> WBC (max),Vasopressors,WBC (max),0,0,0,0,0,1,1,1,1,1,1,8.3,6
+Lactate (max) --> Heart Rate (max),Lactate (max),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,3.5,6
+Gender --> WBC (max),Gender,WBC (max),0,0,0,0,0,1,1,1,1,1,1,57.5,6
+INR (max) --> WBC (max),INR (max),WBC (max),0,0,1,0,0,0,1,1,1,1,1,4.3,6
+INR (max) --> AKI Post-24h,INR (max),AKI Post-24h,0,0,1,0,0,0,1,1,1,1,1,40.8,6
+Fluid Balance --> Heart Rate (max),Fluid Balance,Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,25.2,6
+INR (max) --> Heart Rate (max),INR (max),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,28.0,6
+Race --> Mech. Vent Post-24h,Race,Mech. Vent Post-24h,1,1,0,0,0,1,1,1,0,0,1,82.0,6
+Diuretics --> Heart Rate (max),Diuretics,Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,123.8,6
+CKD (Baseline) --> Bilirubin (max),CKD (Baseline),Bilirubin (max),1,1,0,0,0,1,1,1,0,0,1,207.8,6
+Vasopressors --> Blood Pressure (min),Vasopressors,Blood Pressure (min),0,0,0,0,1,1,1,1,1,1,0,108.3,6
+Age --> Lactate (max),Age,Lactate (max),0,0,0,0,1,1,1,1,1,0,1,234.7,6
+Age --> Lymphocytes Abs (min),Age,Lymphocytes Abs (min),0,0,1,0,1,1,1,1,0,0,1,2.8,6
+Race --> Fluid Balance,Race,Fluid Balance,1,1,0,0,0,1,1,1,0,0,1,7.7,6
+SpO2 (min) --> Heart Rate (max),SpO2 (min),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,1,3.3,6
+Race --> FiO2 (max),Race,FiO2 (max),1,0,0,0,1,1,1,1,0,0,1,202.7,6
+Diuretics --> Hospital Mortality,Diuretics,Hospital Mortality,1,0,0,0,0,1,1,1,1,0,1,525.8,6
+Temperature (max) --> Hospital Mortality,Temperature (max),Hospital Mortality,0,0,1,1,0,1,1,0,1,1,0,77.7,6
+Mech. Vent Onset (24h) --> WBC (max),Mech. Vent Onset (24h),WBC (max),0,0,0,0,0,1,1,1,1,1,1,72.3,6
+Mech. Vent Post-24h --> AKI Post-24h,Mech. Vent Post-24h,AKI Post-24h,1,0,0,0,0,1,1,1,0,1,1,0.0,6
+Gender --> Vasopressors,Gender,Vasopressors,0,0,0,0,0,1,1,1,0,1,1,78.2,5
+Bilirubin (max) --> FiO2 (max),Bilirubin (max),FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,31.8,5
+Gender --> SpO2 (min),Gender,SpO2 (min),0,0,0,0,0,1,1,1,0,1,1,565.0,5
+CKD (Baseline) --> SpO2 (min),CKD (Baseline),SpO2 (min),1,0,0,0,0,1,1,1,0,0,1,772.6,5
+INR (max) --> Fluid Balance,INR (max),Fluid Balance,0,0,1,0,0,0,1,0,1,1,1,3.4,5
+CKD (Baseline) --> Platelet (max),CKD (Baseline),Platelet (max),0,0,0,0,0,1,1,1,1,1,0,197.4,5
+CKD (Baseline) --> Mech. Vent Onset (24h),CKD (Baseline),Mech. Vent Onset (24h),1,1,0,0,0,1,1,1,0,0,0,0.0,5
+INR (max) --> FiO2 (max),INR (max),FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,35.4,5
+Bilirubin (max) --> Blood Pressure (min),Bilirubin (max),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,87.6,5
+CKD (Baseline) --> Diuretics,CKD (Baseline),Diuretics,0,0,0,0,1,1,1,1,0,0,1,28.2,5
+CKD (Baseline) --> Blood Pressure (min),CKD (Baseline),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,1367.2,5
+CKD (Baseline) --> FiO2 (max),CKD (Baseline),FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,653.0,5
+Hemoglobin (min) --> Blood Pressure (min),Hemoglobin (min),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,64.2,5
+INR (max) --> Blood Pressure (min),INR (max),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,92.8,5
+Vasopressors --> Platelet (max),Vasopressors,Platelet (max),0,0,0,0,0,1,1,1,1,1,0,11.2,5
+Fluid Balance --> Blood Pressure (min),Fluid Balance,Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,156.0,5
+Bilirubin (max) --> Heart Rate (max),Bilirubin (max),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,0,33.0,5
+Diuretics --> Blood Pressure (min),Diuretics,Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,162.4,5
+FiO2 (max) --> Hospital Mortality,FiO2 (max),Hospital Mortality,0,0,0,0,0,1,1,1,1,0,1,49.4,5
+WBC (max) --> Hospital Mortality,WBC (max),Hospital Mortality,0,0,0,0,1,1,1,1,0,0,1,417.2,5
+Fluid Balance --> Lactate (max),Fluid Balance,Lactate (max),0,0,0,0,1,1,1,1,1,0,0,27.4,5
+Diuretics --> Mech. Vent Post-24h,Diuretics,Mech. Vent Post-24h,0,0,0,0,0,1,1,1,1,0,1,29.4,5
+AKI Onset (24h) --> Blood Pressure (min),AKI Onset (24h),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,275.6,5
+Diuretics --> FiO2 (max),Diuretics,FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,74.8,5
+Diuretics --> AKI Post-24h,Diuretics,AKI Post-24h,1,0,0,0,0,1,1,1,0,0,1,92.4,5
+Bilirubin (max) --> Hemoglobin (min),Bilirubin (max),Hemoglobin (min),0,0,0,0,0,1,1,1,1,1,0,13.4,5
+CVP (max) --> Hospital Mortality,CVP (max),Hospital Mortality,0,0,1,0,0,1,1,1,1,0,0,1213.2,5
+WBC (max) --> Heart Rate (max),WBC (max),Heart Rate (max),0,0,0,0,0,1,1,1,1,1,0,70.0,5
+Gender --> INR (max),Gender,INR (max),0,0,0,0,0,1,1,1,1,1,0,112.2,5
+CVP (max) --> FiO2 (max),CVP (max),FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,143.0,5
+Bilirubin (max) --> INR (max),Bilirubin (max),INR (max),0,0,0,0,0,1,1,1,1,1,0,2.4,5
+Temperature (max) --> Mech. Vent Post-24h,Temperature (max),Mech. Vent Post-24h,0,0,1,1,0,0,1,0,1,1,0,1.2,5
+Fluid Balance --> FiO2 (max),Fluid Balance,FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,48.8,5
+INR (max) --> Hemoglobin (min),INR (max),Hemoglobin (min),0,0,1,0,0,0,1,1,1,1,0,9.6,5
+Vasopressors --> Mech. Vent Post-24h,Vasopressors,Mech. Vent Post-24h,0,0,0,0,0,1,1,1,1,0,1,24.8,5
+Age --> Mech. Vent Post-24h,Age,Mech. Vent Post-24h,0,0,0,0,0,1,1,1,1,0,1,150.0,5
+Mech. Vent Onset (24h) --> Blood Pressure (min),Mech. Vent Onset (24h),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,629.4,5
+Mech. Vent Onset (24h) --> FiO2 (max),Mech. Vent Onset (24h),FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,344.2,5
+Antibiotics --> WBC (max),Antibiotics,WBC (max),0,0,0,0,0,1,1,1,1,1,0,22.6,5
+Antibiotics --> Platelet (max),Antibiotics,Platelet (max),0,0,0,0,0,1,1,1,1,1,0,72.6,5
+AKI Onset (24h) --> Hemoglobin (min),AKI Onset (24h),Hemoglobin (min),0,0,0,0,0,1,1,1,1,1,0,35.0,5
+Age --> WBC (max),Age,WBC (max),0,0,0,0,0,1,1,1,1,0,1,59.2,5
+Race --> AKI Post-24h,Race,AKI Post-24h,1,0,0,0,0,1,1,1,0,0,1,393.2,5
+Mech. Vent Onset (24h) --> Lactate (max),Mech. Vent Onset (24h),Lactate (max),0,0,0,0,0,1,1,1,1,0,1,287.6,5
+Antibiotics --> Lactate (max),Antibiotics,Lactate (max),0,0,0,0,0,1,1,1,1,1,0,134.0,5
+Antibiotics --> INR (max),Antibiotics,INR (max),0,0,0,0,0,1,1,1,1,1,0,41.8,5
+INR (max) --> Mech. Vent Post-24h,INR (max),Mech. Vent Post-24h,0,0,1,0,0,0,1,1,1,0,1,26.8,5
+Antibiotics --> Heart Rate (max),Antibiotics,Heart Rate (max),0,0,0,0,0,1,1,1,1,1,0,240.6,5
+Mech. Vent Onset (24h) --> Platelet (max),Mech. Vent Onset (24h),Platelet (max),0,0,0,0,0,1,1,1,1,1,0,98.4,5
+Mech. Vent Onset (24h) --> SpO2 (min),Mech. Vent Onset (24h),SpO2 (min),0,0,0,0,0,1,1,1,1,1,0,406.4,5
+Antibiotics --> FiO2 (max),Antibiotics,FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,148.6,5
+Vasopressors --> FiO2 (max),Vasopressors,FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,43.8,5
+Antibiotics --> Blood Pressure (min),Antibiotics,Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,449.6,5
+Race --> Blood Pressure (min),Race,Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,530.4,5
+Lymphocytes Abs (min) --> Hospital Mortality,Lymphocytes Abs (min),Hospital Mortality,0,0,0,1,0,1,1,0,1,1,0,184.4,5
+Mech. Vent Onset (24h) --> Vasopressors,Mech. Vent Onset (24h),Vasopressors,0,0,0,0,0,1,1,1,0,1,1,83.6,5
+Race --> Lactate (max),Race,Lactate (max),0,0,0,0,1,1,1,1,0,0,1,204.2,5
+Age --> Fluid Balance,Age,Fluid Balance,0,0,0,0,0,1,1,1,1,0,1,17.2,5
+Race --> SpO2 (min),Race,SpO2 (min),1,1,0,0,0,1,1,1,0,0,0,301.8,5
+Age --> FiO2 (max),Age,FiO2 (max),0,0,0,0,0,1,1,1,1,1,0,359.2,5
+Lactate (max) --> Blood Pressure (min),Lactate (max),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,32.0,5
+AKI Onset (24h) --> Platelet (max),AKI Onset (24h),Platelet (max),0,0,0,0,0,1,1,1,1,1,0,35.2,5
+SpO2 (min) --> Blood Pressure (min),SpO2 (min),Blood Pressure (min),0,0,0,0,0,1,1,1,1,1,0,15.2,5
+Vasopressors --> Lactate (max),Vasopressors,Lactate (max),1,0,0,0,0,1,1,1,0,0,1,37.4,5
+Temperature (max) --> Heart Rate (max),Temperature (max),Heart Rate (max),0,0,0,0,0,1,1,0,1,1,1,0.2,5
+Lactate (max) --> Mech. Vent Post-24h,Lactate (max),Mech. Vent Post-24h,0,0,1,0,0,0,1,1,1,0,1,4.0,5
+Race --> WBC (max),Race,WBC (max),0,0,0,0,1,1,1,1,0,0,1,46.6,5
+Vasopressors --> Bilirubin (max),Vasopressors,Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,22.0,4
+Platelet (max) --> Bilirubin (max),Platelet (max),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,4.8,4
+SpO2 (min) --> AKI Post-24h,SpO2 (min),AKI Post-24h,0,0,0,0,1,0,1,1,0,0,1,12.2,4
+SpO2 (min) --> Mech. Vent Post-24h,SpO2 (min),Mech. Vent Post-24h,0,0,0,0,1,0,1,1,0,0,1,2.0,4
+Temperature (max) --> FiO2 (max),Temperature (max),FiO2 (max),0,0,0,0,0,1,1,0,1,1,0,16.8,4
+Diuretics --> Platelet (max),Diuretics,Platelet (max),0,0,0,0,0,1,1,1,1,0,0,19.5,4
+Diuretics --> Lactate (max),Diuretics,Lactate (max),0,0,0,0,0,1,1,1,0,0,1,81.0,4
+CVP (max) --> Heart Rate (max),CVP (max),Heart Rate (max),0,0,0,0,0,1,1,1,1,0,0,148.5,4
+Diuretics --> Hemoglobin (min),Diuretics,Hemoglobin (min),0,0,0,0,0,1,1,1,1,0,0,17.2,4
+CKD (Baseline) --> Vasopressors,CKD (Baseline),Vasopressors,0,0,0,0,0,1,1,1,0,0,1,203.2,4
+CVP (max) --> Hemoglobin (min),CVP (max),Hemoglobin (min),0,0,0,0,0,1,1,1,1,0,0,62.5,4
+Race --> BMI Missing,Race,BMI Missing,0,1,0,0,0,1,0,1,1,0,0,0.0,4
+Diuretics --> Bilirubin (max),Diuretics,Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,23.2,4
+CVP (max) --> Blood Pressure (min),CVP (max),Blood Pressure (min),0,0,0,0,0,1,1,1,1,0,0,536.8,4
+Race --> Heart Rate (max),Race,Heart Rate (max),0,0,0,0,0,1,1,1,0,0,1,578.2,4
+Race --> Bilirubin (max),Race,Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,135.0,4
+Diuretics --> WBC (max),Diuretics,WBC (max),0,0,0,0,0,0,1,1,1,0,1,14.5,4
+CVP (max) --> WBC (max),CVP (max),WBC (max),0,0,0,0,0,1,1,1,1,0,0,44.5,4
+CVP (max) --> Platelet (max),CVP (max),Platelet (max),0,0,0,0,0,1,1,1,1,0,0,44.2,4
+CVP (max) --> Mech. Vent Post-24h,CVP (max),Mech. Vent Post-24h,0,0,0,0,0,1,1,1,1,0,0,66.8,4
+CKD (Baseline) --> WBC (max),CKD (Baseline),WBC (max),0,0,0,0,0,1,1,1,0,0,1,184.5,4
+Fluid Balance --> Hemoglobin (min),Fluid Balance,Hemoglobin (min),0,0,0,0,0,0,1,1,1,1,0,26.0,4
+FiO2 (max) --> Mech. Vent Post-24h,FiO2 (max),Mech. Vent Post-24h,0,0,0,0,0,0,1,1,1,0,1,2.0,4
+Hemoglobin (min) --> Hospital Mortality,Hemoglobin (min),Hospital Mortality,0,0,0,0,0,1,1,1,0,0,1,285.0,4
+Lactate (max) --> FiO2 (max),Lactate (max),FiO2 (max),0,0,0,0,0,1,1,1,0,1,0,13.0,4
+CKD (Baseline) --> Lactate (max),CKD (Baseline),Lactate (max),0,0,0,0,0,1,1,1,0,0,1,657.8,4
+Lactate (max) --> AKI Onset (24h),Lactate (max),AKI Onset (24h),0,0,0,0,0,0,1,0,1,1,1,1.5,4
+Hemoglobin (min) --> AKI Post-24h,Hemoglobin (min),AKI Post-24h,0,0,0,0,0,1,1,1,0,0,1,57.5,4
+INR Missing --> AKI Post-24h,INR Missing,AKI Post-24h,0,1,0,0,0,1,0,1,1,0,0,39.0,4
+Hemoglobin (min) --> Heart Rate (max),Hemoglobin (min),Heart Rate (max),0,0,0,0,0,1,1,1,0,0,1,41.8,4
+Hemoglobin (min) --> Lactate (max),Hemoglobin (min),Lactate (max),0,0,0,0,0,1,1,1,0,0,1,21.0,4
+Lactate (max) --> Hemoglobin (min),Lactate (max),Hemoglobin (min),0,0,0,0,0,0,1,1,1,1,0,12.5,4
+Hemoglobin (min) --> Mech. Vent Post-24h,Hemoglobin (min),Mech. Vent Post-24h,0,0,0,0,0,1,1,1,0,0,1,24.0,4
+Hemoglobin (min) --> Platelet (max),Hemoglobin (min),Platelet (max),0,0,0,0,0,0,1,1,1,1,0,14.0,4
+INR (max) --> AKI Onset (24h),INR (max),AKI Onset (24h),0,0,0,0,0,0,1,0,1,1,1,4.2,4
+INR (max) --> Vasopressors,INR (max),Vasopressors,0,0,0,0,0,0,1,1,0,1,1,11.5,4
+INR (max) --> SpO2 (min),INR (max),SpO2 (min),0,0,0,0,0,1,1,1,0,1,0,35.0,4
+INR (max) --> Platelet (max),INR (max),Platelet (max),0,0,0,0,0,0,1,1,1,1,0,30.8,4
+Lactate (max) --> Fluid Balance,Lactate (max),Fluid Balance,0,0,1,0,0,0,1,0,0,1,1,1.8,4
+Lactate (max) --> Platelet (max),Lactate (max),Platelet (max),0,0,0,0,0,0,1,1,1,1,0,3.5,4
+FiO2 Missing --> Hospital Mortality,FiO2 Missing,Hospital Mortality,0,1,0,0,0,1,0,1,1,0,0,164.2,4
+Gender --> CVP Missing,Gender,CVP Missing,0,1,0,0,0,1,0,1,1,0,0,0.2,4
+FiO2 Missing --> Mech. Vent Post-24h,FiO2 Missing,Mech. Vent Post-24h,0,1,0,0,0,1,0,1,1,0,0,5.0,4
+Vasopressors --> Hemoglobin (min),Vasopressors,Hemoglobin (min),0,0,0,0,0,1,1,1,1,0,0,16.2,4
+Fluid Balance --> Platelet (max),Fluid Balance,Platelet (max),0,0,0,0,0,0,1,1,1,1,0,11.0,4
+Gender --> AKI Onset (24h),Gender,AKI Onset (24h),0,0,0,0,0,0,1,0,1,1,1,45.8,4
+Gender --> Antibiotics,Gender,Antibiotics,0,0,1,0,0,0,0,0,1,1,1,1.0,4
+Gender --> Bilirubin (max),Gender,Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,146.2,4
+Mech. Vent Onset (24h) --> Hemoglobin (min),Mech. Vent Onset (24h),Hemoglobin (min),0,0,0,0,0,1,1,1,1,0,0,119.2,4
+Lactate (max) --> Vasopressors,Lactate (max),Vasopressors,0,0,0,0,0,0,1,1,0,1,1,5.2,4
+Mech. Vent Onset (24h) --> Bilirubin (max),Mech. Vent Onset (24h),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,195.8,4
+Gender --> INR Missing,Gender,INR Missing,0,1,0,0,0,1,0,1,1,0,0,7.2,4
+Lymphocytes Abs (min) --> Hemoglobin (min),Lymphocytes Abs (min),Hemoglobin (min),0,0,0,0,0,1,1,0,1,1,0,0.2,4
+Lymphocytes Abs (min) --> Heart Rate (max),Lymphocytes Abs (min),Heart Rate (max),0,0,0,0,0,1,1,0,1,1,0,22.2,4
+Lymphocytes Abs (min) --> Blood Pressure (min),Lymphocytes Abs (min),Blood Pressure (min),0,0,0,0,0,1,1,0,1,1,0,79.0,4
+Lactate Missing --> Hemoglobin (min),Lactate Missing,Hemoglobin (min),0,1,0,0,0,1,0,1,1,0,0,0.5,4
+Vasopressors --> AKI Post-24h,Vasopressors,AKI Post-24h,0,0,0,0,0,1,1,1,0,0,1,109.0,4
+Hemoglobin (min) --> Bilirubin (max),Hemoglobin (min),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,5.2,4
+AKI Onset (24h) --> Fluid Balance,AKI Onset (24h),Fluid Balance,0,0,0,0,0,1,1,1,0,0,1,1.8,4
+Bilirubin (max) --> Mech. Vent Post-24h,Bilirubin (max),Mech. Vent Post-24h,0,0,0,0,0,1,1,1,1,0,0,27.8,4
+Age --> Vasopressors,Age,Vasopressors,0,0,0,0,0,1,1,1,0,0,1,102.0,4
+BMI Missing --> Hospital Mortality,BMI Missing,Hospital Mortality,0,1,0,0,0,1,0,1,1,0,0,327.0,4
+AKI Onset (24h) --> WBC (max),AKI Onset (24h),WBC (max),0,0,0,0,0,1,1,1,0,0,1,43.2,4
+Age --> Platelet (max),Age,Platelet (max),0,0,0,0,0,1,1,1,1,0,0,133.8,4
+AKI Onset (24h) --> Vasopressors,AKI Onset (24h),Vasopressors,0,0,0,0,0,1,1,1,0,0,1,28.5,4
+AKI Onset (24h) --> SpO2 (min),AKI Onset (24h),SpO2 (min),1,0,0,0,0,1,1,1,0,0,0,182.5,4
+Antibiotics --> Vasopressors,Antibiotics,Vasopressors,0,0,0,0,0,1,1,1,0,1,0,31.8,4
+Antibiotics --> SpO2 (min),Antibiotics,SpO2 (min),0,0,0,0,0,1,1,1,0,1,0,249.8,4
+Bilirubin (max) --> SpO2 (min),Bilirubin (max),SpO2 (min),0,0,0,0,0,1,1,1,0,1,0,39.5,4
+Age --> INR (max),Age,INR (max),0,0,0,0,0,1,1,1,1,0,0,127.5,4
+CKD (Baseline) --> INR (max),CKD (Baseline),INR (max),0,0,0,0,1,1,1,1,0,0,0,219.2,4
+Age --> Hemoglobin (min),Age,Hemoglobin (min),0,0,0,0,0,1,1,1,1,0,0,108.0,4
+Age --> BMI Missing,Age,BMI Missing,0,1,0,0,0,1,0,1,1,0,0,0.0,4
+AKI Onset (24h) --> Lactate (max),AKI Onset (24h),Lactate (max),0,0,0,0,0,1,1,1,0,0,1,116.0,4
+AKI Onset (24h) --> INR (max),AKI Onset (24h),INR (max),0,0,0,0,1,1,1,1,0,0,0,43.0,4
+Age --> Bilirubin Missing,Age,Bilirubin Missing,0,1,0,0,0,1,0,1,1,0,0,6.5,4
+Bilirubin (max) --> Platelet (max),Bilirubin (max),Platelet (max),0,0,0,0,0,0,1,1,1,1,0,25.2,4
+AKI Onset (24h) --> Bilirubin (max),AKI Onset (24h),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,1,47.2,4
+Bilirubin (max) --> Fluid Balance,Bilirubin (max),Fluid Balance,0,0,0,0,0,1,1,0,1,1,0,4.0,4
+Antibiotics --> Fluid Balance,Antibiotics,Fluid Balance,0,0,0,0,0,1,1,0,1,1,0,18.8,4
+Bilirubin (max) --> WBC (max),Bilirubin (max),WBC (max),0,0,0,0,0,0,1,1,1,1,0,5.5,4
+CKD (Baseline) --> Fluid Balance,CKD (Baseline),Fluid Balance,0,0,0,0,0,1,1,1,0,0,1,46.2,4
+AKI Onset (24h) --> Heart Rate (max),AKI Onset (24h),Heart Rate (max),0,0,0,0,0,1,1,1,0,0,1,257.0,4
+Bilirubin Missing --> Hospital Mortality,Bilirubin Missing,Hospital Mortality,0,1,0,0,0,1,0,1,1,0,0,948.0,4
+Platelet (max) --> Hemoglobin (min),Platelet (max),Hemoglobin (min),0,0,0,0,0,1,1,1,0,0,0,7.7,3
+FiO2 (max) --> Heart Rate (max),FiO2 (max),Heart Rate (max),0,0,0,0,0,1,1,1,0,0,0,7.0,3
+Platelet (max) --> AKI Post-24h,Platelet (max),AKI Post-24h,0,0,0,0,0,1,1,1,0,0,0,32.3,3
+Platelet (max) --> Hospital Mortality,Platelet (max),Hospital Mortality,0,0,0,0,0,1,1,1,0,0,0,375.7,3
+Platelet (max) --> Lactate (max),Platelet (max),Lactate (max),0,0,0,0,0,1,1,1,0,0,0,25.0,3
+Bilirubin (max) --> Lactate Missing,Bilirubin (max),Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,2.7,3
+FiO2 (max) --> AKI Post-24h,FiO2 (max),AKI Post-24h,0,0,0,0,0,0,1,1,0,0,1,15.3,3
+SpO2 (min) --> INR (max),SpO2 (min),INR (max),0,0,0,0,1,0,1,1,0,0,0,4.0,3
+SpO2 (min) --> Lactate (max),SpO2 (min),Lactate (max),0,0,0,0,0,0,1,1,0,0,1,19.3,3
+Antibiotics --> Bilirubin (max),Antibiotics,Bilirubin (max),0,0,0,0,0,1,1,1,0,0,0,111.0,3
+Platelet (max) --> Blood Pressure (min),Platelet (max),Blood Pressure (min),0,0,0,0,0,1,1,1,0,0,0,99.0,3
+FiO2 (max) --> Blood Pressure (min),FiO2 (max),Blood Pressure (min),0,0,0,0,0,1,1,1,0,0,0,26.3,3
+INR (max) --> Bilirubin (max),INR (max),Bilirubin (max),0,0,0,0,0,0,1,1,0,0,1,41.3,3
+Gender --> Mech. Vent Onset (24h),Gender,Mech. Vent Onset (24h),1,0,0,0,0,1,1,0,0,0,0,0.3,3
+FiO2 (max) --> SpO2 (min),FiO2 (max),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,0.0,3
+Gender --> Lactate Missing,Gender,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,52.3,3
+Lymphocytes Missing --> Platelet (max),Lymphocytes Missing,Platelet (max),0,0,0,0,0,1,0,1,1,0,0,25.0,3
+Platelet (max) --> Heart Rate (max),Platelet (max),Heart Rate (max),0,0,0,0,0,1,1,1,0,0,0,120.0,3
+Platelet (max) --> INR (max),Platelet (max),INR (max),0,0,0,0,0,1,1,1,0,0,0,10.7,3
+SpO2 (min) --> Vasopressors,SpO2 (min),Vasopressors,0,0,0,0,0,0,1,1,0,0,1,2.7,3
+Platelet (max) --> FiO2 (max),Platelet (max),FiO2 (max),0,0,0,0,0,1,1,1,0,0,0,41.0,3
+SpO2 (min) --> WBC (max),SpO2 (min),WBC (max),0,0,0,0,0,0,1,1,0,0,1,1.3,3
+SpO2 (min) --> FiO2 (max),SpO2 (min),FiO2 (max),0,0,0,0,0,0,1,1,0,1,0,28.0,3
+Lymphocytes Missing --> Hospital Mortality,Lymphocytes Missing,Hospital Mortality,0,0,0,0,0,1,0,1,1,0,0,1093.0,3
+Platelet (max) --> Mech. Vent Post-24h,Platelet (max),Mech. Vent Post-24h,0,0,0,0,0,1,1,1,0,0,0,3.3,3
+Lymphocytes Missing --> Blood Pressure (min),Lymphocytes Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,1,0,0,140.7,3
+Gender --> FiO2 Missing,Gender,FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,8.0,3
+Bilirubin (max) --> Vasopressors,Bilirubin (max),Vasopressors,0,0,0,0,0,0,1,1,0,1,0,14.0,3
+Lymphocytes Missing --> Heart Rate (max),Lymphocytes Missing,Heart Rate (max),0,0,0,0,0,1,0,1,1,0,0,380.3,3
+Lymphocytes Missing --> Hemoglobin (min),Lymphocytes Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,1,0,0,20.0,3
+Gender --> Diuretics,Gender,Diuretics,0,0,0,0,0,1,1,1,0,0,0,52.0,3
+BP Missing --> Platelet (max),BP Missing,Platelet (max),0,0,0,0,0,1,0,1,1,0,0,10.0,3
+Fluid Balance --> SpO2 (min),Fluid Balance,SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,127.7,3
+Hemoglobin (min) --> WBC (max),Hemoglobin (min),WBC (max),0,0,0,0,0,0,1,1,0,0,1,9.7,3
+Hemoglobin (min) --> Vasopressors,Hemoglobin (min),Vasopressors,0,0,0,0,0,0,1,1,0,0,1,21.7,3
+Fluid Balance --> WBC (max),Fluid Balance,WBC (max),0,0,0,0,0,0,1,1,1,0,0,14.3,3
+Hemoglobin (min) --> SpO2 (min),Hemoglobin (min),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,40.0,3
+Platelet (max) --> SpO2 (min),Platelet (max),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,73.7,3
+Antibiotics --> AKI Onset (24h),Antibiotics,AKI Onset (24h),0,0,0,0,0,0,1,0,1,1,0,22.3,3
+Age --> Temperature (max),Age,Temperature (max),1,1,0,0,0,0,1,0,0,0,0,0.0,3
+Race --> Diuretics,Race,Diuretics,1,0,0,0,0,0,1,1,0,0,0,16.7,3
+Race --> FiO2 Missing,Race,FiO2 Missing,0,1,0,0,0,1,0,1,0,0,0,2.0,3
+Race --> Hemoglobin (min),Race,Hemoglobin (min),0,0,0,0,0,1,1,1,0,0,0,118.0,3
+Age --> Lactate Missing,Age,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,61.0,3
+Race --> INR (max),Race,INR (max),0,0,0,0,0,1,1,1,0,0,0,141.0,3
+Lymphocytes Abs (min) --> WBC (max),Lymphocytes Abs (min),WBC (max),0,0,0,0,0,0,1,0,1,1,0,6.7,3
+Age --> INR Missing,Age,INR Missing,0,0,0,0,0,1,0,1,1,0,0,8.0,3
+Lymphocytes Abs (min) --> Platelet (max),Lymphocytes Abs (min),Platelet (max),0,0,0,0,0,0,1,0,1,1,0,17.3,3
+Race --> Platelet (max),Race,Platelet (max),0,0,0,0,0,1,1,1,0,0,0,116.7,3
+Race --> Vasopressors,Race,Vasopressors,0,0,0,0,0,0,1,1,0,0,1,94.3,3
+Age --> FiO2 Missing,Age,FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,7.7,3
+Diuretics --> Vasopressors,Diuretics,Vasopressors,0,0,0,0,0,0,1,1,0,0,1,35.0,3
+SpO2 (min) --> AKI Onset (24h),SpO2 (min),AKI Onset (24h),0,0,0,0,1,0,1,0,0,0,1,0.7,3
+SpO2 (min) --> Bilirubin (max),SpO2 (min),Bilirubin (max),0,0,0,0,0,0,1,1,0,0,1,5.0,3
+Age --> CVP (max),Age,CVP (max),0,0,0,1,0,0,0,1,0,1,0,70.3,3
+Hemoglobin (min) --> INR (max),Hemoglobin (min),INR (max),0,0,0,0,0,1,1,1,0,0,0,6.0,3
+Lymphocytes Missing --> Lactate Missing,Lymphocytes Missing,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,23.0,3
+Antibiotics --> CVP (max),Antibiotics,CVP (max),0,0,0,0,0,1,0,1,0,1,0,9.0,3
+CVP (max) --> Lactate (max),CVP (max),Lactate (max),0,0,0,0,0,1,1,1,0,0,0,172.3,3
+INR Missing --> Blood Pressure (min),INR Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,1,0,0,23.0,3
+Lymphocytes Missing --> WBC (max),Lymphocytes Missing,WBC (max),0,0,0,0,0,1,0,1,1,0,0,23.3,3
+WBC (max) --> SpO2 (min),WBC (max),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,97.7,3
+WBC (max) --> Mech. Vent Post-24h,WBC (max),Mech. Vent Post-24h,0,0,0,0,0,1,1,1,0,0,0,42.7,3
+CVP (max) --> INR (max),CVP (max),INR (max),0,0,0,0,0,1,1,1,0,0,0,63.0,3
+Mech. Vent Onset (24h) --> FiO2 Missing,Mech. Vent Onset (24h),FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,3.0,3
+CVP (max) --> Lactate Missing,CVP (max),Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,3.7,3
+Mech. Vent Onset (24h) --> Temp Missing,Mech. Vent Onset (24h),Temp Missing,0,1,0,0,0,0,0,1,1,0,0,0.3,3
+WBC (max) --> Lactate (max),WBC (max),Lactate (max),0,0,0,0,0,1,1,1,0,0,0,58.0,3
+WBC (max) --> INR (max),WBC (max),INR (max),0,0,0,0,0,1,1,1,0,0,0,28.7,3
+WBC (max) --> Hemoglobin (min),WBC (max),Hemoglobin (min),0,0,0,0,0,1,1,1,0,0,0,18.7,3
+CVP (max) --> SpO2 (min),CVP (max),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,297.3,3
+CVP (max) --> Vasopressors,CVP (max),Vasopressors,0,0,0,0,0,1,1,1,0,0,0,36.0,3
+WBC (max) --> FiO2 (max),WBC (max),FiO2 (max),0,0,0,0,0,1,1,1,0,0,0,66.3,3
+Hemoglobin (min) --> FiO2 (max),Hemoglobin (min),FiO2 (max),0,0,0,0,0,1,1,1,0,0,0,46.7,3
+Bilirubin (max) --> AKI Onset (24h),Bilirubin (max),AKI Onset (24h),0,0,0,0,0,0,1,0,1,1,0,5.3,3
+INR Missing --> FiO2 (max),INR Missing,FiO2 (max),0,0,0,0,0,1,0,1,1,0,0,26.0,3
+Mech. Vent Onset (24h) --> CVP Missing,Mech. Vent Onset (24h),CVP Missing,0,1,0,0,0,0,0,1,1,0,0,0.7,3
+INR Missing --> Fluid Balance,INR Missing,Fluid Balance,0,0,0,0,0,1,0,1,1,0,0,0.0,3
+CVP (max) --> Bilirubin (max),CVP (max),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,0,62.3,3
+CVP (max) --> AKI Post-24h,CVP (max),AKI Post-24h,0,0,0,0,0,1,1,1,0,0,0,337.3,3
+INR Missing --> Heart Rate (max),INR Missing,Heart Rate (max),0,0,0,0,0,1,0,1,1,0,0,96.0,3
+INR Missing --> Hemoglobin (min),INR Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,1,0,0,4.3,3
+INR Missing --> Hospital Mortality,INR Missing,Hospital Mortality,0,0,0,0,0,1,0,1,1,0,0,274.3,3
+CKD (Baseline) --> Temperature (max),CKD (Baseline),Temperature (max),0,0,1,0,0,0,0,0,1,1,0,0.3,3
+Lactate (max) --> Bilirubin (max),Lactate (max),Bilirubin (max),0,0,0,0,0,0,1,1,0,0,1,12.3,3
+INR Missing --> Lactate (max),INR Missing,Lactate (max),0,0,0,0,0,1,0,1,1,0,0,25.7,3
+INR Missing --> Lactate Missing,INR Missing,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,5.7,3
+CKD (Baseline) --> FiO2 Missing,CKD (Baseline),FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,8.3,3
+Mech. Vent Onset (24h) --> AKI Onset (24h),Mech. Vent Onset (24h),AKI Onset (24h),0,0,0,0,0,0,1,0,1,0,1,39.0,3
+INR Missing --> Mech. Vent Post-24h,INR Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,1,0,0,11.3,3
+WBC (max) --> Blood Pressure (min),WBC (max),Blood Pressure (min),0,0,0,0,0,1,1,1,0,0,0,223.7,3
+WBC (max) --> Bilirubin (max),WBC (max),Bilirubin (max),0,0,0,0,0,1,1,1,0,0,0,28.0,3
+AKI Onset (24h) --> FiO2 (max),AKI Onset (24h),FiO2 (max),0,0,0,0,0,1,1,1,0,0,0,189.0,3
+CVP Missing --> Blood Pressure (min),CVP Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,1,0,0,239.7,3
+BP Missing --> Hospital Mortality,BP Missing,Hospital Mortality,0,0,0,0,0,1,0,1,1,0,0,486.7,3
+Diuretics --> Lactate Missing,Diuretics,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,11.7,3
+Lactate Missing --> Heart Rate (max),Lactate Missing,Heart Rate (max),0,0,0,0,0,1,0,1,1,0,0,49.0,3
+Bilirubin Missing --> AKI Post-24h,Bilirubin Missing,AKI Post-24h,0,1,0,0,0,1,0,1,0,0,0,244.3,3
+Diuretics --> INR (max),Diuretics,INR (max),0,0,0,0,0,1,1,1,0,0,0,28.0,3
+Lactate Missing --> Blood Pressure (min),Lactate Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,1,0,0,10.3,3
+Mech. Vent Onset (24h) --> Lactate Missing,Mech. Vent Onset (24h),Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,59.3,3
+Lactate Missing --> AKI Post-24h,Lactate Missing,AKI Post-24h,0,1,0,0,0,1,0,1,0,0,0,20.7,3
+Diuretics --> Fluid Balance,Diuretics,Fluid Balance,0,0,0,0,0,1,1,0,0,0,1,10.7,3
+Diuretics --> FiO2 Missing,Diuretics,FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,1.7,3
+Antibiotics --> Lactate Missing,Antibiotics,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,11.7,3
+Age --> AKI Onset (24h),Age,AKI Onset (24h),0,0,0,0,0,0,1,0,1,0,1,34.0,3
+Diuretics --> CVP (max),Diuretics,CVP (max),0,0,0,1,0,0,0,1,0,1,0,10.7,3
+Lactate (max) --> SpO2 (min),Lactate (max),SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,17.7,3
+Hemoglobin (min) --> Fluid Balance,Hemoglobin (min),Fluid Balance,0,0,0,0,0,1,1,0,0,0,1,6.7,3
+CVP Missing --> WBC (max),CVP Missing,WBC (max),0,0,0,0,0,1,0,1,1,0,0,38.7,3
+Mech. Vent Onset (24h) --> INR (max),Mech. Vent Onset (24h),INR (max),0,0,0,0,0,1,1,1,0,0,0,182.3,3
+CVP Missing --> Platelet (max),CVP Missing,Platelet (max),0,0,0,0,0,1,0,1,1,0,0,34.7,3
+CVP Missing --> Mech. Vent Post-24h,CVP Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,1,0,0,56.3,3
+Vasopressors --> Fluid Balance,Vasopressors,Fluid Balance,0,0,0,0,0,1,1,0,0,0,1,11.3,3
+CVP Missing --> Lactate Missing,CVP Missing,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,35.0,3
+Vasopressors --> INR (max),Vasopressors,INR (max),0,0,0,0,0,1,1,1,0,0,0,25.7,3
+CVP Missing --> Hospital Mortality,CVP Missing,Hospital Mortality,0,0,0,0,0,1,0,1,1,0,0,1684.3,3
+CVP Missing --> Hemoglobin (min),CVP Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,1,0,0,31.0,3
+CVP Missing --> Heart Rate (max),CVP Missing,Heart Rate (max),0,0,0,0,0,1,0,1,1,0,0,584.0,3
+Vasopressors --> Lactate Missing,Vasopressors,Lactate Missing,0,0,0,0,0,1,0,1,1,0,0,2.3,3
+CVP Missing --> FiO2 Missing,CVP Missing,FiO2 Missing,0,0,0,0,0,1,0,1,1,0,0,6.7,3
+CVP Missing --> FiO2 (max),CVP Missing,FiO2 (max),0,0,0,0,0,1,0,1,1,0,0,171.3,3
+Vasopressors --> SpO2 (min),Vasopressors,SpO2 (min),0,0,0,0,0,1,1,1,0,0,0,120.0,3
+Lymphocytes Missing --> SpO2 (min),Lymphocytes Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,271.0,2
+Lymphocytes Missing --> Vasopressors,Lymphocytes Missing,Vasopressors,0,0,0,0,0,1,0,1,0,0,0,34.5,2
+CKD (Baseline) --> INR Missing,CKD (Baseline),INR Missing,0,0,0,0,0,1,0,1,0,0,0,14.5,2
+Lymphocytes Missing --> Mech. Vent Post-24h,Lymphocytes Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,50.5,2
+Lymphocytes Missing --> Lactate (max),Lymphocytes Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,145.5,2
+Lactate Missing --> Platelet (max),Lactate Missing,Platelet (max),0,0,0,0,0,0,0,1,1,0,0,7.0,2
+Lactate Missing --> Mech. Vent Post-24h,Lactate Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,7.5,2
+Lactate Missing --> Lactate (max),Lactate Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,20.5,2
+Lactate Missing --> INR (max),Lactate Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,6.5,2
+Lactate Missing --> Hospital Mortality,Lactate Missing,Hospital Mortality,0,0,0,0,0,1,0,1,0,0,0,202.5,2
+BMI Missing --> Heart Rate (max),BMI Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,231.5,2
+Lactate Missing --> FiO2 (max),Lactate Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,19.0,2
+Lactate Missing --> Bilirubin (max),Lactate Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,10.0,2
+BMI Missing --> Hemoglobin (min),BMI Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,14.0,2
+BMI Missing --> INR (max),BMI Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,24.0,2
+BMI Missing --> INR Missing,BMI Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,1.0,2
+Lactate (max) --> Lactate Missing,Lactate (max),Lactate Missing,0,0,0,0,0,0,0,1,1,0,0,1.0,2
+BMI Missing --> Lactate (max),BMI Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,57.5,2
+BMI Missing --> Lactate Missing,BMI Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,21.0,2
+BMI Missing --> Mech. Vent Post-24h,BMI Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,19.5,2
+BMI Missing --> Platelet (max),BMI Missing,Platelet (max),0,0,0,0,0,1,0,1,0,0,0,13.5,2
+Lactate (max) --> CVP (max),Lactate (max),CVP (max),0,0,0,0,0,0,0,1,0,1,0,2.0,2
+BMI Missing --> SpO2 (min),BMI Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,100.0,2
+BMI Missing --> WBC (max),BMI Missing,WBC (max),0,0,0,0,0,1,0,1,0,0,0,12.5,2
+Lactate Missing --> SpO2 (min),Lactate Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,33.5,2
+Lactate Missing --> WBC (max),Lactate Missing,WBC (max),0,0,0,0,0,0,0,1,1,0,0,6.0,2
+BMI Missing --> Fluid Balance,BMI Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,2.0,2
+Lymphocytes Abs (min) --> Mech. Vent Post-24h,Lymphocytes Abs (min),Mech. Vent Post-24h,0,0,0,0,0,1,1,0,0,0,0,42.5,2
+Lymphocytes Missing --> INR Missing,Lymphocytes Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,4.0,2
+Lymphocytes Missing --> INR (max),Lymphocytes Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,63.5,2
+Lymphocytes Missing --> Fluid Balance,Lymphocytes Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,5.0,2
+Lymphocytes Missing --> FiO2 (max),Lymphocytes Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,169.0,2
+Lymphocytes Missing --> Bilirubin Missing,Lymphocytes Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,4.5,2
+Lymphocytes Missing --> Bilirubin (max),Lymphocytes Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,82.5,2
+Lymphocytes Missing --> AKI Post-24h,Lymphocytes Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,254.5,2
+Lymphocytes Abs (min) --> SpO2 (min),Lymphocytes Abs (min),SpO2 (min),0,0,0,0,0,1,1,0,0,0,0,48.0,2
+Lymphocytes Abs (min) --> Lactate Missing,Lymphocytes Abs (min),Lactate Missing,0,0,0,0,0,1,0,0,1,0,0,2.0,2
+Lymphocytes Abs (min) --> Bilirubin (max),Lymphocytes Abs (min),Bilirubin (max),0,0,0,0,0,1,1,0,0,0,0,6.0,2
+Lymphocytes Abs (min) --> Lactate (max),Lymphocytes Abs (min),Lactate (max),0,0,0,0,0,1,1,0,0,0,0,36.5,2
+Lymphocytes Abs (min) --> INR (max),Lymphocytes Abs (min),INR (max),0,0,0,0,0,1,1,0,0,0,0,7.0,2
+BMI Missing --> Blood Pressure (min),BMI Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,80.0,2
+Mech. Vent Onset (24h) --> Bilirubin Missing,Mech. Vent Onset (24h),Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,5.0,2
+BMI Missing --> FiO2 (max),BMI Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,72.5,2
+Lymphocytes Abs (min) --> Fluid Balance,Lymphocytes Abs (min),Fluid Balance,0,0,0,0,0,1,1,0,0,0,0,9.5,2
+Lymphocytes Abs (min) --> FiO2 (max),Lymphocytes Abs (min),FiO2 (max),0,0,0,0,0,1,1,0,0,0,0,57.5,2
+Lymphocytes Abs (min) --> Bilirubin Missing,Lymphocytes Abs (min),Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,1.0,2
+BMI Missing --> Bilirubin (max),BMI Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,31.5,2
+Platelet Missing --> INR (max),Platelet Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,15.5,2
+BMI Missing --> AKI Post-24h,BMI Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,105.0,2
+Temp Missing --> FiO2 Missing,Temp Missing,FiO2 Missing,0,0,0,0,0,1,0,1,0,0,0,13.5,2
+Vasopressors --> AKI Onset (24h),Vasopressors,AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,1,15.5,2
+Temperature (max) --> SpO2 (min),Temperature (max),SpO2 (min),0,0,0,0,0,1,1,0,0,0,0,68.5,2
+AKI Post-24h --> Mech. Vent Post-24h,AKI Post-24h,Mech. Vent Post-24h,0,0,1,0,0,0,0,0,1,0,0,0.0,2
+Temperature (max) --> Blood Pressure (min),Temperature (max),Blood Pressure (min),0,0,0,0,0,1,1,0,0,0,0,106.5,2
+Temperature (max) --> AKI Post-24h,Temperature (max),AKI Post-24h,0,0,0,0,0,0,1,0,0,1,0,18.0,2
+Temp Missing --> WBC (max),Temp Missing,WBC (max),0,0,0,0,0,1,0,1,0,0,0,66.0,2
+Temp Missing --> Vasopressors,Temp Missing,Vasopressors,0,0,0,0,0,1,0,1,0,0,0,57.5,2
+Temp Missing --> SpO2 (min),Temp Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,542.0,2
+Temp Missing --> Platelet (max),Temp Missing,Platelet (max),0,0,0,0,0,1,0,1,0,0,0,60.0,2
+Temp Missing --> Mech. Vent Post-24h,Temp Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,106.5,2
+Temp Missing --> Lactate Missing,Temp Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,71.0,2
+Temp Missing --> Lactate (max),Temp Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,293.0,2
+Temp Missing --> INR Missing,Temp Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,15.0,2
+Temp Missing --> INR (max),Temp Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,130.5,2
+Temp Missing --> Hospital Mortality,Temp Missing,Hospital Mortality,0,0,0,0,0,1,0,1,0,0,0,3260.5,2
+Temp Missing --> Hemoglobin (min),Temp Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,60.5,2
+Temp Missing --> Heart Rate (max),Temp Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,1122.5,2
+Vasopressors --> CVP (max),Vasopressors,CVP (max),0,0,0,0,0,0,0,1,0,1,0,0.0,2
+AKI Onset (24h) --> Lactate Missing,AKI Onset (24h),Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,30.0,2
+Vasopressors --> FiO2 Missing,Vasopressors,FiO2 Missing,0,0,0,0,0,1,0,0,1,0,0,2.0,2
+WBC Missing --> Hemoglobin (min),WBC Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,7.0,2
+WBC Missing --> SpO2 (min),WBC Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,56.0,2
+WBC Missing --> Mech. Vent Post-24h,WBC Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,16.0,2
+WBC Missing --> Lactate Missing,WBC Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,9.0,2
+WBC Missing --> Lactate (max),WBC Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,45.0,2
+WBC Missing --> INR Missing,WBC Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+WBC Missing --> INR (max),WBC Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,17.0,2
+WBC Missing --> Hospital Mortality,WBC Missing,Hospital Mortality,0,0,0,0,0,1,0,1,0,0,0,437.0,2
+WBC Missing --> Heart Rate (max),WBC Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,152.0,2
+WBC (max) --> Fluid Balance,WBC (max),Fluid Balance,0,0,0,0,0,1,1,0,0,0,0,1.5,2
+WBC Missing --> Fluid Balance,WBC Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,1.0,2
+WBC Missing --> FiO2 (max),WBC Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,47.0,2
+WBC Missing --> Blood Pressure (min),WBC Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,33.5,2
+WBC Missing --> Bilirubin (max),WBC Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,28.0,2
+WBC Missing --> AKI Post-24h,WBC Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,82.0,2
+WBC (max) --> Vasopressors,WBC (max),Vasopressors,0,0,0,0,0,0,1,1,0,0,0,10.5,2
+WBC (max) --> Lactate Missing,WBC (max),Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,12.5,2
+Temp Missing --> Fluid Balance,Temp Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,16.0,2
+Temp Missing --> FiO2 (max),Temp Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,334.5,2
+Mech. Vent Onset (24h) --> CVP (max),Mech. Vent Onset (24h),CVP (max),0,0,0,0,0,0,0,1,0,1,0,130.5,2
+Temp Missing --> Diuretics,Temp Missing,Diuretics,0,0,0,0,0,1,0,1,0,0,0,1.0,2
+Platelet Missing --> Hemoglobin (min),Platelet Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,6.0,2
+Platelet Missing --> Heart Rate (max),Platelet Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,142.0,2
+Platelet Missing --> Fluid Balance,Platelet Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,1.0,2
+Platelet Missing --> FiO2 (max),Platelet Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,39.0,2
+Platelet Missing --> Blood Pressure (min),Platelet Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,32.5,2
+Platelet Missing --> Bilirubin (max),Platelet Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,25.0,2
+Platelet Missing --> AKI Post-24h,Platelet Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,77.0,2
+Platelet (max) --> WBC (max),Platelet (max),WBC (max),0,0,0,0,0,0,1,1,0,0,0,7.5,2
+Platelet (max) --> Vasopressors,Platelet (max),Vasopressors,0,0,0,0,0,0,1,1,0,0,0,10.0,2
+Platelet (max) --> Lactate Missing,Platelet (max),Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,10.0,2
+Platelet (max) --> Fluid Balance,Platelet (max),Fluid Balance,0,0,0,0,0,1,1,0,0,0,0,2.0,2
+Antibiotics --> Bilirubin Missing,Antibiotics,Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,6.5,2
+Antibiotics --> FiO2 Missing,Antibiotics,FiO2 Missing,0,0,0,0,0,1,0,0,1,0,0,5.0,2
+Antibiotics --> INR Missing,Antibiotics,INR Missing,0,0,0,0,0,1,0,0,1,0,0,5.0,2
+Mech. Vent Onset (24h) --> INR Missing,Mech. Vent Onset (24h),INR Missing,0,0,0,0,0,1,0,1,0,0,0,4.5,2
+BMI --> Hospital Mortality,BMI,Hospital Mortality,0,0,0,1,0,0,0,0,0,1,0,0.0,2
+Mech. Vent Onset (24h) --> Diuretics,Mech. Vent Onset (24h),Diuretics,0,0,0,0,0,0,1,1,0,0,0,46.5,2
+Platelet Missing --> Hospital Mortality,Platelet Missing,Hospital Mortality,0,0,0,0,0,1,0,1,0,0,0,407.5,2
+INR Missing --> SpO2 (min),INR Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,56.0,2
+Platelet Missing --> INR Missing,Platelet Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+SpO2 (min) --> Fluid Balance,SpO2 (min),Fluid Balance,0,0,0,0,0,0,1,0,0,0,1,1.5,2
+Temp Missing --> CVP Missing,Temp Missing,CVP Missing,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+Temp Missing --> Blood Pressure (min),Temp Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,500.5,2
+Temp Missing --> Bilirubin (max),Temp Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,141.5,2
+Temp Missing --> AKI Post-24h,Temp Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,492.0,2
+SpO2 (min) --> Platelet (max),SpO2 (min),Platelet (max),0,0,0,0,0,0,1,1,0,0,0,1.0,2
+Age --> BMI,Age,BMI,0,0,0,1,0,0,0,0,0,1,0,0.0,2
+SpO2 (min) --> Hemoglobin (min),SpO2 (min),Hemoglobin (min),0,0,0,0,0,0,1,1,0,0,0,8.0,2
+SpO2 (min) --> CVP (max),SpO2 (min),CVP (max),0,0,0,0,0,0,0,1,0,1,0,0.5,2
+Platelet Missing --> Lactate (max),Platelet Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,38.0,2
+Race --> Lymphocytes Abs (min),Race,Lymphocytes Abs (min),0,0,0,0,0,1,0,1,0,0,0,2.5,2
+Race --> Lactate Missing,Race,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,61.0,2
+Race --> INR Missing,Race,INR Missing,0,0,0,0,0,1,0,1,0,0,0,4.5,2
+Race --> AKI Onset (24h),Race,AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,1,37.0,2
+Platelet Missing --> SpO2 (min),Platelet Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,56.0,2
+Platelet Missing --> Mech. Vent Post-24h,Platelet Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,15.5,2
+Platelet Missing --> Lactate Missing,Platelet Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,8.5,2
+INR Missing --> WBC (max),INR Missing,WBC (max),0,0,0,0,0,0,0,1,1,0,0,14.0,2
+Lactate (max) --> INR (max),Lactate (max),INR (max),0,0,0,0,0,0,1,1,0,0,0,15.0,2
+CVP Missing --> AKI Post-24h,CVP Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,392.5,2
+FiO2 (max) --> Bilirubin (max),FiO2 (max),Bilirubin (max),0,0,0,0,0,0,1,1,0,0,0,7.0,2
+CVP Missing --> INR (max),CVP Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,100.0,2
+CVP Missing --> Fluid Balance,CVP Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,10.5,2
+Bilirubin Missing --> INR Missing,Bilirubin Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,0.5,2
+BP Missing --> Vasopressors,BP Missing,Vasopressors,0,0,0,0,0,1,0,1,0,0,0,5.0,2
+BP Missing --> SpO2 (min),BP Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,111.0,2
+CVP Missing --> Diuretics,CVP Missing,Diuretics,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+Hemoglobin (min) --> Lactate Missing,Hemoglobin (min),Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,6.5,2
+Bilirubin Missing --> SpO2 (min),Bilirubin Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,252.0,2
+BP Missing --> Mech. Vent Post-24h,BP Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,23.5,2
+Hemoglobin Missing --> AKI Post-24h,Hemoglobin Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,77.0,2
+Hemoglobin Missing --> Bilirubin (max),Hemoglobin Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,25.0,2
+Hemoglobin Missing --> Blood Pressure (min),Hemoglobin Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,32.5,2
+BP Missing --> WBC (max),BP Missing,WBC (max),0,0,0,0,0,1,0,1,0,0,0,14.5,2
+Fluid Balance --> CVP (max),Fluid Balance,CVP (max),0,0,0,0,0,0,0,1,0,1,0,1.0,2
+Hemoglobin Missing --> FiO2 (max),Hemoglobin Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,39.0,2
+CVP Missing --> Bilirubin (max),CVP Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,113.0,2
+Bilirubin Missing --> Lactate (max),Bilirubin Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,176.0,2
+Hemoglobin Missing --> Fluid Balance,Hemoglobin Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,1.0,2
+Hemoglobin Missing --> Heart Rate (max),Hemoglobin Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,142.0,2
+Hemoglobin Missing --> Hemoglobin (min),Hemoglobin Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,6.0,2
+Hemoglobin Missing --> Hospital Mortality,Hemoglobin Missing,Hospital Mortality,0,0,0,0,0,1,0,1,0,0,0,407.5,2
+Hemoglobin Missing --> INR (max),Hemoglobin Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,15.5,2
+Hemoglobin Missing --> INR Missing,Hemoglobin Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+Hemoglobin Missing --> Lactate (max),Hemoglobin Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,38.0,2
+CVP Missing --> INR Missing,CVP Missing,INR Missing,0,0,0,0,0,1,0,1,0,0,0,9.5,2
+CVP Missing --> Lactate (max),CVP Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,230.0,2
+Hemoglobin Missing --> Mech. Vent Post-24h,Hemoglobin Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,15.5,2
+Bilirubin Missing --> FiO2 Missing,Bilirubin Missing,FiO2 Missing,0,0,0,0,0,1,0,1,0,0,0,0.0,2
+Bilirubin (max) --> INR Missing,Bilirubin (max),INR Missing,0,0,0,0,0,1,0,0,1,0,0,1.0,2
+Blood Pressure (min) --> Bilirubin (max),Blood Pressure (min),Bilirubin (max),0,0,0,0,0,0,0,1,0,0,1,4.0,2
+Bilirubin (max) --> CVP (max),Bilirubin (max),CVP (max),0,0,0,0,0,0,0,1,0,1,0,2.5,2
+Gender --> CVP (max),Gender,CVP (max),0,0,0,0,0,0,0,1,0,1,0,70.0,2
+Gender --> Bilirubin Missing,Gender,Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,16.5,2
+Bilirubin Missing --> Bilirubin (max),Bilirubin Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,132.5,2
+Bilirubin Missing --> Blood Pressure (min),Bilirubin Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,109.0,2
+Blood Pressure (min) --> AKI Post-24h,Blood Pressure (min),AKI Post-24h,0,0,0,0,0,0,0,1,0,0,1,8.0,2
+Bilirubin Missing --> FiO2 (max),Bilirubin Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,191.5,2
+Blood Pressure (min) --> Heart Rate (max),Blood Pressure (min),Heart Rate (max),0,0,0,0,0,0,0,1,0,0,1,28.5,2
+Fluid Balance --> Vasopressors,Fluid Balance,Vasopressors,0,0,0,0,0,0,1,1,0,0,0,9.0,2
+Bilirubin (max) --> Bilirubin Missing,Bilirubin (max),Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,2.0,2
+Hemoglobin (min) --> AKI Onset (24h),Hemoglobin (min),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,1,9.5,2
+Bilirubin Missing --> Fluid Balance,Bilirubin Missing,Fluid Balance,0,0,0,0,0,1,0,1,0,0,0,1.5,2
+Diuretics --> AKI Onset (24h),Diuretics,AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,1,12.5,2
+Fluid Balance --> Lactate Missing,Fluid Balance,Lactate Missing,0,0,0,0,0,0,0,1,1,0,0,2.0,2
+Heart Rate (max) --> Mech. Vent Post-24h,Heart Rate (max),Mech. Vent Post-24h,0,0,1,0,0,0,1,0,0,0,0,3.0,2
+Bilirubin Missing --> Heart Rate (max),Bilirubin Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,659.5,2
+CVP Missing --> Vasopressors,CVP Missing,Vasopressors,0,0,0,0,0,1,0,1,0,0,0,48.0,2
+Fluid Balance --> INR (max),Fluid Balance,INR (max),0,0,0,0,0,0,1,1,0,0,0,37.5,2
+Bilirubin Missing --> Hemoglobin (min),Bilirubin Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,39.0,2
+Bilirubin Missing --> INR (max),Bilirubin Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,73.0,2
+CVP Missing --> SpO2 (min),CVP Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,411.5,2
+FiO2 Missing --> Blood Pressure (min),FiO2 Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,45.0,2
+Hemoglobin Missing --> Lactate Missing,Hemoglobin Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,8.5,2
+Bilirubin (max) --> FiO2 Missing,Bilirubin (max),FiO2 Missing,0,0,0,0,0,1,0,0,1,0,0,1.0,2
+FiO2 Missing --> Lactate (max),FiO2 Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,30.0,2
+Blood Pressure (min) --> Vasopressors,Blood Pressure (min),Vasopressors,0,0,0,0,0,0,0,1,0,0,1,0.5,2
+INR Missing --> INR (max),INR Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,15.5,2
+BP Missing --> Hemoglobin (min),BP Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,20.5,2
+BP Missing --> Heart Rate (max),BP Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,238.0,2
+Bilirubin Missing --> Mech. Vent Post-24h,Bilirubin Missing,Mech. Vent Post-24h,0,0,0,0,0,1,0,1,0,0,0,66.0,2
+FiO2 Missing --> Heart Rate (max),FiO2 Missing,Heart Rate (max),0,0,0,0,0,1,0,1,0,0,0,116.5,2
+FiO2 (max) --> Platelet (max),FiO2 (max),Platelet (max),0,0,0,0,0,0,1,1,0,0,0,1.0,2
+FiO2 Missing --> Lactate Missing,FiO2 Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,3.0,2
+INR Missing --> FiO2 Missing,INR Missing,FiO2 Missing,0,0,0,0,0,1,0,0,1,0,0,1.5,2
+FiO2 Missing --> AKI Post-24h,FiO2 Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,44.0,2
+Blood Pressure (min) --> WBC (max),Blood Pressure (min),WBC (max),0,0,0,0,0,0,0,1,0,0,1,1.0,2
+CKD (Baseline) --> CVP Missing,CKD (Baseline),CVP Missing,0,1,0,0,0,0,0,1,0,0,0,1.5,2
+FiO2 Missing --> INR (max),FiO2 Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,13.5,2
+INR (max) --> Lactate Missing,INR (max),Lactate Missing,0,0,0,0,0,0,0,1,1,0,0,4.0,2
+BP Missing --> FiO2 (max),BP Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,79.5,2
+BP Missing --> CVP (max),BP Missing,CVP (max),0,0,0,0,0,1,0,1,0,0,0,3.5,2
+BP Missing --> Blood Pressure (min),BP Missing,Blood Pressure (min),0,0,0,0,0,1,0,1,0,0,0,115.5,2
+FiO2 (max) --> Vasopressors,FiO2 (max),Vasopressors,0,0,0,0,0,0,1,1,0,0,0,3.5,2
+BP Missing --> Bilirubin Missing,BP Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,3.0,2
+BP Missing --> Bilirubin (max),BP Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,41.5,2
+FiO2 Missing --> Hemoglobin (min),FiO2 Missing,Hemoglobin (min),0,0,0,0,0,1,0,1,0,0,0,6.0,2
+BP Missing --> AKI Post-24h,BP Missing,AKI Post-24h,0,0,0,0,0,1,0,1,0,0,0,116.0,2
+INR Missing --> Bilirubin (max),INR Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,25.0,2
+CKD (Baseline) --> Temp Missing,CKD (Baseline),Temp Missing,0,1,0,0,0,0,0,1,0,0,0,1.0,2
+INR Missing --> Bilirubin Missing,INR Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,1,0,0,1.5,2
+BP Missing --> INR (max),BP Missing,INR (max),0,0,0,0,0,1,0,1,0,0,0,31.0,2
+CVP (max) --> FiO2 Missing,CVP (max),FiO2 Missing,0,0,0,0,0,1,0,0,1,0,0,2.0,2
+Fluid Balance --> AKI Onset (24h),Fluid Balance,AKI Onset (24h),0,0,0,0,0,0,1,0,1,0,0,19.5,2
+INR Missing --> Platelet (max),INR Missing,Platelet (max),0,0,0,0,0,0,0,1,1,0,0,17.0,2
+FiO2 (max) --> Hemoglobin (min),FiO2 (max),Hemoglobin (min),0,0,0,0,0,0,1,1,0,0,0,8.0,2
+Hemoglobin Missing --> SpO2 (min),Hemoglobin Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,56.0,2
+Fluid Balance --> Bilirubin (max),Fluid Balance,Bilirubin (max),0,0,0,0,0,0,1,1,0,0,0,40.5,2
+FiO2 Missing --> FiO2 (max),FiO2 Missing,FiO2 (max),0,0,0,0,0,1,0,1,0,0,0,32.5,2
+Blood Pressure (min) --> Lactate (max),Blood Pressure (min),Lactate (max),0,0,0,0,0,0,0,1,0,0,1,8.0,2
+Bilirubin Missing --> Lactate Missing,Bilirubin Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,37.0,2
+Bilirubin Missing --> Platelet (max),Bilirubin Missing,Platelet (max),0,0,0,0,0,0,0,1,1,0,0,63.5,2
+BP Missing --> Lactate Missing,BP Missing,Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,12.0,2
+CVP (max) --> Fluid Balance,CVP (max),Fluid Balance,0,0,0,0,0,1,1,0,0,0,0,22.0,2
+BP Missing --> Lactate (max),BP Missing,Lactate (max),0,0,0,0,0,1,0,1,0,0,0,72.5,2
+FiO2 (max) --> INR (max),FiO2 (max),INR (max),0,0,0,0,0,0,1,1,0,0,0,5.5,2
+CKD (Baseline) --> Lactate Missing,CKD (Baseline),Lactate Missing,0,0,0,0,0,1,0,1,0,0,0,151.5,2
+FiO2 (max) --> Lactate (max),FiO2 (max),Lactate (max),0,0,0,0,0,0,1,1,0,0,0,28.5,2
+Blood Pressure (min) --> Mech. Vent Post-24h,Blood Pressure (min),Mech. Vent Post-24h,0,0,0,0,0,0,0,1,0,0,1,1.5,2
+FiO2 Missing --> SpO2 (min),FiO2 Missing,SpO2 (min),0,0,0,0,0,1,0,1,0,0,0,58.5,2
+INR (max) --> CVP (max),INR (max),CVP (max),0,0,0,0,0,0,0,1,0,1,0,4.0,2
+Blood Pressure (min) --> SpO2 (min),Blood Pressure (min),SpO2 (min),0,0,0,0,0,0,0,1,0,0,1,17.0,2
+FiO2 Missing --> Bilirubin (max),FiO2 Missing,Bilirubin (max),0,0,0,0,0,1,0,1,0,0,0,10.5,2
+FiO2 (max) --> WBC (max),FiO2 (max),WBC (max),0,0,0,0,0,0,1,1,0,0,0,1.5,2
+Diuretics --> Lymphocytes Abs (min),Diuretics,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,4.0,1
+Blood Pressure (min) --> Antibiotics,Blood Pressure (min),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,2.0,1
+Diuretics --> INR Missing,Diuretics,INR Missing,0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Temperature (max) --> AKI Onset (24h),Temperature (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Temp Missing --> Mech. Vent Onset (24h),Temp Missing,Mech. Vent Onset (24h),0,0,0,0,0,1,0,0,0,0,0,1.0,1
+FiO2 (max) --> Fluid Balance,FiO2 (max),Fluid Balance,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Temp Missing --> Lymphocytes Abs (min),Temp Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,26.0,1
+Blood Pressure (min) --> AKI Onset (24h),Blood Pressure (min),AKI Onset (24h),0,0,0,0,0,0,0,0,0,0,1,2.0,1
+SpO2 (min) --> Lactate Missing,SpO2 (min),Lactate Missing,0,0,0,0,0,0,0,1,0,0,0,1.0,1
+Bilirubin Missing --> WBC (max),Bilirubin Missing,WBC (max),0,0,0,0,0,0,0,1,0,0,0,127.0,1
+Bilirubin Missing --> Vasopressors,Bilirubin Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,128.0,1
+FiO2 (max) --> FiO2 Missing,FiO2 (max),FiO2 Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+Diuretics --> Temp Missing,Diuretics,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+FiO2 (max) --> Lactate Missing,FiO2 (max),Lactate Missing,0,0,0,0,0,0,0,1,0,0,0,1.0,1
+FiO2 (max) --> AKI Onset (24h),FiO2 (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+FiO2 (max) --> Antibiotics,FiO2 (max),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,0.0,1
+FiO2 (max) --> CVP (max),FiO2 (max),CVP (max),0,0,0,0,0,0,0,1,0,0,0,1.0,1
+Temp Missing --> Bilirubin Missing,Temp Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,32.0,1
+Blood Pressure (min) --> CVP (max),Blood Pressure (min),CVP (max),0,0,0,0,0,0,0,1,0,0,0,1.0,1
+FiO2 (max) --> Diuretics,FiO2 (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Temp Missing --> CVP (max),Temp Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,109.0,1
+INR Missing --> Temp Missing,INR Missing,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+CVP Missing --> Mech. Vent Onset (24h),CVP Missing,Mech. Vent Onset (24h),0,0,0,0,0,1,0,0,0,0,0,0.0,1
+Temperature (max) --> Bilirubin (max),Temperature (max),Bilirubin (max),0,0,0,0,0,0,1,0,0,0,0,8.0,1
+Blood Pressure (min) --> Platelet (max),Blood Pressure (min),Platelet (max),0,0,0,0,0,0,0,1,0,0,0,1.0,1
+WBC (max) --> Bilirubin Missing,WBC (max),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+WBC (max) --> CVP (max),WBC (max),CVP (max),0,0,0,0,0,0,0,1,0,0,0,19.0,1
+WBC (max) --> Diuretics,WBC (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,1.0,1
+Blood Pressure (min) --> INR (max),Blood Pressure (min),INR (max),0,0,0,0,0,0,0,1,0,0,0,3.0,1
+WBC (max) --> FiO2 Missing,WBC (max),FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+CVP (max) --> Temp Missing,CVP (max),Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+AKI Onset (24h) --> CVP (max),AKI Onset (24h),CVP (max),0,0,0,0,0,0,0,1,0,0,0,41.0,1
+AKI Onset (24h) --> Bilirubin Missing,AKI Onset (24h),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,7.0,1
+Blood Pressure (min) --> Lactate Missing,Blood Pressure (min),Lactate Missing,0,0,0,0,0,0,0,1,0,0,0,1.0,1
+WBC (max) --> INR Missing,WBC (max),INR Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+CVP (max) --> Lymphocytes Abs (min),CVP (max),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,3.0,1
+CVP (max) --> INR Missing,CVP (max),INR Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+WBC (max) --> Lymphocytes Abs (min),WBC (max),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+WBC Missing --> Bilirubin Missing,WBC Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Blood Pressure (min) --> FiO2 (max),Blood Pressure (min),FiO2 (max),0,0,0,0,0,0,0,1,0,0,0,16.0,1
+CVP (max) --> Diuretics,CVP (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,41.0,1
+WBC Missing --> CVP (max),WBC Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,26.0,1
+CVP (max) --> CVP Missing,CVP (max),CVP Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+WBC Missing --> FiO2 Missing,WBC Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+CVP (max) --> Bilirubin Missing,CVP (max),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+CVP (max) --> AKI Onset (24h),CVP (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,40.0,1
+CKD (Baseline) --> Antibiotics,CKD (Baseline),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,3.0,1
+CKD (Baseline) --> Bilirubin Missing,CKD (Baseline),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,27.0,1
+CKD (Baseline) --> CVP (max),CKD (Baseline),CVP (max),0,0,0,0,0,0,0,1,0,0,0,362.0,1
+WBC Missing --> Lymphocytes Abs (min),WBC Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+CKD (Baseline) --> Lymphocytes Abs (min),CKD (Baseline),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,21.0,1
+WBC Missing --> Platelet (max),WBC Missing,Platelet (max),0,0,0,0,0,0,0,1,0,0,0,26.0,1
+WBC Missing --> Vasopressors,WBC Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,26.0,1
+AKI Onset (24h) --> Diuretics,AKI Onset (24h),Diuretics,0,0,0,0,0,0,1,0,0,0,0,0.0,1
+WBC (max) --> AKI Onset (24h),WBC (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,0.0,1
+CVP Missing --> Bilirubin Missing,CVP Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,22.0,1
+Vasopressors --> Temp Missing,Vasopressors,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Temperature (max) --> Diuretics,Temperature (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Age --> Antibiotics,Age,Antibiotics,0,0,0,0,0,0,0,0,0,0,1,2.0,1
+Temperature (max) --> FiO2 Missing,Temperature (max),FiO2 Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Temperature (max) --> Fluid Balance,Temperature (max),Fluid Balance,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Diuretics --> CVP Missing,Diuretics,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+Temperature (max) --> Hemoglobin (min),Temperature (max),Hemoglobin (min),0,0,0,0,0,0,1,0,0,0,0,14.0,1
+Blood Pressure (min) --> Fluid Balance,Blood Pressure (min),Fluid Balance,0,0,0,0,0,0,0,0,0,0,1,2.0,1
+Temperature (max) --> INR (max),Temperature (max),INR (max),0,0,0,0,0,0,1,0,0,0,0,8.0,1
+Temperature (max) --> Lactate (max),Temperature (max),Lactate (max),0,0,0,0,0,0,1,0,0,0,0,43.0,1
+Diuretics --> Bilirubin Missing,Diuretics,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Temperature (max) --> Platelet (max),Temperature (max),Platelet (max),0,0,0,0,0,0,1,0,0,0,0,1.0,1
+Temperature (max) --> Vasopressors,Temperature (max),Vasopressors,0,0,0,0,0,0,1,0,0,0,0,6.0,1
+Temperature (max) --> WBC (max),Temperature (max),WBC (max),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Diuretics --> Antibiotics,Diuretics,Antibiotics,0,0,0,0,0,0,0,0,0,0,1,2.0,1
+Blood Pressure (min) --> Hemoglobin (min),Blood Pressure (min),Hemoglobin (min),0,0,0,0,0,0,0,1,0,0,0,2.0,1
+Vasopressors --> Antibiotics,Vasopressors,Antibiotics,0,0,0,0,0,0,0,0,0,0,1,0.0,1
+Vasopressors --> Bilirubin Missing,Vasopressors,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+AKI Onset (24h) --> Lymphocytes Abs (min),AKI Onset (24h),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,7.0,1
+Vasopressors --> CVP Missing,Vasopressors,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+Vasopressors --> Diuretics,Vasopressors,Diuretics,0,0,0,0,0,0,1,0,0,0,0,30.0,1
+CVP Missing --> Temp Missing,CVP Missing,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+CVP Missing --> Lymphocytes Abs (min),CVP Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,18.0,1
+AKI Onset (24h) --> INR Missing,AKI Onset (24h),INR Missing,0,0,0,0,0,1,0,0,0,0,0,7.0,1
+Vasopressors --> INR Missing,Vasopressors,INR Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+Vasopressors --> Lymphocytes Abs (min),Vasopressors,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,3.0,1
+AKI Onset (24h) --> FiO2 Missing,AKI Onset (24h),FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,7.0,1
+CVP Missing --> CVP (max),CVP Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,96.0,1
+FiO2 Missing --> Bilirubin Missing,FiO2 Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+Platelet Missing --> WBC (max),Platelet Missing,WBC (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+FiO2 Missing --> CVP (max),FiO2 Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,14.0,1
+Antibiotics --> Temp Missing,Antibiotics,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Lymphocytes Abs (min) --> FiO2 Missing,Lymphocytes Abs (min),FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Hemoglobin Missing --> Vasopressors,Hemoglobin Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,25.0,1
+BMI Missing --> CVP (max),BMI Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,44.0,1
+Hemoglobin Missing --> Platelet (max),Hemoglobin Missing,Platelet (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Lymphocytes Abs (min) --> INR Missing,Lymphocytes Abs (min),INR Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Hemoglobin Missing --> Lymphocytes Abs (min),Hemoglobin Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Lymphocytes Abs (min) --> Lymphocytes Missing,Lymphocytes Abs (min),Lymphocytes Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+Lymphocytes Abs (min) --> Vasopressors,Lymphocytes Abs (min),Vasopressors,0,0,0,0,0,0,1,0,0,0,0,54.0,1
+Hemoglobin Missing --> FiO2 Missing,Hemoglobin Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Lymphocytes Missing --> CVP (max),Lymphocytes Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,70.0,1
+Lymphocytes Missing --> FiO2 Missing,Lymphocytes Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,10.0,1
+Hemoglobin Missing --> CVP (max),Hemoglobin Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Hemoglobin Missing --> Bilirubin Missing,Hemoglobin Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+BP Missing --> Lymphocytes Abs (min),BP Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Hemoglobin (min) --> Lymphocytes Abs (min),Hemoglobin (min),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Lymphocytes Missing --> Lymphocytes Abs (min),Lymphocytes Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,10.0,1
+Hemoglobin (min) --> INR Missing,Hemoglobin (min),INR Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Hemoglobin (min) --> FiO2 Missing,Hemoglobin (min),FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Hemoglobin (min) --> Diuretics,Hemoglobin (min),Diuretics,0,0,0,0,0,0,1,0,0,0,0,18.0,1
+BMI Missing --> Bilirubin Missing,BMI Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,4.0,1
+Mech. Vent Onset (24h) --> Antibiotics,Mech. Vent Onset (24h),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+Hemoglobin (min) --> CVP (max),Hemoglobin (min),CVP (max),0,0,0,0,0,0,0,1,0,0,0,10.0,1
+Hemoglobin (min) --> Bilirubin Missing,Hemoglobin (min),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+AKI Onset (24h) --> Antibiotics,AKI Onset (24h),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+Hemoglobin (min) --> Antibiotics,Hemoglobin (min),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+Heart Rate (max) --> WBC (max),Heart Rate (max),WBC (max),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Heart Rate (max) --> Vasopressors,Heart Rate (max),Vasopressors,0,0,0,0,0,0,1,0,0,0,0,6.0,1
+Hemoglobin Missing --> WBC (max),Hemoglobin Missing,WBC (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Lymphocytes Abs (min) --> Diuretics,Lymphocytes Abs (min),Diuretics,0,0,0,0,0,0,1,0,0,0,0,18.0,1
+BMI Missing --> FiO2 Missing,BMI Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,4.0,1
+INR (max) --> INR Missing,INR (max),INR Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+INR Missing --> Lymphocytes Abs (min),INR Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+BMI Missing --> Vasopressors,BMI Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,44.0,1
+Lactate (max) --> Antibiotics,Lactate (max),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+Lactate (max) --> Bilirubin Missing,Lactate (max),Bilirubin Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+INR Missing --> CVP Missing,INR Missing,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Lactate (max) --> Diuretics,Lactate (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,6.0,1
+INR Missing --> CVP (max),INR Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+BMI Missing --> Lymphocytes Abs (min),BMI Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,4.0,1
+INR Missing --> AKI Onset (24h),INR Missing,AKI Onset (24h),0,0,0,0,0,0,0,0,1,0,0,1.0,1
+INR (max) --> Temp Missing,INR (max),Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+BP Missing --> FiO2 Missing,BP Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Lactate Missing --> Bilirubin Missing,Lactate Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Lactate Missing --> CVP (max),Lactate Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,12.0,1
+INR (max) --> Antibiotics,INR (max),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+BP Missing --> Fluid Balance,BP Missing,Fluid Balance,0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Lactate Missing --> FiO2 Missing,Lactate Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Lactate Missing --> Fluid Balance,Lactate Missing,Fluid Balance,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+INR (max) --> FiO2 Missing,INR (max),FiO2 Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Lactate Missing --> INR Missing,Lactate Missing,INR Missing,0,0,0,0,0,1,0,0,0,0,0,1.0,1
+INR (max) --> Diuretics,INR (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,13.0,1
+Lactate Missing --> Lymphocytes Abs (min),Lactate Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,1.0,1
+INR (max) --> CVP Missing,INR (max),CVP Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+BP Missing --> INR Missing,BP Missing,INR Missing,0,0,0,0,0,1,0,0,0,0,0,6.0,1
+Lactate Missing --> Vasopressors,Lactate Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,12.0,1
+INR (max) --> Bilirubin Missing,INR (max),Bilirubin Missing,0,0,0,0,0,0,0,0,1,0,0,3.0,1
+Lymphocytes Abs (min) --> AKI Onset (24h),Lymphocytes Abs (min),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,18.0,1
+Heart Rate (max) --> Temperature (max),Heart Rate (max),Temperature (max),0,0,1,0,0,0,0,0,0,0,0,0.0,1
+Heart Rate (max) --> SpO2 (min),Heart Rate (max),SpO2 (min),0,0,0,0,0,0,1,0,0,0,0,136.0,1
+SpO2 (min) --> Diuretics,SpO2 (min),Diuretics,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Antibiotics --> Lymphocytes Abs (min),Antibiotics,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,8.0,1
+Platelet Missing --> FiO2 Missing,Platelet Missing,FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Fluid Balance --> Temp Missing,Fluid Balance,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Platelet Missing --> Lymphocytes Abs (min),Platelet Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Fluid Balance --> FiO2 Missing,Fluid Balance,FiO2 Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Platelet Missing --> Platelet (max),Platelet Missing,Platelet (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Platelet Missing --> Vasopressors,Platelet Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,25.0,1
+INR Missing --> Vasopressors,INR Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Fluid Balance --> Diuretics,Fluid Balance,Diuretics,0,0,0,0,0,0,1,0,0,0,0,38.0,1
+Fluid Balance --> CVP Missing,Fluid Balance,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,0.0,1
+Race --> Antibiotics,Race,Antibiotics,0,0,0,0,0,0,0,0,0,0,1,2.0,1
+Race --> Bilirubin Missing,Race,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,8.0,1
+Age --> Temp Missing,Age,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,2.0,1
+Race --> CVP (max),Race,CVP (max),0,0,0,0,0,0,0,1,0,0,0,160.0,1
+Race --> CVP Missing,Race,CVP Missing,0,0,0,0,0,0,0,1,0,0,0,0.0,1
+Fluid Balance --> Bilirubin Missing,Fluid Balance,Bilirubin Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Age --> Mech. Vent Onset (24h),Age,Mech. Vent Onset (24h),0,0,0,0,0,1,0,0,0,0,0,0.0,1
+Age --> Lymphocytes Missing,Age,Lymphocytes Missing,0,0,0,0,0,0,0,1,0,0,0,1.0,1
+FiO2 Missing --> WBC (max),FiO2 Missing,WBC (max),0,0,0,0,0,0,0,1,0,0,0,14.0,1
+FiO2 Missing --> Vasopressors,FiO2 Missing,Vasopressors,0,0,0,0,0,0,0,1,0,0,0,14.0,1
+FiO2 Missing --> Platelet (max),FiO2 Missing,Platelet (max),0,0,0,0,0,0,0,1,0,0,0,14.0,1
+Bilirubin Missing --> Lymphocytes Abs (min),Bilirubin Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,1.0,1
+FiO2 Missing --> Lymphocytes Abs (min),FiO2 Missing,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,0.0,1
+FiO2 Missing --> INR Missing,FiO2 Missing,INR Missing,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+Bilirubin Missing --> Lymphocytes Missing,Bilirubin Missing,Lymphocytes Missing,0,0,0,0,0,0,0,1,0,0,0,0.0,1
+Age --> CVP Missing,Age,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,2.0,1
+SpO2 (min) --> Antibiotics,SpO2 (min),Antibiotics,0,0,0,0,0,0,0,0,0,0,1,1.0,1
+FiO2 Missing --> Fluid Balance,FiO2 Missing,Fluid Balance,0,0,0,0,0,1,0,0,0,0,0,3.0,1
+Platelet Missing --> CVP (max),Platelet Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,25.0,1
+Platelet Missing --> Bilirubin Missing,Platelet Missing,Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Bilirubin Missing --> CVP (max),Bilirubin Missing,CVP (max),0,0,0,0,0,0,0,1,0,0,0,128.0,1
+Heart Rate (max) --> Bilirubin (max),Heart Rate (max),Bilirubin (max),0,0,0,0,0,0,1,0,0,0,0,8.0,1
+Heart Rate (max) --> Platelet (max),Heart Rate (max),Platelet (max),0,0,0,0,0,0,1,0,0,0,0,0.0,1
+Heart Rate (max) --> Lactate (max),Heart Rate (max),Lactate (max),0,0,0,0,0,0,1,0,0,0,0,43.0,1
+Heart Rate (max) --> INR (max),Heart Rate (max),INR (max),0,0,0,0,0,0,1,0,0,0,0,8.0,1
+Mech. Vent Onset (24h) --> Lymphocytes Abs (min),Mech. Vent Onset (24h),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,7.0,1
+Heart Rate (max) --> Hemoglobin (min),Heart Rate (max),Hemoglobin (min),0,0,0,0,0,0,1,0,0,0,0,14.0,1
+Heart Rate (max) --> Fluid Balance,Heart Rate (max),Fluid Balance,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Heart Rate (max) --> FiO2 (max),Heart Rate (max),FiO2 (max),0,0,0,0,0,0,1,0,0,0,0,67.0,1
+Antibiotics --> Diuretics,Antibiotics,Diuretics,0,0,0,0,0,0,1,0,0,0,0,64.0,1
+Antibiotics --> CVP Missing,Antibiotics,CVP Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Heart Rate (max) --> Diuretics,Heart Rate (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Heart Rate (max) --> Blood Pressure (min),Heart Rate (max),Blood Pressure (min),0,0,0,0,0,0,1,0,0,0,0,212.0,1
+Platelet (max) --> AKI Onset (24h),Platelet (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Heart Rate (max) --> AKI Post-24h,Heart Rate (max),AKI Post-24h,0,0,0,0,0,0,1,0,0,0,0,35.0,1
+Bilirubin (max) --> Temp Missing,Bilirubin (max),Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Platelet (max) --> Bilirubin Missing,Platelet (max),Bilirubin Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Heart Rate (max) --> AKI Onset (24h),Heart Rate (max),AKI Onset (24h),0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Platelet (max) --> CVP (max),Platelet (max),CVP (max),0,0,0,0,0,0,0,1,0,0,0,14.0,1
+Platelet (max) --> Diuretics,Platelet (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,2.0,1
+Platelet (max) --> FiO2 Missing,Platelet (max),FiO2 Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Bilirubin (max) --> CVP Missing,Bilirubin (max),CVP Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Gender --> Temp Missing,Gender,Temp Missing,0,0,0,0,0,0,0,0,1,0,0,1.0,1
+Bilirubin (max) --> Diuretics,Bilirubin (max),Diuretics,0,0,0,0,0,0,1,0,0,0,0,13.0,1
+Gender --> Lymphocytes Abs (min),Gender,Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,22.0,1
+Platelet (max) --> INR Missing,Platelet (max),INR Missing,0,0,0,0,0,1,0,0,0,0,0,2.0,1
+Bilirubin (max) --> Lymphocytes Abs (min),Bilirubin (max),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,1.0,1
+Platelet (max) --> Lymphocytes Abs (min),Platelet (max),Lymphocytes Abs (min),0,0,0,0,0,1,0,0,0,0,0,2.0,1
+WBC Missing --> WBC (max),WBC Missing,WBC (max),0,0,0,0,0,0,0,1,0,0,0,26.0,1

@@ -1,0 +1,99 @@
+cause,effect,agreement_norm
+AKI Onset (24h),AKI Post-24h,1.0
+Gender,Platelet (max),1.0
+Mech. Vent Post-24h,Hospital Mortality,1.0
+Antibiotics,Hospital Mortality,1.0
+Mech. Vent Onset (24h),Mech. Vent Post-24h,1.0
+Mech. Vent Onset (24h),Hospital Mortality,1.0
+AKI Onset (24h),Hospital Mortality,1.0
+Antibiotics,Mech. Vent Post-24h,1.0
+Lactate (max),Hospital Mortality,1.0
+Age,Diuretics,1.0
+INR (max),Hospital Mortality,0.9090909090909091
+Age,Blood Pressure (min),0.9090909090909091
+Gender,Mech. Vent Post-24h,0.9090909090909091
+Gender,Hospital Mortality,0.9090909090909091
+Gender,Hemoglobin (min),0.9090909090909091
+Gender,Blood Pressure (min),0.9090909090909091
+Fluid Balance,Hospital Mortality,0.9090909090909091
+CKD (Baseline),Mech. Vent Post-24h,0.9090909090909091
+Age,Hospital Mortality,0.9090909090909091
+Age,Heart Rate (max),0.9090909090909091
+CKD (Baseline),Hospital Mortality,0.9090909090909091
+Bilirubin (max),Hospital Mortality,0.8181818181818182
+Gender,Fluid Balance,0.8181818181818182
+CKD (Baseline),Hemoglobin (min),0.8181818181818182
+CKD (Baseline),Heart Rate (max),0.8181818181818182
+SpO2 (min),Hospital Mortality,0.8181818181818182
+AKI Onset (24h),Mech. Vent Post-24h,0.8181818181818182
+Gender,AKI Post-24h,0.7272727272727272
+Mech. Vent Onset (24h),AKI Post-24h,0.7272727272727272
+Race,Hospital Mortality,0.7272727272727272
+Fluid Balance,AKI Post-24h,0.7272727272727272
+Vasopressors,Hospital Mortality,0.7272727272727272
+CKD (Baseline),AKI Post-24h,0.7272727272727272
+Fluid Balance,Mech. Vent Post-24h,0.7272727272727272
+AKI Post-24h,Hospital Mortality,0.7272727272727272
+Bilirubin (max),AKI Post-24h,0.7272727272727272
+Age,AKI Post-24h,0.7272727272727272
+Age,Bilirubin (max),0.7272727272727272
+Race,BMI Missing,1.0
+INR Missing,AKI Post-24h,1.0
+FiO2 Missing,Hospital Mortality,1.0
+Gender,CVP Missing,1.0
+FiO2 Missing,Mech. Vent Post-24h,1.0
+Gender,INR Missing,1.0
+Lactate Missing,Hemoglobin (min),1.0
+BMI Missing,Hospital Mortality,1.0
+Age,BMI Missing,1.0
+Age,Bilirubin Missing,1.0
+Bilirubin Missing,Hospital Mortality,1.0
+Bilirubin (max),Lactate Missing,0.75
+Gender,Lactate Missing,0.75
+Lymphocytes Missing,Platelet (max),0.75
+Lymphocytes Missing,Hospital Mortality,0.75
+Lymphocytes Missing,Blood Pressure (min),0.75
+Gender,FiO2 Missing,0.75
+Lymphocytes Missing,Heart Rate (max),0.75
+Lymphocytes Missing,Hemoglobin (min),0.75
+BP Missing,Platelet (max),0.75
+Race,FiO2 Missing,0.75
+Age,Lactate Missing,0.75
+Age,INR Missing,0.75
+Age,FiO2 Missing,0.75
+Lymphocytes Missing,Lactate Missing,0.75
+INR Missing,Blood Pressure (min),0.75
+Lymphocytes Missing,WBC (max),0.75
+Mech. Vent Onset (24h),FiO2 Missing,0.75
+CVP (max),Lactate Missing,0.75
+Mech. Vent Onset (24h),Temp Missing,0.75
+INR Missing,FiO2 (max),0.75
+Mech. Vent Onset (24h),CVP Missing,0.75
+INR Missing,Fluid Balance,0.75
+INR Missing,Heart Rate (max),0.75
+INR Missing,Hemoglobin (min),0.75
+INR Missing,Hospital Mortality,0.75
+INR Missing,Lactate (max),0.75
+INR Missing,Lactate Missing,0.75
+CKD (Baseline),FiO2 Missing,0.75
+INR Missing,Mech. Vent Post-24h,0.75
+CVP Missing,Blood Pressure (min),0.75
+BP Missing,Hospital Mortality,0.75
+Diuretics,Lactate Missing,0.75
+Lactate Missing,Heart Rate (max),0.75
+Bilirubin Missing,AKI Post-24h,0.75
+Lactate Missing,Blood Pressure (min),0.75
+Mech. Vent Onset (24h),Lactate Missing,0.75
+Lactate Missing,AKI Post-24h,0.75
+Diuretics,FiO2 Missing,0.75
+Antibiotics,Lactate Missing,0.75
+CVP Missing,WBC (max),0.75
+CVP Missing,Platelet (max),0.75
+CVP Missing,Mech. Vent Post-24h,0.75
+CVP Missing,Lactate Missing,0.75
+CVP Missing,Hospital Mortality,0.75
+CVP Missing,Hemoglobin (min),0.75
+CVP Missing,Heart Rate (max),0.75
+Vasopressors,Lactate Missing,0.75
+CVP Missing,FiO2 Missing,0.75
+CVP Missing,FiO2 (max),0.75
