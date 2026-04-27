@@ -1,0 +1,24 @@
+---
+title: "An Ensemble Approach to Causal Discovery in Adult Sepsis Patients"
+author:
+  - name: Kayvan Sinha
+    affiliations:
+      - name: University of Wisconsin-Madison
+        department: Department of Pediatrics
+abstract: |
+  Randomized controlled trials (RCTs), while essential for establishing clinical evidence, are often constrained by cost, recruitment, and ethical limitations. This project investigates whether causal discovery methods applied to ICU sepsis patients in the MIMIC-IV electronic health record (EHR) database can generate clinically meaningful insights. Following data preprocessing, we applied multiple causal discovery algorithms via ensemble approaches to build causal graphs of pathways leading to adverse outcomes such as respiratory failure, kidney injury, and mortality. The pipeline was evaluated by recovering established RCT-based relationships while testing different algorithms, missing-data strategies, and independence tests. This work demonstrated that causal discovery on observational EHR data can complement RCT evidence, offering a scalable path toward causal understanding of complex conditions in critical care and future treatment-focused hypothesis generation.
+format:
+  plos-pdf: default
+---
+
+## Introduction
+
+## Background
+
+## Methods
+
+## Results
+
+{{< embed Results.qmd#fig-dag >}}
+
+## Discussion

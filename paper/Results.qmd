@@ -1,0 +1,19 @@
+---
+title: "Results"
+---
+
+
+## Causal Graph Structure
+
+```{python}
+#| echo: false
+#| label: fig-dag
+#| fig-cap: "Causal Graph Structure recovered by the FCI algorithm with Fisher-Z Independence Test & Simple Imputation."
+import os
+from IPython.display import Image, display
+
+graph_path = os.path.join("..", "graphs", "v3", "FCI_fisherz_simple.png")
+display(Image(filename=graph_path))
+```
+
+The causal discovery algorithm recovered the structure shown in @fig-dag.

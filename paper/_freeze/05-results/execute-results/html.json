@@ -1,0 +1,12 @@
+{
+  "hash": "78bb16a5c157c0029e23c08a95f5ff91",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Results\"\n---\n\n\n## Causal Graph Structure\n\n::: {#cell-fig-dag .cell execution_count=1}\n\n::: {#fig-dag .cell-output .cell-output-display}\n```\n'../graphs/v3/FCI_fisherz_simple.png'\n```\n\nCausal Graph Structure recovered by the FCI algorithm with Fisher-Z Independence Test & Simple Imputation.\n:::\n:::\n\n\nThe causal discovery algorithm recovered the structure shown in @fig-dag.\n\n",
+    "supporting": [
+      "05-results_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
