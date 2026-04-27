@@ -2,7 +2,7 @@ import networkx as nx
 import pandas as pd
 from dowhy import CausalModel
 
-# ── Load data ──────────────────────────────────────────────────────────────────
+
 df = pd.read_csv("data/processed/analysis_cleaned.csv")
 consensus = pd.read_csv("results/consensus_edges.csv")
 
@@ -52,26 +52,41 @@ label_map = {
 
 df = df.rename(columns=label_map)
 
-# ── Build DiGraph using raw col names ─────────────────────────────────────────
+
 G = nx.DiGraph()
 for _, row in consensus.iterrows():
     cause = row["cause"]
     effect = row["effect"]
     G.add_edge(cause, effect)
 
-# # What goes INTO mechvent_24h_onset (potential confounders)
-# print("Parents of MV Onset (24h):")
-# print(list(G.predecessors("Mech. Vent Onset (24h)")))
+# What goes INTO mechvent_24h_onset (potential confounders)
+print("Parents of MV Onset (24h):")
+print(list(G.predecessors("Mech. Vent Onset (24h)")))
 
-# # What goes INTO aki_post24h_stage
-# print("\nParents of AKI Post-24h:")
-# print(list(G.predecessors("AKI Post-24h")))
+# What goes INTO aki_post24h_stage
+print("\nParents of AKI Post-24h:")
+print(list(G.predecessors("AKI Post-24h")))
 
-# # Common ancestors
-# mv_ancestors = nx.ancestors(G, "Mech. Vent Onset (24h)")
-# aki_ancestors = nx.ancestors(G, "AKI Post-24h")
-# print("\nCommon ancestors (potential confounders):")
-# print(mv_ancestors & aki_ancestors)
+# Common ancestors
+mv_ancestors = nx.ancestors(G, "Mech. Vent Onset (24h)")
+aki_ancestors = nx.ancestors(G, "AKI Post-24h")
+print("\nCommon ancestors (potential confounders):")
+print(mv_ancestors & aki_ancestors)
+
+# What goes INTO aki_24h_onset_stage (potential confounders)
+print("Parents of AKI Onset (24h):")
+print(list(G.predecessors("AKI Onset (24h)")))
+
+# What goes INTO mechvent_post24h
+print("\nParents of MV Post-24h:")
+print(list(G.predecessors("Mech. Vent Post-24h")))
+
+# Common ancestors for AKI → MV
+aki_early_ancestors = nx.ancestors(G, "AKI Onset (24h)")
+mv_late_ancestors = nx.ancestors(G, "Mech. Vent Post-24h")
+print("\nCommon ancestors (potential confounders for AKI → MV):")
+print(aki_early_ancestors & mv_late_ancestors)
+
 
 
 print(f"Nodes: {G.number_of_nodes()}, Edges: {G.number_of_edges()}")
