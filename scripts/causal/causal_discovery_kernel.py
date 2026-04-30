@@ -103,11 +103,26 @@ def build_background_knowledge(nodes: list, col_names: list) -> BackgroundKnowle
                 bk.add_forbidden_by_node(col_to_node[c2], col_to_node[c1])
     for col in col_names:
         indicator_name = f"{col}_missing"
-        if col in col_to_node and indicator_name in col_to_node:
-            bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[col])
+        if indicator_name in col_to_node:
+            # indicator can't cause its own variable
+            if col in col_to_node:
+                bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[col])
+            
+            # indicator can't cause demographics
             for demo in DEMO_COLS:
                 if demo in col_to_node:
                     bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[demo])
+            
+            # indicator can't cause ANY clinical variable
+            for other_col in PHYS_COLS + TREAT_COLS + OUT24_COLS + POST24_COLS + MORT_COLS:
+                if other_col in col_to_node:
+                    bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[other_col])
+            
+            # indicators can't cause each other
+            for other_col in col_names:
+                other_indicator = f"{other_col}_missing"
+                if other_indicator in col_to_node and other_indicator != indicator_name:
+                    bk.add_forbidden_by_node(col_to_node[indicator_name], col_to_node[other_indicator])
     return bk
 
 def run_and_save(algo, data_sample, all_cols, run_name, alpha=ALPHA):
