@@ -8,7 +8,7 @@ vitals = {
     "Heart Rate (max)":     {'itemid': 220045,           'agg': 'max', 'valid': (0, 300)},
     "Blood Pressure (min)": {'itemid': [220181, 220052], 'agg': 'min', 'valid': (0, 300)},
     "SpO2 (min)":           {'itemid': 220277,           'agg': 'min', 'valid': (0, 100)},
-    "FiO2 (max)":           {'itemid': 223835,           'agg': 'max', 'valid': (0.21, 1.0)},
+    "FiO2 (max)":           {'itemid': 223835,           'agg': 'max', 'valid': (21, 100)},
     "temperature_max_C":    {'itemid': 223762,           'agg': 'max', 'valid': (25, 45)},
     "temperature_max_F":    {'itemid': 223761,           'agg': 'max', 'valid': (77, 113)},
     "GCS Motor (min)":      {'itemid': 223901,           'agg': 'min', 'valid': (1, 6)},
