@@ -4,9 +4,37 @@ import datetime as dt
 import numpy as np
 
 
-vitals = {"heart_rate_max":{'itemid':220045, 'agg':'max'}, "blood_pressure_min":{'itemid':[220181, 220052],"agg":'min'},"spO2_min":{'itemid':220277,'agg':'min'},"FiO2_max":{'itemid':223835, 'agg':'max'},"temperature_max_C":{'itemid':223762, 'agg':'max'},"temperature_max_F":{'itemid':223761,'agg':'max'},"gsc_motor_min":{'itemid':223901,'agg':'min'},"gsc_verbal_min":{'itemid':223900,'agg':'min'},"gsc_eye_min":{'itemid':220739,'agg':'min'},"cvp":{'itemid':220074,'agg':'max'}}
+vitals = {
+    "Heart Rate (max)":     {'itemid': 220045,           'agg': 'max', 'valid': (0, 300)},
+    "Blood Pressure (min)": {'itemid': [220181, 220052], 'agg': 'min', 'valid': (0, 300)},
+    "SpO2 (min)":           {'itemid': 220277,           'agg': 'min', 'valid': (0, 100)},
+    "FiO2 (max)":           {'itemid': 223835,           'agg': 'max', 'valid': (0.21, 1.0)},
+    "temperature_max_C":    {'itemid': 223762,           'agg': 'max', 'valid': (25, 45)},
+    "temperature_max_F":    {'itemid': 223761,           'agg': 'max', 'valid': (77, 113)},
+    "GCS Motor (min)":      {'itemid': 223901,           'agg': 'min', 'valid': (1, 6)},
+    "GCS Verbal (min)":     {'itemid': 223900,           'agg': 'min', 'valid': (1, 5)},
+    "GCS Eye (min)":        {'itemid': 220739,           'agg': 'min', 'valid': (1, 4)},
+    "CVP (max)":            {'itemid': 220074,           'agg': 'max', 'valid': (-5, 30)},
+}
 
-labevents = {"sodium_max":{'itemid':[50983,52623],'agg':'max'}, "sodium_min":{'itemid':[50983,52623],'agg':'min'},"potassium_max":{'itemid':[52610,50971],'agg':'max'},"bun_max":{'itemid':[51006,52647], 'agg':'max'},"creatinine_max":{'itemid':[50912,52546],'agg':'max'},"glucose_min":{'itemid':[50931,52569],'agg':'min'},"pH_min":{'itemid':[50820],'agg':'min'},"lactate_max":{'itemid':[50813, 53154],'agg':'max'}, "platelet_max":{'itemid':[51704,51265],'agg':'max'},"wbc_max":{'itemid':[51301, 51516],'agg':'max'},"hemoglobin_min":{'itemid':[50811, 51222],'agg':'min'},"ast_max":{'itemid':[53088,50878],'agg':'max'},"alt_max":{'itemid':[50861],'agg':'max'},"bilirubin_max":{'itemid':[50885,53089],'agg':'max'},"inr_max":{'itemid':[51675,51237],'agg':'max'}, "lymphocyte_abs_min": {'itemid': [51133, 52769],'agg': 'min'}}
+labevents = {
+    "Sodium (max)":          {'itemid': [50983,52623],  'agg': 'max', 'valid': (100, 200)},
+    "Sodium (min)":          {'itemid': [50983,52623],  'agg': 'min', 'valid': (100, 200)},
+    "Potassium (max)":       {'itemid': [52610,50971],  'agg': 'max', 'valid': (1, 15)},
+    "BUN (max)":             {'itemid': [51006,52647],  'agg': 'max', 'valid': (0, 300)},
+    "Creatinine (max)":      {'itemid': [50912,52546],  'agg': 'max', 'valid': (0, 50)},
+    "Glucose (min)":         {'itemid': [50931,52569],  'agg': 'min', 'valid': (0, 2000)},
+    "pH (min)":              {'itemid': [50820],        'agg': 'min', 'valid': (6.5, 8.0)},
+    "Lactate (max)":         {'itemid': [50813,53154],  'agg': 'max', 'valid': (0, 50)},
+    "Platelet (max)":        {'itemid': [51704,51265],  'agg': 'max', 'valid': (0, 3000)},
+    "WBC (max)":             {'itemid': [51301,51516],  'agg': 'max', 'valid': (0, 500)},
+    "Hemoglobin (min)":      {'itemid': [50811,51222],  'agg': 'min', 'valid': (0, 30)},
+    "AST (max)":             {'itemid': [53088,50878],  'agg': 'max', 'valid': (0, 50000)},
+    "ALT (max)":             {'itemid': [50861],        'agg': 'max', 'valid': (0, 50000)},
+    "Bilirubin (max)":       {'itemid': [50885,53089],  'agg': 'max', 'valid': (0, 150)},
+    "INR (max)":             {'itemid': [51675,51237],  'agg': 'max', 'valid': (0, 20)},
+    "Lymphocytes Abs (min)": {'itemid': [51133,52769],  'agg': 'min', 'valid': (0, 50)},
+}
 
 antibiotics = ['Vancomycin', 'Piperacillin-Tazobactam', 'Ciprofloxacin', 'Ciprofloxacin HCl', 'Meropenem', 'CefePIME', 'CeftriaXONE', 'MetRONIDAZOLE (FLagyl)', 'CefTRIAXone', 'Acyclovir', 'CefazoLIN', 'Sulfameth/Trimethoprim DS', 'Tobramycin', 'Azithromycin', 'Levofloxacin', 'Ampicillin', 'Erythromycin', 'Clindamycin', 'Aztreonam', 'CeFAZolin', 'moxifloxacin', 'Linezolid', 'Micafungin', 'Sulfamethoxazole-Trimethoprim', 'Doxycycline Hyclate', 'CefTAZidime', 'MetroNIDAZOLE', 'Sulfameth/Trimethoprim SS']
 antibiotic_patterns = [
@@ -59,21 +87,30 @@ def get_vitals(df, chartevents):
     merged = merged[mask]
     for vital, info in vitals.items():
         itemids = info["itemid"] if isinstance(info["itemid"], list) else [info["itemid"]]
-        test = merged[merged["itemid"].isin(itemids)].groupby("stay_id")["valuenum"].agg(info["agg"]).reset_index(name=vital)
+        subset = merged[merged["itemid"].isin(itemids)]
+        if "valid" in info:
+            lo, hi = info["valid"]
+            subset = subset[(subset["valuenum"] >= lo) & (subset["valuenum"] <= hi)]
+        test = subset.groupby("stay_id")["valuenum"].agg(info["agg"]).reset_index(name=vital)
         df = df.merge(test, on="stay_id",how="left")
     return df
 
-def get_labs(df,labs):
+def get_labs(df, labs):
     df = df.copy()
     l = labs.copy()
     l["charttime"] = pd.to_datetime(l["charttime"])
     merged = df[["hadm_id","start_window","end_window"]].merge(l, on="hadm_id", how="left")
-    mask =  (merged['start_window'] <= merged['charttime']) & (merged['charttime']<=merged["end_window"])
+    mask = (merged['start_window'] <= merged['charttime']) & (merged['charttime'] <= merged["end_window"])
     merged = merged[mask]
     for event, info in labevents.items():
-        test = merged[merged["itemid"].isin(info["itemid"])].groupby("hadm_id")["valuenum"].agg(info["agg"]).reset_index(name=event)
-        df = df.merge(test, on="hadm_id",how="left")
+        subset = merged[merged["itemid"].isin(info["itemid"])]
+        if "valid" in info:
+            lo, hi = info["valid"]
+            subset = subset[(subset["valuenum"] >= lo) & (subset["valuenum"] <= hi)]
+        test = subset.groupby("hadm_id")["valuenum"].agg(info["agg"]).reset_index(name=event)
+        df = df.merge(test, on="hadm_id", how="left")
     return df
+
         
 def get_medications(df,pharmacy):
     df = df.copy()
@@ -92,8 +129,8 @@ def get_medications(df,pharmacy):
 
     df = df.merge(ab_flag, on="hadm_id", how="left")
     df = df.merge(vaso_flag, on="hadm_id", how="left")
-    df["antibiotics_given"] = df["antibiotics_given"].notna().astype(int)
-    df["vaso_given"] = df["vaso_given"].notna().astype(int)
+    df["Antibiotics"] = df["antibiotics_given"].notna().astype(int)
+    df["Vasopressors"] = df["vaso_given"].notna().astype(int)
     return df
     
 def get_max_creatinine_bun(df,labs):
@@ -122,16 +159,56 @@ def get_time_to_first_antibiotic(df,pharmacy):
 def get_bmi(df, omr):
     o = omr.copy()
     o["chartdate"] = pd.to_datetime(o["chartdate"])
-    o = o[o["result_name"].isin(["Height (Inches)", "Weight (Lbs)"])]
-    merged = o.merge(df[["subject_id", "hadm_id", "admittime"]],on="subject_id", how="right")
-    merged = merged[merged["chartdate"] >= merged["admittime"]]
-    pivoted = merged.pivot_table(index=["subject_id", "hadm_id", "chartdate"], columns="result_name",values="result_value", aggfunc="first").reset_index()
-    pivoted = pivoted.sort_values(["hadm_id", "chartdate"]).groupby("hadm_id").first().reset_index()
-    pivoted["Height (Inches)"] = pd.to_numeric(pivoted["Height (Inches)"], errors="coerce")
-    pivoted["Weight (Lbs)"] = pd.to_numeric(pivoted["Weight (Lbs)"], errors="coerce")
-    pivoted["BMI"] = (pivoted["Weight (Lbs)"] / (pivoted["Height (Inches)"] ** 2))*703
-    pivoted = pivoted[["hadm_id", "BMI"]]
-    df = df.merge(pivoted, on="hadm_id", how="left")
+    o["result_value"] = pd.to_numeric(o["result_value"], errors="coerce")
+    
+    merged = o.merge(df[["subject_id", "hadm_id", "admittime"]], 
+                     on="subject_id", how="right")
+    
+    # Source 1 — BMI directly from OMR up to 1 year before admission, any time after
+    bmi_direct = (
+        merged[
+            (merged["result_name"] == "BMI (kg/m2)") &
+            (merged["chartdate"] >= merged["admittime"] - pd.Timedelta(days=365)) &
+            (merged["result_value"] >= 10) & (merged["result_value"] <= 80)
+        ]
+        .sort_values(["hadm_id", "chartdate"])
+        .groupby("hadm_id")["result_value"].first()
+        .rename("BMI")
+    )
+
+    # Source 2 — calculate from height + weight
+    # Height: no time restriction 
+    height = (
+        merged[merged["result_name"].isin(["Height (Inches)", "Height"])]
+        .sort_values(["hadm_id", "chartdate"])
+        .groupby("hadm_id")["result_value"].first()
+        .rename("height")
+    )
+
+    # Weight: within 1 year before to 30 days after admission
+    weight = (
+        merged[
+            (merged["result_name"].isin(["Weight (Lbs)", "Weight"])) &
+            (merged["chartdate"] >= merged["admittime"] - pd.Timedelta(days=365)) &
+            (merged["chartdate"] <= merged["admittime"] + pd.Timedelta(days=30))
+        ]
+        .sort_values(["hadm_id", "chartdate"])
+        .groupby("hadm_id")["result_value"].first()
+        .rename("weight")
+    )
+
+    bmi_calc = pd.concat([height, weight], axis=1).reset_index()
+    bmi_calc["BMI_calc"] = (bmi_calc["weight"] / (bmi_calc["height"] ** 2)) * 703
+    bmi_calc["BMI_calc"] = bmi_calc["BMI_calc"].where(
+    (bmi_calc["BMI_calc"] >= 10) & (bmi_calc["BMI_calc"] <= 80), np.nan)
+    bmi_calc = bmi_calc[["hadm_id", "BMI_calc"]]
+
+    # Merge both sources — prefer direct BMI, fallback to calculated
+    df = df.merge(bmi_direct.reset_index(), on="hadm_id", how="left")
+    df = df.merge(bmi_calc, on="hadm_id", how="left")
+    df["BMI"] = df["BMI"].fillna(df["BMI_calc"])
+    df = df.drop(columns=["BMI_calc"])
+
     return df
 
 def get_max_temperature(row):
@@ -160,10 +237,12 @@ def get_fluid_balance(df, inputevents, outputevents):
     o = o[(o["charttime"] >= o["start_window"]) & (o["charttime"] <= o["end_window"])]
     i.loc[i["amountuom"] == "L", "amount"] *= 1000
     o.loc[o["valueuom"] == "L", "value"]  *= 1000
+    i = i[(i["amount"] >= 0) & (i["amount"] <= 50000)] 
+    o = o[(o["value"] >= 0) & (o["value"] <= 50000)]
     total_in = i.groupby("stay_id")["amount"].sum().reset_index(name="total_fluid_input")
     total_out = o.groupby("stay_id")["value"].sum().reset_index(name="total_fluid_output")
     balance = total_in.merge(total_out, on="stay_id", how="outer").fillna(0)
-    balance["fluid_balance"] = balance["total_fluid_input"] - balance["total_fluid_output"]
+    balance["Fluid Balance (mL)"] = balance["total_fluid_input"] - balance["total_fluid_output"]
     balance = balance.drop(columns=["total_fluid_input", "total_fluid_output"])
     df = df.merge(balance, on="stay_id", how="left")
     return df
@@ -179,6 +258,32 @@ def get_diuretics(df, pharmacy):
     diuretic_flag = p[p['is_diuretic']].groupby("hadm_id").size().reset_index(name="diuretics_given")
     diuretic_flag["diuretics_given"] = 1
     df = df.merge(diuretic_flag[["hadm_id", "diuretics_given"]], on="hadm_id", how="left")
-    df["diuretics_given"] = df["diuretics_given"].fillna(0).astype(int)
+    df["Diuretics"] = df["diuretics_given"].fillna(0).astype(int)
     return df
+
+def explore_bmi_missingness(df, omr):
+    o = omr.copy()
+    o["chartdate"] = pd.to_datetime(o["chartdate"])
+    
+    # What result_names exist in OMR?
+    print("All result_names in OMR:")
+    print(o["result_name"].value_counts().head(20))
+    
+    # How many unique patients have height/weight at all?
+    has_height = o[o["result_name"] == "Height (Inches)"]["subject_id"].nunique()
+    has_weight = o[o["result_name"] == "Weight (Lbs)"]["subject_id"].nunique()
+    total = df["subject_id"].nunique()
+    print(f"\nPatients with any height: {has_height} ({has_height/total*100:.1f}%)")
+    print(f"Patients with any weight: {has_weight} ({has_weight/total*100:.1f}%)")
+    
+    # How many have height/weight AFTER admittime?
+    merged = o.merge(df[["subject_id","hadm_id","admittime"]], on="subject_id", how="right")
+    after_admit = merged[merged["chartdate"] >= merged["admittime"]]
+    has_height_after = after_admit[after_admit["result_name"] == "Height (Inches)"]["subject_id"].nunique()
+    has_weight_after = after_admit[after_admit["result_name"] == "Weight (Lbs)"]["subject_id"].nunique()
+    print(f"\nPatients with height after admittime: {has_height_after} ({has_height_after/total*100:.1f}%)")
+    print(f"Patients with weight after admittime: {has_weight_after} ({has_weight_after/total*100:.1f}%)")
+    
+    # Check chartevents for weight — itemid 224639
+    print("\nNote: weight is often in chartevents (itemid 224639), not OMR")
 

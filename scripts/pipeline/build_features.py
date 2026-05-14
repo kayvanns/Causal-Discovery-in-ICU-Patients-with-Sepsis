@@ -106,6 +106,8 @@ def build_base(cohort: pd.DataFrame, tables: dict) -> pd.DataFrame:
         tables["admissions"][["hadm_id", "admittime", "dischtime", "race", "hospital_expire_flag"]],
         on="hadm_id", how="left"
     )
+    df["admittime"] = pd.to_datetime(df["admittime"], errors="coerce")
+    df["dischtime"] = pd.to_datetime(df["dischtime"], errors="coerce")
     return df
 
 
@@ -117,7 +119,7 @@ def build_features(base: pd.DataFrame, tables: dict) -> pd.DataFrame:
 
     df = fe.get_vitals(df, chartevents=tables["chartevents"])
 
-    df["temp_max_F"] = df.apply(fe.get_max_temperature, axis=1)
+    df["Temperature (Max)"] = df.apply(fe.get_max_temperature, axis=1)
     df = df.drop(columns=["temperature_max_F", "temperature_max_C"], errors="ignore")
 
     df = fe.get_medications(df, pharmacy=tables["pharmacy"])
@@ -143,7 +145,6 @@ if __name__ == "__main__":
 
     base   = build_base(cohort, tables)
     result = build_features(base, tables)
-
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     result.to_csv(OUTPUT_PATH, index=False)
     print(f"\nSaved: {OUTPUT_PATH}  {result.shape}")

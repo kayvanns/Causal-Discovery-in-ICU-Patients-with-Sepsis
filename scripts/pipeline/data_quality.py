@@ -2,80 +2,71 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv("/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis.csv")
-df = df.rename(columns={"cvp": "cvp_max"})
-print("=== Shape ===")
-print(df.shape)
 
-print("\n=== Missing rates ===")
-print(df.isnull().mean().sort_values(ascending=False).round(3))
+DEMO_COLS   = ["anchor_age", "gender", "race", "ckd_baseline", "BMI"]
+PHYS_COLS   = ["Heart Rate (max)", "Blood Pressure (min)", "SpO2 (min)", "FiO2 (max)",
+               "Lactate (max)", "Bilirubin (max)", "Platelet (max)", "INR (max)",
+               "Temperature (max)", "Hemoglobin (min)", "Lymphocytes Abs (min)",
+               "Fluid Balance (mL)", "CVP (max)", "WBC (max)"]
+TREAT_COLS  = ["Antibiotics", "Vasopressors", "Diuretics"]
+OUT24_COLS  = ["aki_24h_onset_stage", "mechvent_24h_onset", "aki_24h_onset"]
+POST24_COLS = ["aki_post24h_stage", "mechvent_post24h", "aki_post24h"]
+MORT_COLS   = ["hospital_expire_flag"]
 
-print("\n=== Continuous variables ===")
-continuous = [
-    "blood_pressure_min", "heart_rate_max", "spO2_min", "FiO2_max",
-    "temp_max_F", "lactate_max", "bilirubin_max", "platelet_max",
-    "inr_max", "hemoglobin_min", "wbc_max", "lymphocyte_abs_min", "cvp_max", "fluid_balance", "sofa_score",
-    "anchor_age"
-]
-print(df[continuous].describe().round(2))
+ALL_COLS = DEMO_COLS + PHYS_COLS + TREAT_COLS + OUT24_COLS + POST24_COLS + MORT_COLS
+available = [c for c in ALL_COLS if c in df.columns]
+df = df[available]
 
-print("\n=== Implausible values check ===")
-checks = {
-    "blood_pressure_min":  (0, 200),
-    "heart_rate_max":      (0, 300),
-    "spO2_min":            (50, 100),
-    "FiO2_max":            (21, 100),
-    "temp_max_F":          (85, 115),
-    "lactate_max":         (0, 30),
-    "bilirubin_max":       (0, 100),
-    "platelet_max":        (0, 2000),
-    "inr_max":             (0, 20),
-    "hemoglobin_min":      (0, 25),
-    "wbc_max":             (0, 500),
-    "lymphocyte_abs_min":  (0, 20),
-    "cvp_max":             (-5, 50),
-    "fluid_balance":       (-10000, 20000),
-    "sofa_score":          (0, 24),
-    "anchor_age":          (18, 91),
+print(f"Total rows: {len(df)}")
+print(f"Total columns: {len(available)}")
+print()
+
+print("=== MISSINGNESS ===")
+miss = df.isnull().mean().sort_values(ascending=False)
+miss_df = pd.DataFrame({
+    "missing_pct": (miss * 100).round(1),
+    "missing_n":   df.isnull().sum()
+})
+print(miss_df[miss_df["missing_pct"] > 0].to_string())
+print()
+
+print("=== CONTINUOUS VARIABLE DISTRIBUTIONS ===")
+cont_cols = [c for c in PHYS_COLS + ["anchor_age"] if c in df.columns]
+print(df[cont_cols].describe(percentiles=[.01, .05, .25, .5, .75, .95, .99]).round(2).to_string())
+print()
+
+print("=== BINARY AND CATEGORICAL DISTRIBUTIONS ===")
+cat_cols = TREAT_COLS + OUT24_COLS + POST24_COLS + MORT_COLS + ["gender", "race", "ckd_baseline"]
+for col in cat_cols:
+    if col in df.columns:
+        print(f"{col}: {df[col].value_counts().to_dict()} | missing: {df[col].isnull().sum()}")
+print()
+
+print("=== OUTLIER COUNTS (post source-filtering) ===")
+bounds = {
+    "Blood Pressure (min)":   (0, 200),
+    "Heart Rate (max)":       (0, 300),
+    "SpO2 (min)":             (50, 100),
+    "FiO2 (max)":             (21, 100),
+    "Temperature (max)":      (85, 115),
+    "Lactate (max)":          (0, 30),
+    "Bilirubin (max)":        (0, 100),
+    "Platelet (max)":         (0, 2000),
+    "INR (max)":              (0, 20),
+    "Hemoglobin (min)":       (0, 25),
+    "WBC (max)":              (0, 500),
+    "Lymphocytes Abs (min)":  (0, 20),
+    "Fluid Balance (mL)":     (-10000, 20000),
+    "CVP (max)":              (-5, 30),
+    "BMI":                    (10, 80),
+    "anchor_age":             (18, 91),
 }
-for col, (lo, hi) in checks.items():
+for col, (lo, hi) in bounds.items():
     if col not in df.columns:
-        print(f"  {col}: NOT IN DATAFRAME")
         continue
     n_low  = (df[col] < lo).sum()
     n_high = (df[col] > hi).sum()
+    total  = df[col].notna().sum()
     if n_low > 0 or n_high > 0:
-        print(f"  {col}: {n_low} below {lo}, {n_high} above {hi}")
-    else:
-        print(f"  {col}: OK")
-
-print("\n=== Binary variables ===")
-binary = [
-    "gender", "hospital_expire_flag", "antibiotics_given", "vaso_given",
-    "aki_24h_onset_stage", "mechvent_24h_onset", "aki_post24h_stage",
-    "mechvent_post24h", "diuretics_given", "ckd_baseline"
-]
-for col in binary:
-    if col not in df.columns:
-        print(f"  {col}: NOT IN DATAFRAME")
-        continue
-    print(f"  {col}: {df[col].value_counts().to_dict()} | missing: {df[col].isnull().sum()}")
-
-    # blood pressure cannot be negative
-df["blood_pressure_min"] = df["blood_pressure_min"].where(df["blood_pressure_min"] > 0, np.nan)
-
-# heart rate above 300 is impossible in a living patient
-df["heart_rate_max"] = df["heart_rate_max"].where(df["heart_rate_max"] <= 300, np.nan)
-
-# SpO2 cannot be below 0 or meaningfully below 50 in a monitored patient
-df["spO2_min"] = df["spO2_min"].where(df["spO2_min"] >= 50, np.nan)
-
-# FiO2 cannot be below 21 (room air) or above 100
-df["FiO2_max"] = df["FiO2_max"].clip(lower=21, upper=100)
-
-# lactate above 30 is a data error
-df["lactate_max"] = df["lactate_max"].where(df["lactate_max"] <= 30, np.nan)
-
-# INR above 20 is physiologically implausible
-df["inr_max"] = df["inr_max"].where(df["inr_max"] <= 20, np.nan)
-
-df.to_csv("/Users/kayvans/Documents/sepsis-causal-discovery/data/processed/analysis_cleaned.csv", index=False)
+        print(f"{col}: {n_low} below {lo}, {n_high} above {hi} (out of {total} non-null)")
+print("Done — no output above means all values within bounds")
