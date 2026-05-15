@@ -1,6 +1,6 @@
 # Causal Discovery in ICU Patients with Sepsis
 
-**Development and Application of an Ensemble Approach to Causal Discovery in ICU Patients with Sepsis**
+<img width="907" height="759" alt="Screenshot 2026-05-15 at 10 36 14 AM" src="https://github.com/user-attachments/assets/3c6bdb7a-715a-48aa-8ef8-a1f7a1ed0b6a" />
 
 ---
 
