@@ -1,0 +1,8 @@
+0, PC_fisherz_simple,           data_simple.csv
+1, PC_fisherz_simple_indicator, data_simple_indicator.csv
+2, PC_fisherz_knn_indicator,    data_knn_indicator.csv
+3, PC_mv_fisherz_raw,           data_raw.csv
+4, FCI_fisherz_simple,          data_simple.csv
+5, FCI_fisherz_simple_indicator,data_simple_indicator.csv
+6, FCI_fisherz_knn_indicator,   data_knn_indicator.csv
+7, FCI_mv_fisherz_raw,          data_raw.csv
