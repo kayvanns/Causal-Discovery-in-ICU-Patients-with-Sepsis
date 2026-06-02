@@ -18,8 +18,8 @@ vitals = {
 }
 
 labevents = {
-    "Sodium (max)":          {'itemid': [50983,52623],  'agg': 'max', 'valid': (100, 200)},
-    "Sodium (min)":          {'itemid': [50983,52623],  'agg': 'min', 'valid': (100, 200)},
+    "Sodium (max)":          {'itemid': [50983,52623],  'agg': 'max', 'valid': (80, 200)},
+    "Sodium (min)":          {'itemid': [50983,52623],  'agg': 'min', 'valid': (80, 200)},
     "Potassium (max)":       {'itemid': [52610,50971],  'agg': 'max', 'valid': (1, 15)},
     "BUN (max)":             {'itemid': [51006,52647],  'agg': 'max', 'valid': (0, 300)},
     "Creatinine (max)":      {'itemid': [50912,52546],  'agg': 'max', 'valid': (0, 50)},
@@ -32,7 +32,7 @@ labevents = {
     "AST (max)":             {'itemid': [53088,50878],  'agg': 'max', 'valid': (0, 50000)},
     "ALT (max)":             {'itemid': [50861],        'agg': 'max', 'valid': (0, 50000)},
     "Bilirubin (max)":       {'itemid': [50885,53089],  'agg': 'max', 'valid': (0, 150)},
-    "INR (max)":             {'itemid': [51675,51237],  'agg': 'max', 'valid': (0, 20)},
+    "INR (max)":             {'itemid': [51675,51237],  'agg': 'max', 'valid': (0.5, 20)},
     "Lymphocytes Abs (min)": {'itemid': [51133,52769],  'agg': 'min', 'valid': (0, 50)},
 }
 
@@ -244,6 +244,7 @@ def get_fluid_balance(df, inputevents, outputevents):
     balance = total_in.merge(total_out, on="stay_id", how="outer").fillna(0)
     balance["Fluid Balance (mL)"] = balance["total_fluid_input"] - balance["total_fluid_output"]
     balance = balance.drop(columns=["total_fluid_input", "total_fluid_output"])
+    balance["Fluid Balance (mL)"] = balance["Fluid Balance (mL)"].clip(-20000, 20000)
     df = df.merge(balance, on="stay_id", how="left")
     return df
 

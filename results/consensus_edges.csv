@@ -26,17 +26,17 @@ CKD (Baseline),Hemoglobin (min),0.8181818181818182
 CKD (Baseline),Heart Rate (max),0.8181818181818182
 SpO2 (min),Hospital Mortality,0.8181818181818182
 AKI Onset (24h),Mech. Vent Post-24h,0.8181818181818182
-Gender,AKI Post-24h,0.7272727272727272
-Mech. Vent Onset (24h),AKI Post-24h,0.7272727272727272
-Race,Hospital Mortality,0.7272727272727272
-Fluid Balance,AKI Post-24h,0.7272727272727272
-Vasopressors,Hospital Mortality,0.7272727272727272
-CKD (Baseline),AKI Post-24h,0.7272727272727272
-Fluid Balance,Mech. Vent Post-24h,0.7272727272727272
-AKI Post-24h,Hospital Mortality,0.7272727272727272
-Bilirubin (max),AKI Post-24h,0.7272727272727272
-Age,AKI Post-24h,0.7272727272727272
-Age,Bilirubin (max),0.7272727272727272
+Gender,AKI Post-24h,0.7272727272727273
+Mech. Vent Onset (24h),AKI Post-24h,0.7272727272727273
+Race,Hospital Mortality,0.7272727272727273
+Fluid Balance,AKI Post-24h,0.7272727272727273
+Vasopressors,Hospital Mortality,0.7272727272727273
+CKD (Baseline),AKI Post-24h,0.7272727272727273
+Fluid Balance,Mech. Vent Post-24h,0.7272727272727273
+AKI Post-24h,Hospital Mortality,0.7272727272727273
+Bilirubin (max),AKI Post-24h,0.7272727272727273
+Age,AKI Post-24h,0.7272727272727273
+Age,Bilirubin (max),0.7272727272727273
 Race,BMI Missing,1.0
 INR Missing,AKI Post-24h,1.0
 FiO2 Missing,Hospital Mortality,1.0

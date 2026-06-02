@@ -50,8 +50,16 @@ label_map = {
     "wbc_max_missing":              "WBC Missing",
 }
 
-df = df.rename(columns=label_map)
+indicator_cols = ["FiO2_max", "bilirubin_max", "blood_pressure_min", "cvp_max",
+                  "hemoglobin_min", "inr_max", "lactate_max", "lymphocyte_abs_min",
+                  "platelet_max", "temp_max_F", "wbc_max", "BMI"]
 
+for col in indicator_cols:
+    df[f"{col}_missing"] = df[col].isna().astype(int)
+
+
+df = df.rename(columns=label_map)
+print(df.columns.tolist())
 
 G = nx.DiGraph()
 for _, row in consensus.iterrows():
@@ -110,7 +118,6 @@ model_mv_to_aki = CausalModel(
 model_mv_to_aki.view_model()
 identified_mv_to_aki = model_mv_to_aki.identify_effect(proceed_when_unidentifiable=True)
 print("\nMV → AKI adjustment set:")
-print(identified_mv_to_aki)
 print(identified_mv_to_aki.get_backdoor_variables())
 
 # ── DoWhy — AKI → MV ─────────────────────────────────────────────────────────
@@ -123,5 +130,4 @@ model_aki_to_mv = CausalModel(
 model_aki_to_mv.view_model()
 identified_aki_to_mv = model_aki_to_mv.identify_effect(proceed_when_unidentifiable=True)
 print("\nAKI → MV adjustment set:")
-print(identified_aki_to_mv)
 print(identified_aki_to_mv.get_backdoor_variables())

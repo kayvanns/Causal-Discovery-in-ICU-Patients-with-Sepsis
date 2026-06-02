@@ -5,8 +5,8 @@ import pandas as pd
 sys.path.append(os.path.dirname(__file__))
 import feature_engineering as fe
 
-MIMIC_HOSP  = "/Users/kayvans/Documents/mimic/mimic-iv-3.1/hosp"
-MIMIC_ICU   = "/Users/kayvans/Documents/mimic/mimic-iv-3.1/icu"
+MIMIC_HOSP  = "/Users/kayvans/Documents/mimic-iv-3.1/hosp"
+MIMIC_ICU   = "/Users/kayvans/Documents/mimic-iv-3.1/icu"
 
 COHORT_PATH = os.path.join(os.path.dirname(__file__), "../../data/raw/sepsis_cohort.csv")
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "../../data/processed/analysis.csv")

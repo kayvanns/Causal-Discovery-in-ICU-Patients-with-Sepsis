@@ -8,7 +8,7 @@ PHYS_COLS   = ["Heart Rate (max)", "Blood Pressure (min)", "SpO2 (min)", "FiO2 (
                "Lactate (max)", "Bilirubin (max)", "Platelet (max)", "INR (max)",
                "Temperature (max)", "Hemoglobin (min)", "Lymphocytes Abs (min)",
                "Fluid Balance (mL)", "CVP (max)", "WBC (max)"]
-TREAT_COLS  = ["Antibiotics", "Vasopressors", "Diuretics"]
+TREAT_COLS  = ["hAntibiotics", "Vasopressors", "Diuretics"]
 BINARY_COLS = ["aki_24h_onset", "mechvent_24h_onset", "aki_post24h", "mechvent_post24h",
                "hospital_expire_flag", "ckd_baseline", "Antibiotics", "Vasopressors", "Diuretics"]
 CONT_COLS   = ["anchor_age", "BMI"] + PHYS_COLS

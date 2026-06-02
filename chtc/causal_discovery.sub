@@ -5,7 +5,7 @@ arguments  = $(Process) $(run_name) $(data_path)
 
 container_image = causal_env.sif
 
-transfer_input_files = causal_discovery.sh, causal_discovery_fisherz.py,$(data_path), causal_env.sif
+transfer_input_files = causal_discovery_fisherz.py,$(data_path), causal_env.sif
 
 log    = logs/job_$(Cluster)_$(Process).log
 output = logs/job_$(Cluster)_$(Process).out
