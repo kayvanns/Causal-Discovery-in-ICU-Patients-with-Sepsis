@@ -3,9 +3,11 @@ venv/
 __pycache__/
 .ipynb_checkpoints/
 data/
-graphs/*.pkl
+*.csv
+*.pkl
 .DS_Store
 .claude
-
+*.out
+*.log
 /.quarto/
 **/*.quarto_ipynb

@@ -1,13 +1,14 @@
 import os
 import sys
 import argparse
+import time
 import numpy as np
 import pandas as pd
 import pickle
 import traceback
 from causallearn.search.ConstraintBased.PC import pc
 from causallearn.search.ConstraintBased.FCI import fci
-from causallearn.utils.cit import fisherz, mv_fisherz
+from causallearn.utils.cit import fisherz, mv_fisherz, kci
 from causallearn.utils.GraphUtils import GraphUtils
 from causallearn.utils.PCUtils.BackgroundKnowledge import BackgroundKnowledge
 from causallearn.graph.GraphNode import GraphNode
@@ -33,13 +34,14 @@ TIER_MAP = {
 
 
 
-ALPHA = 0.05
 
 RUNS = [
     ("PC",  fisherz,    False),  # used with simple, simple_indicator, knn_indicator
     ("PC",  mv_fisherz, True),   # used with raw
     ("FCI", fisherz,    False),  # used with simple, simple_indicator, knn_indicator
     ("FCI", mv_fisherz, False),  # used with raw
+    ("PC",kci,False),  # used with simple, simple_indicator, knn_indicator
+    ("FCI",kci,False),  # used with simple, simple_indicator, knn_indicator
 ]
 
 # ── Data loading ───────────────────────────────────────────────────────────────
@@ -71,7 +73,12 @@ def main():
     parser.add_argument("--run_index", type=int, required=True)
     parser.add_argument("--run_name",  type=str, required=True)
     parser.add_argument("--data_path", type=str, required=True)
+    parser.add_argument("--alpha",           type=float, default=0.05)
+    parser.add_argument("--sample_size",     type=int,   default=-1)
+    parser.add_argument("--depth", type=int, default=-1)
     args = parser.parse_args()
+    
+    start = time.time()
 
     algo, test_fn, use_mvpc = RUNS[args.run_index]
     run_name = args.run_name
@@ -82,16 +89,21 @@ def main():
 
 
     data = df.to_numpy().astype(float)
+    if args.sample_size > 0 and args.sample_size < len(df):
+        np.random.seed(42)
+        idx  = np.random.choice(len(df), size=args.sample_size, replace=False)
+        data = data[idx]
+        print(f"  Subsampled to {args.sample_size} rows")
 
     try:
         bk = build_background_knowledge(col_names)
 
         if algo == "PC":
-            cg = pc(data, alpha=ALPHA, indep_test=test_fn, mvpc=use_mvpc,node_names=col_names,background_knowledge=bk)
+            cg = pc(data, alpha=args.alpha, indep_test=test_fn, mvpc=use_mvpc,node_names=col_names,background_knowledge=bk)
             graph = cg.G
 
         elif algo == "FCI":
-            graph, _ = fci(data, independence_test_method=test_fn, alpha=ALPHA,node_names=col_names,background_knowledge=bk) 
+            graph, _ = fci(data, independence_test_method=test_fn, alpha=args.alpha,node_names=col_names,background_knowledge=bk,depth=args.depth) 
 
         pkl_path = f"{run_name}.pkl"
         png_path = f"{run_name}.png"
@@ -105,6 +117,9 @@ def main():
     except Exception:
         print(f"  FAILED:\n{traceback.format_exc()}")
         sys.exit(1)
+
+    elapsed = time.time() - start
+    print(f"  Time: {elapsed:.1f}s ({elapsed/3600:.2f}hrs)")
 
 if __name__ == "__main__":
     main()
